@@ -3,35 +3,12 @@
   "heading": "Photos & Artwork",
   "lead": "A few things I have made and photographed outside of coursework.",
   "images": [
-    {
-      "src": "assets/img/placeholder.svg",
-      "alt": "Placeholder artwork one",
-      "caption": "Replace with your photo or artwork"
-    },
-    {
-      "src": "assets/img/placeholder.svg",
-      "alt": "Placeholder artwork two",
-      "caption": "Caption for this piece"
-    },
-    {
-      "src": "assets/img/placeholder.svg",
-      "alt": "Placeholder artwork three",
-      "caption": "Another caption"
-    },
-    {
-      "src": "assets/img/placeholder.svg",
-      "alt": "Placeholder artwork four",
-      "caption": "Add as many as you like"
-    },
-    {
-      "src": "assets/img/placeholder.svg",
-      "alt": "Placeholder artwork five",
-      "caption": "Click to enlarge"
-    },
-    {
-      "src": "assets/img/placeholder.svg",
-      "alt": "Placeholder artwork six",
-      "caption": "Delete these examples in data/gallery.json"
-    }
+    { "src": "assets/img/gallery/bike.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/bluebells-yard.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/i-love-archery.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/i-love-travelling.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/rainbow.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/sunset-building-1.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/sunset-building-2.jpeg", "caption": " " }
   ]
 }

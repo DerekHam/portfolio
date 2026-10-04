@@ -37,6 +37,9 @@ Notes:
   `"Stagecraft: <i>Smash The Wall</i>"` and the italics will show. HTML is only allowed
   in those fields; everywhere else is shown as plain text (and stripped from page titles
   and image alt text automatically).
+- A project `description` can be a single HTML string **or an array of HTML blocks**
+  (one per line, which is much easier to read and edit). The blocks are joined together
+  when rendered, so both forms work.
 - Prefer plain quotes and commas. Every file must stay valid JSON (no trailing commas).
 
 ## How the HTML and data connect
@@ -80,6 +83,25 @@ Projects always appear in **ascending `id` order** — that is your importance r
 most important first (for example `00`, `01`, `02`). Both the Home page and the Projects
 page follow this order. To reorder, just change the `id` values; the comparison is
 numeric-aware, so `2` sorts before `10`.
+
+### Project images (gallery with captions)
+
+A project's `images` array is shown as a **horizontal slider** on its page (so it does not
+push the description down), and every image can open in a lightbox (click to enlarge,
+arrow keys / Esc). Each entry is either a plain path or an object with an optional caption:
+
+```json
+"images": [
+  "assets/img/my-project/overview.jpg",
+  { "src": "assets/img/my-project/diagram.png", "caption": "Cross-section of the test section" },
+  { "src": "assets/img/my-project/result.png", "caption": "Lift vs. angle of attack" }
+]
+```
+
+- Use plain strings when you do not need a caption.
+- `caption` is optional; `alt` is optional too (falls back to the caption or the project title).
+- One image renders full-width; two or more become a slider (swipe/scroll, or use the arrows).
+- The `thumbnail` is used for the card and as the fallback image when `images` is empty.
 
 ## Adding photos / artwork to the gallery
 

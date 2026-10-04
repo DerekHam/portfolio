@@ -59,7 +59,11 @@
 
     <section class="wrap">
       <article class="prose">
-        <div id="project-images" class="grid grid--2" style="margin-bottom:24px;"></div>
+        <div class="project-gallery-wrap">
+          <div id="project-images" class="project-gallery"></div>
+          <button class="project-gallery-nav gallery-prev" type="button" aria-label="Previous images" hidden>&#8249;</button>
+          <button class="project-gallery-nav gallery-next" type="button" aria-label="Next images" hidden>&#8250;</button>
+        </div>
         <div id="project-description"></div>
         <div id="project-links" class="hero-actions" style="margin-top:28px;"></div>
       </article>
@@ -78,8 +82,24 @@
     </div>
   </footer>
 
+  <!-- Lightbox viewer (used by main.js for project images and the gallery) -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" data-close type="button" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" data-prev type="button" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-next" data-next type="button" aria-label="Next image">&#8250;</button>
+    <figure class="lightbox-fig">
+      <img id="lightbox-img" src="" alt="" />
+      <figcaption id="lightbox-cap"></figcaption>
+    </figure>
+  </div>
+
   <!-- Templates used by render.js for the project detail page -->
-  <template id="tpl-detail-image"><img alt="" loading="lazy" /></template>
+  <template id="tpl-detail-image">
+    <figure class="project-figure" data-lightbox>
+      <img alt="" loading="lazy" />
+      <figcaption></figcaption>
+    </figure>
+  </template>
   <template id="tpl-detail-link"><a class="btn" target="_blank" rel="noopener"></a></template>
 
   <script src="assets/js/main.js"></script>

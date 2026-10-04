@@ -245,19 +245,39 @@
     }
 
     if (imgWrap) {
-      var imgs = (p.images && p.images.length) ? p.images : (p.thumbnail ? [p.thumbnail] : []);
-      if (imgs.length === 1) imgWrap.classList.remove("grid--2");
+      // Each image is either a path string or { src, caption, alt }.
+      var raw = (p.images && p.images.length) ? p.images : (p.thumbnail ? [p.thumbnail] : []);
       var tplImg = document.getElementById("tpl-detail-image");
-      imgs.forEach(function (src) {
+      if (raw.length === 1) imgWrap.classList.add("project-gallery--single");
+      raw.forEach(function (item) {
         if (!tplImg) return;
+        var img = (typeof item === "string") ? { src: item } : (item || {});
         var frag = tplImg.content.cloneNode(true);
-        var im = frag.querySelector("img");
-        if (im) { im.setAttribute("src", src); im.setAttribute("alt", p.title || "Project image"); }
+        var fig = frag.querySelector("[data-lightbox]");
+        var el = frag.querySelector("img");
+        var cap = frag.querySelector("figcaption");
+        if (el) {
+          el.setAttribute("src", img.src || "");
+          el.setAttribute("alt", plain(img.alt || img.caption || p.title) || "Project image");
+        }
+        if (fig) {
+          fig.setAttribute("data-src", img.src || "");
+          fig.setAttribute("data-caption", plain(img.caption || ""));
+        }
+        if (cap) {
+          if (img.caption) cap.textContent = img.caption;
+          else cap.parentNode && cap.parentNode.removeChild(cap);
+        }
         imgWrap.appendChild(frag);
       });
+      // Arrows only make sense with more than one image.
+      $all(".project-gallery-nav").forEach(function (btn) { btn.hidden = raw.length <= 1; });
     }
 
-    if (descEl) descEl.innerHTML = p.description || "";
+    if (descEl) {
+      var desc = p.description;
+      descEl.innerHTML = Array.isArray(desc) ? desc.join("") : (desc || "");
+    }
 
     if (linkWrap && p.links && p.links.length) {
       var tplLink = document.getElementById("tpl-detail-link");

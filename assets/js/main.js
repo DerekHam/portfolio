@@ -55,7 +55,15 @@
     var items = [];
     var idx = 0;
 
-    function collect() { items = $all(".gallery-item"); }
+    var ITEM_SELECTOR = ".gallery-item, [data-lightbox]";
+
+    function collect() { items = $all(ITEM_SELECTOR); }
+
+    function captionOf(el) {
+      if (el.hasAttribute("data-caption")) return el.getAttribute("data-caption");
+      var cap = el.querySelector(".gallery-cap, figcaption");
+      return cap ? cap.textContent : "";
+    }
 
     function show(i) {
       if (!items.length) return;
@@ -65,7 +73,7 @@
       var src = el.getAttribute("data-src") || (img ? img.getAttribute("src") : "");
       var alt = img ? (img.getAttribute("alt") || "") : "";
       if (lbImg) { lbImg.setAttribute("src", src); lbImg.setAttribute("alt", alt); }
-      if (lbCap) lbCap.textContent = el.querySelector(".gallery-cap") ? el.querySelector(".gallery-cap").textContent : "";
+      if (lbCap) lbCap.textContent = captionOf(el);
       lb.hidden = false;
       lb.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");
@@ -82,7 +90,7 @@
     }
 
     document.addEventListener("click", function (e) {
-      var item = e.target.closest(".gallery-item");
+      var item = e.target.closest(ITEM_SELECTOR);
       if (item) {
         e.preventDefault();
         collect();
@@ -100,6 +108,24 @@
       if (e.key === "Escape") close();
       else if (e.key === "ArrowLeft") show(idx - 1);
       else if (e.key === "ArrowRight") show(idx + 1);
+    });
+  }
+
+  /* ---------- Horizontal sliders (project image galleries) ---------- */
+  function initSliders() {
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest(".project-gallery-nav");
+      if (!btn) return;
+      var wrap = btn.closest(".project-gallery-wrap");
+      var track = wrap && wrap.querySelector(".project-gallery");
+      if (!track) return;
+      var fig = track.querySelector(".project-figure");
+      if (!fig) return;
+      var styles = window.getComputedStyle(track);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 14;
+      var step = fig.getBoundingClientRect().width + gap;
+      var dir = btn.classList.contains("gallery-next") ? 1 : -1;
+      track.scrollBy({ left: dir * step, behavior: "smooth" });
     });
   }
 
@@ -145,6 +171,7 @@
     initNav();
     initFooter();
     initGallery();
+    initSliders();
     initReveal();
   });
 })();

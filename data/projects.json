@@ -7,32 +7,67 @@
     "tags": ["CAD", "Fabrication", "Aerospace"],
     "featured": true,
     "summary": "Two open-sourced wind tunnels designed for middle- and high- school use.",
-    "thumbnail": "assets/img/calico/card.jpeg",
-    "images": ["assets/img/placeholder.svg"],
-    "description": "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p><p>There are currently two wind tunnels: <b>Calico Biggie</b> and <b>Calico Kitten</b>. Both have parametric CAD files. <ul><li><b>Calico Biggie</b> is a roughly 3.5-meter long wind tunnel with a test section sized 400*400*800mm. It is capable of 15m/s of testing wind speeds. </li><li><b>Calico Kitten</b> is a toy-sized wind tunnel powered by a 120mm PC fan. It can be manufactured under 60 CNY (≈9 USD). </li></ul><p><p>After I started the assembly of a functioning prototype, a nearby local school (ISB) had a student reached out for its files. The collaboration is still underway as of now (Oct 4th, 2026). </p><p>The name Calico refers to the color of the larger wind tunnel. Calico Biggie is made mainly out of plywood, white 3D prints, and a black sheet of card for test section back ground, which compromises the tricolor of the calico cat. </p><h3>What Makes Calico Biggie Special</h3><p>Calico Biggie is probably one of the first wind tunnels designed for high school students to develop useful skills and get actually useful data. </p><p>The choice of plywood and PLA from FDM printing means that the wind tunnel could be easily made and modified. The total construction cost of the first prototype is approximately 3500-4000 CNY (≈500-580 USD). </p><p>Since all CAD files are open-sourced, shared, and parameterized, students could easily adapt the design to their own needs: <ul><li>Want a smaller one? No problem, change a few numbers and a new scaled design appears. </li><li>Have a 12mm plywood instead of 8mm plywood? No problem, same thing! </li><li>Uses imperial units? Sucks to be you, but no problem! Change more numbers and the design still works!</li></ul></p>",
-    "links": [{ "label": "CAD Files", "url": "https://cad.onshape.com/documents/f07feef52ce356bbf54fe64e/w/621ae0026c60244aebb38691/e/e1f404fcb63d616e99c0f38b?renderMode=0&uiState=6ac2644cba27a009fb6c7b1e" }]
+    "thumbnail": "assets/img/calico/full-view.jpeg",
+    "images": [
+      { "src": "assets/img/calico/full-view.jpeg", "caption": " " },
+      { "src": "assets/img/calico/intake-view.jpeg", "caption": " " },
+      { "src": "assets/img/calico/diffuser-1.jpeg", "caption": " " },
+      { "src": "assets/img/calico/diffuser-2.jpeg", "caption": " " },
+      { "src": "assets/img/calico/frame-1.jpeg", "caption": " " },
+      { "src": "assets/img/calico/leak-test.jpeg", "caption": " " },
+      { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": " " },
+      { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": " " },
+      { "src": "assets/img/calico/approval.jpeg", "caption": " " }
+    ],
+    "description": [
+      "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p>",
+      "<p>There are currently two wind tunnels: <b>Calico Biggie</b> and <b>Calico Kitten</b>. Both have parametric CAD files. ",
+      "<ul><li><b>Calico Biggie</b> is a roughly 3.5-meter long wind tunnel with a test section sized 400*400*800mm. It is capable of 15m/s of testing wind speeds. </li><li><b>Calico Kitten</b> is a toy-sized wind tunnel powered by a 120mm PC fan. It can be manufactured under 60 CNY (≈9 USD). </li></ul>",
+      "<p><p>After I started the assembly of a functioning prototype, a nearby local school (ISB) had a student reached out for its files. The collaboration is still underway as of now (Oct 4th, 2026). </p>",
+      "<p>The name Calico refers to the color of the larger wind tunnel. Calico Biggie is made mainly out of plywood, white 3D prints, and a black sheet of card for test section back ground, which compromises the tricolor of the calico cat. </p>",
+      "<h3>What Makes Calico Biggie Special</h3>",
+      "<p>Calico Biggie is probably one of the first wind tunnels designed for high school students to develop useful skills and get actually useful data. </p>",
+      "<p>The choice of plywood and PLA from FDM printing means that the wind tunnel could be easily made and modified. The total construction cost of the first prototype is approximately 3500-4000 CNY (≈500-580 USD). </p>",
+      "<p>Since all CAD files are open-sourced, shared, and parameterized, students could easily adapt the design to their own needs: ",
+      "<ul><li>Want a smaller one? No problem, change a few numbers and a new scaled design appears. </li><li>Have a 12mm plywood instead of 8mm plywood? No problem, same thing! </li><li>Uses imperial units? Sucks to be you, but no problem! Change more numbers and the design still works!</li></ul></p>"
+    ],
+    "links": [
+      {
+        "label": "CAD Files",
+        "url": "https://cad.onshape.com/documents/f07feef52ce356bbf54fe64e/w/621ae0026c60244aebb38691/e/e1f404fcb63d616e99c0f38b?renderMode=0&uiState=6ac2644cba27a009fb6c7b1e"
+      }
+    ]
   },
   {
     "id": "02",
-    "title": "RC Catamaran",
+    "title": "RC Catamarans",
     "date": "2025-04 to 2026-06",
     "tags": ["Robotics", "Fabrication", "CAD", "RC"],
     "featured": true,
     "summary": "An efficient, fast, and easily carried catamaran stemmed from a bird monitoring boat.",
     "thumbnail": "assets/img/catamaran/card.png",
-    "images": ["assets/img/placeholder.svg"],
-    "description": "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p><p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>",
+    "images": [
+      { "src": "assets/img/catamaran/card.png", "caption": " " }
+    ],
+    "description": [
+      "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p>",
+      "<p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>"
+    ],
     "links": []
   },
   {
     "id": "03",
-    "title": "Unpowered RC glider",
+    "title": "RC Gliders",
     "date": "2024-06 to 2026-10",
     "tags": ["Aerospace", "Fabrication", "CAD", "RC"],
     "featured": true,
-    "summary": "Replace this with your next project.",
+    "summary": "A series of low or unpowered gliders, designed so they comply with strict Beijing drone regulations. Unfortunately forced to discontinue.",
     "thumbnail": "assets/img/placeholder.svg",
-    "images": ["assets/img/placeholder.svg"],
+    "images": [
+      { "src": "assets/img/glider/horn.jpeg", "caption": " " },
+      { "src": "assets/img/glider/lightweight-airframe.jpeg", "caption": " " },
+      { "src": "assets/img/glider/v1-snapped.jpeg", "caption": " " }
+    ],
     "description": "<p>Another placeholder so the home page grid is not empty.</p>",
     "links": []
   },
@@ -45,10 +80,13 @@
     "summary": "Collaborative science-fiction novel, dedicated to explore the future under realistic technological and societal advancements.",
     "thumbnail": "assets/img/parsecs/card.png",
     "images": ["assets/img/placeholder.svg"],
-    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "description": [
+      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    ],
     "links": [
-      { "label": "Go to website", "url": "https://parsecs.fandom.com" }, 
-      {"label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link"}
+      { "label": "Go to website", "url": "https://parsecs.fandom.com" },
+      { "label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link" }
     ]
   },
   {
@@ -58,35 +96,80 @@
     "tags": ["Creativity", "Coding", "Arts", "ongoing"],
     "featured": true,
     "summary": "Regular alarm clocks wasn't working for me, so I made one that automatically turns the light on for my dorm. My roommate loved it.",
-    "thumbnail": "assets/img/alarm/card.png",
-    "images": ["assets/img/placeholder.svg"],
-    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    "thumbnail": "assets/img/alarm/final.jpeg",
+    "images": [
+      { "src": "assets/img/alarm/final.jpeg", "caption": " " },
+      { "src": "assets/img/alarm/interface.jpeg", "caption": " " },
+      { "src": "assets/img/alarm/print-quality-check.jpeg", "caption": " " },
+      { "src": "assets/img/alarm/v2.jpeg", "caption": " " }
+    ],
+    "description": [
+      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    ],
+    "links": []
   },
   {
     "id": "08",
     "title": "The Pendulum from <i>Weimar Pendulum</i>",
-    "date": "2025-09, ongoing",
+    "date": "2025-09 to 2026-02",
     "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
     "featured": true,
     "summary": "The director asked me to make a working mechanical pendulum for an immersive English Musical, I said \"Hell yeah\".",
-    "thumbnail": "assets/img/weimar-pendulum/card.png",
-    "images": ["assets/img/placeholder.svg"],
-    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
-    "links": [{"label": "Photos", "url": "https://derekhan.link"}]
+    "thumbnail": "assets/img/weimar-pendulum/curtain-call.jpeg",
+    "images": [
+      { "src": "assets/img/weimar-pendulum/curtain-call.jpeg", "caption": " " },
+      { "src": "assets/img/weimar-pendulum/group-photo.JPG", "caption": " " },
+      { "src": "assets/img/weimar-pendulum/with-pendulum.JPG", "caption": " " }
+    ],
+    "description": [
+      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    ],
+    "links": [
+      { "label": "Photos", "url": "https://derekhan.link" }
+    ]
   },
   {
     "id": "09",
     "title": "Stagecraft: <i>Smash The Wall</i>",
-    "date": "2024-09, ongoing",
+    "date": "2024-09 to 2025-04",
     "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
     "featured": true,
     "summary": "A 4.5m wide closet structure designed to be hoisted up during a Chinese musical Play.",
-    "thumbnail": "assets/img/nanqiang/card.png",
-    "images": ["assets/img/placeholder.svg"],
-    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "thumbnail": "assets/img/nanqiang/closet.jpeg",
+    "images": [
+      { "src": "assets/img/nanqiang/closet.jpeg", "caption": " " },
+      { "src": "assets/img/nanqiang/fixing-light.JPG", "caption": " " },
+      { "src": "assets/img/nanqiang/light-fixed.JPG", "caption": " " }
+    ],
+    "description": [
+      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    ],
     "links": [
-      { "label": "Go to website", "url": "https://parsecs.fandom.com" }, 
-      {"label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link"}
+      { "label": "Photos", "url": "https://derekhan.link" }
+    ]
+  },
+  {
+    "id": "10",
+    "title": "3D Printer Enclosure & Rack",
+    "date": "2024-02 to 2024-09",
+    "tags": ["Fabrication", "CAD"],
+    "featured": true,
+    "summary": "An integrated enclosure for my laser cutter and 3D printer. Used often until school got a shiny new workshop.",
+    "thumbnail": "assets/img/3d-printer-rack/card.png",
+    "images": ["assets/img/placeholder.svg"],
+    "description": [
+      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    ],
+    "links": [
+      { "label": "Photos", "url": "https://derekhan.link" },
+      {
+        "label": "CAD Files",
+        "url": "https://cad.onshape.com/documents/7034b439a49a3fbde48033c8/w/ad4b1817ddde9f6759211e72/e/f5c32d06f06f135dc0bf11db"
+      }
     ]
   },
   {
@@ -95,17 +178,25 @@
     "date": "2025-09 to present",
     "tags": ["Coding"],
     "featured": true,
-    "summary": "A macOS menu-bar app that treats your attention like computer memory. Built for my own busy schedule, and now used by classmates and friends with the same time-management struggles.",
+    "summary": "A macOS menu-bar app that treats attention like computer memory. Built for my own busy schedule, and now used by friends with same time-management struggles.",
     "thumbnail": "assets/img/human-ram/capture-light.png",
     "images": [
-      "assets/img/human-ram/menu-bar-light.png",
-      "assets/img/human-ram/capture-light.png",
-      "assets/img/human-ram/daily-scan-light.png",
-      "assets/img/human-ram/notes-review-light.png",
-      "assets/img/human-ram/diary-light.png",
-      "assets/img/human-ram/settings-light.png"
+      { "src": "assets/img/human-ram/menu-bar-light.png", "caption": " " },
+      { "src": "assets/img/human-ram/capture-light.png", "caption": " " },
+      { "src": "assets/img/human-ram/daily-scan-light.png", "caption": " " },
+      { "src": "assets/img/human-ram/notes-review-light.png", "caption": " " },
+      { "src": "assets/img/human-ram/diary-light.png", "caption": " " },
+      { "src": "assets/img/human-ram/settings-light.png", "caption": " " }
     ],
-    "description": "<p>Human RAM is a macOS menu-bar app I built for myself. Most to-do apps ask you to organize; this one asks almost nothing. You press a global hotkey, type a thought on one line, and the app decides when it should come back to you. The whole design rests on a simple metaphor: your mind is RAM, and this is a small external module for it.</p><p>I built it because a busy high-school schedule — homework, applications, competitions, and everything else competing for attention — was more than any normal to-do app could absorb without constant upkeep. Human RAM instead keeps a small working set of what is relevant right now, lets the rest spill to a quiet backlog, and brings things back through a daily scan and a nightly notes review.</p><p>It has been working well for me in daily use. After I shared it, some classmates and friends who were struggling with the same time-management problems started using it as well. That was the most rewarding part: a tool built to fix one person's messy workflow turned out to help other busy students too.</p><h2>How it works</h2><ul><li><strong>Write</strong> — a global hotkey opens a one-line capture box anywhere; type, press Enter, done. Press Tab to capture a note instead of a task.</li><li><strong>Volatile store</strong> — captured tasks live in a small, bounded working set, like CPU registers (default capacity of 7).</li><li><strong>Refresh</strong> — a daily scan of tasks and a nightly review of notes bring the right things back at the right time.</li><li><strong>Spill to disk</strong> — overflow and stale items move to a quiet backlog, so nothing is lost.</li><li><strong>Long-term storage</strong> — completed tasks go to a Diary, and filed notes go to a Journal.</li></ul><h2>Built with</h2><p>Swift and SwiftUI on macOS 14+, using system frameworks only — no third-party dependencies. Data lives in a single local SQLite file, and the app runs entirely offline: no account, no cloud, no telemetry.</p>",
+    "description": [
+      "<p>Human RAM is a macOS menu-bar app I built for myself. Most to-do apps ask you to organize; this one asks almost nothing. You press a global hotkey, type a thought on one line, and the app decides when it should come back to you. The whole design rests on a simple metaphor: your mind is RAM, and this is a small external module for it.</p>",
+      "<p>I built it because a busy high-school schedule — homework, applications, competitions, and everything else competing for attention — was more than any normal to-do app could absorb without constant upkeep. Human RAM instead keeps a small working set of what is relevant right now, lets the rest spill to a quiet backlog, and brings things back through a daily scan and a nightly notes review.</p>",
+      "<p>It has been working well for me in daily use. After I shared it, some classmates and friends who were struggling with the same time-management problems started using it as well. That was the most rewarding part: a tool built to fix one person's messy workflow turned out to help other busy students too.</p>",
+      "<h2>How it works</h2>",
+      "<ul><li><strong>Write</strong> — a global hotkey opens a one-line capture box anywhere; type, press Enter, done. Press Tab to capture a note instead of a task.</li><li><strong>Volatile store</strong> — captured tasks live in a small, bounded working set, like CPU registers (default capacity of 7).</li><li><strong>Refresh</strong> — a daily scan of tasks and a nightly review of notes bring the right things back at the right time.</li><li><strong>Spill to disk</strong> — overflow and stale items move to a quiet backlog, so nothing is lost.</li><li><strong>Long-term storage</strong> — completed tasks go to a Diary, and filed notes go to a Journal.</li></ul>",
+      "<h2>Built with</h2>",
+      "<p>Swift and SwiftUI on macOS 14+, using system frameworks only — no third-party dependencies. Data lives in a single local SQLite file, and the app runs entirely offline: no account, no cloud, no telemetry.</p>"
+    ],
     "links": [
       { "label": "View on GitHub", "url": "https://github.com/DerekHam/Human-RAM" },
       { "label": "Download for macOS", "url": "https://github.com/DerekHam/Human-RAM/releases/latest" }
@@ -119,11 +210,15 @@
     "featured": true,
     "summary": "The portfolio you are looking at, catalogued as one of its own projects. A small matryoshka doll of a website.",
     "thumbnail": "assets/img/website/home-light.png",
-    "images": [
-      "assets/img/website/home-light.png",
-      "assets/img/website/projects-light.png"
+    "images": ["assets/img/website/home-light.png", "assets/img/website/projects-light.png"],
+    "description": [
+      "<p>This is the site you are reading right now — a portfolio that has catalogued itself. It earned a card like everything else, so yes: this is a small matryoshka doll of a website.</p>",
+      "<p>The goal was a portfolio that loads instantly, is easy to keep up to date, and gets out of the way of the work. It is a plain static site — hand-written HTML and CSS with a little vanilla JavaScript, no frameworks and no build step — hosted for free on GitHub Pages.</p>",
+      "<h2>What is inside</h2>",
+      "<ul><li><strong>Content in data files</strong> — every page reads its text from a small JSON file, so updating the site means editing data, not markup.</li><li><strong>A tiny renderer</strong> — one script binds that data into HTML templates and builds the project grid.</li><li><strong>Projects page</strong> — filter by tag and sort by importance, start date, or end date.</li><li><strong>Dark mode, a gallery lightbox, and a responsive layout</strong> — the small touches that make it feel finished.</li></ul>",
+      "<h2>Built with</h2>",
+      "<p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No dependencies, no build tools, and no tracking — just static files.</p>"
     ],
-    "description": "<p>This is the site you are reading right now — a portfolio that has catalogued itself. It earned a card like everything else, so yes: this is a small matryoshka doll of a website.</p><p>The goal was a portfolio that loads instantly, is easy to keep up to date, and gets out of the way of the work. It is a plain static site — hand-written HTML and CSS with a little vanilla JavaScript, no frameworks and no build step — hosted for free on GitHub Pages.</p><h2>What is inside</h2><ul><li><strong>Content in data files</strong> — every page reads its text from a small JSON file, so updating the site means editing data, not markup.</li><li><strong>A tiny renderer</strong> — one script binds that data into HTML templates and builds the project grid.</li><li><strong>Projects page</strong> — filter by tag and sort by importance, start date, or end date.</li><li><strong>Dark mode, a gallery lightbox, and a responsive layout</strong> — the small touches that make it feel finished.</li></ul><h2>Built with</h2><p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No dependencies, no build tools, and no tracking — just static files.</p>",
     "links": [
       { "label": "You are looking at it", "url": "index.html" }
     ]

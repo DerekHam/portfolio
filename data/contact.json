@@ -14,6 +14,11 @@
       "href": "mailto:zhizhi.han@student.keystoneacademy.cn"
     },
     {
+      "label": "WeChat",
+      "value": "DerekHan2009",
+      "href": ""
+    },
+    {
       "label": "LinkedIn",
       "value": "linkedin.com/in/your-handle",
       "href": "https://www.linkedin.com/in/your-handle"
@@ -30,7 +35,7 @@
     },
     {
       "label": "Location",
-      "value": "Beijing, China",
+      "value": "Keystone Academy, Beijing, China",
       "href": ""
     }
   ]
