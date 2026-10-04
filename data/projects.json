@@ -4,12 +4,12 @@
     "id": "00",
     "title": "Calico Wind Tunnels",
     "date": "2025-11 to 2027-05",
-    "tags": ["CAD", "Fabrication"],
+    "tags": ["CAD", "Fabrication", "Aerospace"],
     "featured": true,
     "summary": "Two open-sourced wind tunnels designed for middle- and high- school use.",
     "thumbnail": "assets/img/calico/card.jpeg",
     "images": ["assets/img/placeholder.svg"],
-    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "description": "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p><p>There are currently two wind tunnels: <b>Calico Biggie</b> and <b>Calico Kitten</b>. Both have parametric CAD files. <ul><li><b>Calico Biggie</b> is a roughly 3.5-meter long wind tunnel with a test section sized 400*400*800mm. It is capable of 15m/s of testing wind speeds. </li><li><b>Calico Kitten</b> is a toy-sized wind tunnel powered by a 120mm PC fan. It can be manufactured under 60 CNY (≈9 USD). </li></ul><p><p>After I started the assembly of a functioning prototype, a nearby local school (ISB) had a student reached out for its files. The collaboration is still underway as of now (Oct 4th, 2026). </p><p>The name Calico refers to the color of the larger wind tunnel. Calico Biggie is made mainly out of plywood, white 3D prints, and a black sheet of card for test section back ground, which compromises the tricolor of the calico cat. </p><h3>What Makes Calico Biggie Special</h3><p>Calico Biggie is probably one of the first wind tunnels designed for high school students to develop useful skills and get actually useful data. </p><p>The choice of plywood and PLA from FDM printing means that the wind tunnel could be easily made and modified. The total construction cost of the first prototype is approximately 3500-4000 CNY (≈500-580 USD). </p><p>Since all CAD files are open-sourced, shared, and parameterized, students could easily adapt the design to their own needs: <ul><li>Want a smaller one? No problem, change a few numbers and a new scaled design appears. </li><li>Have a 12mm plywood instead of 8mm plywood? No problem, same thing! </li><li>Uses imperial units? Sucks to be you, but no problem! Change more numbers and the design still works!</li></ul></p>",
     "links": [{ "label": "CAD Files", "url": "https://cad.onshape.com/documents/f07feef52ce356bbf54fe64e/w/621ae0026c60244aebb38691/e/e1f404fcb63d616e99c0f38b?renderMode=0&uiState=6ac2644cba27a009fb6c7b1e" }]
   },
   {
