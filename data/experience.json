@@ -1,0 +1,43 @@
+{
+  "_comment": "Work and extracurricular entries. Each 'bullets' value is a list of strings.",
+  "work": [
+    {
+      "title": "Role / Internship Title",
+      "when": "2025-06 — 2025-08",
+      "org": "Organization Name · Location",
+      "bullets": [
+        "What you did and the impact — start with an action verb.",
+        "A tool, method, or result worth highlighting.",
+        "A quantified outcome if you have one (for example, reduced time by 20%)."
+      ]
+    },
+    {
+      "title": "Second Role",
+      "when": "2024-06 — 2024-08",
+      "org": "Organization Name · Location",
+      "bullets": [
+        "Placeholder bullet one.",
+        "Placeholder bullet two."
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "title": "Club / Team / Activity",
+      "when": "2023 — Present",
+      "role": "Role (for example, President, Team Captain, Member)",
+      "bullets": [
+        "What the group does and your contribution.",
+        "A leadership or teamwork highlight."
+      ]
+    },
+    {
+      "title": "Volunteering / Community Service",
+      "when": "2024",
+      "role": "Organization",
+      "bullets": [
+        "Describe the service and hours or scope."
+      ]
+    }
+  ]
+}

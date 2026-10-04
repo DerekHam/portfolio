@@ -1,0 +1,131 @@
+[
+  {
+    "_comment": "Copy this whole { ... } block to add a project. 'description' may contain simple HTML. Remove _comment if you like.",
+    "id": "00",
+    "title": "Calico Wind Tunnels",
+    "date": "2025-11 to 2027-05",
+    "tags": ["CAD", "Fabrication"],
+    "featured": true,
+    "summary": "Two open-sourced wind tunnels designed for middle- and high- school use.",
+    "thumbnail": "assets/img/calico/card.jpeg",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "links": [{ "label": "CAD Files", "url": "https://cad.onshape.com/documents/f07feef52ce356bbf54fe64e/w/621ae0026c60244aebb38691/e/e1f404fcb63d616e99c0f38b?renderMode=0&uiState=6ac2644cba27a009fb6c7b1e" }]
+  },
+  {
+    "id": "02",
+    "title": "RC Catamaran",
+    "date": "2025-04 to 2026-06",
+    "tags": ["Robotics", "Fabrication", "CAD", "RC"],
+    "featured": true,
+    "summary": "An efficient, fast, and easily carried catamaran stemmed from a bird monitoring boat.",
+    "thumbnail": "assets/img/catamaran/card.png",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p><p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>",
+    "links": []
+  },
+  {
+    "id": "03",
+    "title": "Unpowered RC glider",
+    "date": "2024-06 to 2026-10",
+    "tags": ["Aerospace", "Fabrication", "CAD", "RC"],
+    "featured": true,
+    "summary": "Replace this with your next project.",
+    "thumbnail": "assets/img/placeholder.svg",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>Another placeholder so the home page grid is not empty.</p>",
+    "links": []
+  },
+  {
+    "id": "01",
+    "title": "Parsecs Wiki",
+    "date": "2025-09, ongoing",
+    "tags": ["Creativity", "Coding", "Arts", "ongoing"],
+    "featured": true,
+    "summary": "Collaborative science-fiction novel, dedicated to explore the future under realistic technological and societal advancements.",
+    "thumbnail": "assets/img/parsecs/card.png",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "links": [
+      { "label": "Go to website", "url": "https://parsecs.fandom.com" }, 
+      {"label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link"}
+    ]
+  },
+  {
+    "id": "06",
+    "title": "Wakey Wakey!",
+    "date": "2025-11 to 2026-05",
+    "tags": ["Creativity", "Coding", "Arts", "ongoing"],
+    "featured": true,
+    "summary": "Regular alarm clocks wasn't working for me, so I made one that automatically turns the light on for my dorm. My roommate loved it.",
+    "thumbnail": "assets/img/alarm/card.png",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+  },
+  {
+    "id": "08",
+    "title": "The Pendulum from <i>Weimar Pendulum</i>",
+    "date": "2025-09, ongoing",
+    "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
+    "featured": true,
+    "summary": "The director asked me to make a working mechanical pendulum for an immersive English Musical, I said \"Hell yeah\".",
+    "thumbnail": "assets/img/weimar-pendulum/card.png",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "links": [{"label": "Photos", "url": "https://derekhan.link"}]
+  },
+  {
+    "id": "09",
+    "title": "Stagecraft: <i>Smash The Wall</i>",
+    "date": "2024-09, ongoing",
+    "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
+    "featured": true,
+    "summary": "A 4.5m wide closet structure designed to be hoisted up during a Chinese musical Play.",
+    "thumbnail": "assets/img/nanqiang/card.png",
+    "images": ["assets/img/placeholder.svg"],
+    "description": "<p>This is placeholder content so you can see how a project page looks.</p><p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>",
+    "links": [
+      { "label": "Go to website", "url": "https://parsecs.fandom.com" }, 
+      {"label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link"}
+    ]
+  },
+  {
+    "id": "04",
+    "title": "Human RAM",
+    "date": "2025-09 to present",
+    "tags": ["Coding"],
+    "featured": true,
+    "summary": "A macOS menu-bar app that treats your attention like computer memory. Built for my own busy schedule, and now used by classmates and friends with the same time-management struggles.",
+    "thumbnail": "assets/img/human-ram/capture-light.png",
+    "images": [
+      "assets/img/human-ram/menu-bar-light.png",
+      "assets/img/human-ram/capture-light.png",
+      "assets/img/human-ram/daily-scan-light.png",
+      "assets/img/human-ram/notes-review-light.png",
+      "assets/img/human-ram/diary-light.png",
+      "assets/img/human-ram/settings-light.png"
+    ],
+    "description": "<p>Human RAM is a macOS menu-bar app I built for myself. Most to-do apps ask you to organize; this one asks almost nothing. You press a global hotkey, type a thought on one line, and the app decides when it should come back to you. The whole design rests on a simple metaphor: your mind is RAM, and this is a small external module for it.</p><p>I built it because a busy high-school schedule — homework, applications, competitions, and everything else competing for attention — was more than any normal to-do app could absorb without constant upkeep. Human RAM instead keeps a small working set of what is relevant right now, lets the rest spill to a quiet backlog, and brings things back through a daily scan and a nightly notes review.</p><p>It has been working well for me in daily use. After I shared it, some classmates and friends who were struggling with the same time-management problems started using it as well. That was the most rewarding part: a tool built to fix one person's messy workflow turned out to help other busy students too.</p><h2>How it works</h2><ul><li><strong>Write</strong> — a global hotkey opens a one-line capture box anywhere; type, press Enter, done. Press Tab to capture a note instead of a task.</li><li><strong>Volatile store</strong> — captured tasks live in a small, bounded working set, like CPU registers (default capacity of 7).</li><li><strong>Refresh</strong> — a daily scan of tasks and a nightly review of notes bring the right things back at the right time.</li><li><strong>Spill to disk</strong> — overflow and stale items move to a quiet backlog, so nothing is lost.</li><li><strong>Long-term storage</strong> — completed tasks go to a Diary, and filed notes go to a Journal.</li></ul><h2>Built with</h2><p>Swift and SwiftUI on macOS 14+, using system frameworks only — no third-party dependencies. Data lives in a single local SQLite file, and the app runs entirely offline: no account, no cloud, no telemetry.</p>",
+    "links": [
+      { "label": "View on GitHub", "url": "https://github.com/DerekHam/Human-RAM" },
+      { "label": "Download for macOS", "url": "https://github.com/DerekHam/Human-RAM/releases/latest" }
+    ]
+  },
+  {
+    "id": "99",
+    "title": "This Website",
+    "date": "2026-10 to present",
+    "tags": ["Software", "Web", "Coding"],
+    "featured": true,
+    "summary": "The portfolio you are looking at, catalogued as one of its own projects. A small matryoshka doll of a website.",
+    "thumbnail": "assets/img/website/home-light.png",
+    "images": [
+      "assets/img/website/home-light.png",
+      "assets/img/website/projects-light.png"
+    ],
+    "description": "<p>This is the site you are reading right now — a portfolio that has catalogued itself. It earned a card like everything else, so yes: this is a small matryoshka doll of a website.</p><p>The goal was a portfolio that loads instantly, is easy to keep up to date, and gets out of the way of the work. It is a plain static site — hand-written HTML and CSS with a little vanilla JavaScript, no frameworks and no build step — hosted for free on GitHub Pages.</p><h2>What is inside</h2><ul><li><strong>Content in data files</strong> — every page reads its text from a small JSON file, so updating the site means editing data, not markup.</li><li><strong>A tiny renderer</strong> — one script binds that data into HTML templates and builds the project grid.</li><li><strong>Projects page</strong> — filter by tag and sort by importance, start date, or end date.</li><li><strong>Dark mode, a gallery lightbox, and a responsive layout</strong> — the small touches that make it feel finished.</li></ul><h2>Built with</h2><p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No dependencies, no build tools, and no tracking — just static files.</p>",
+    "links": [
+      { "label": "You are looking at it", "url": "index.html" }
+    ]
+  }
+]

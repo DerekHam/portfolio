@@ -1,0 +1,21 @@
+{
+  "_comment": "Awards and skills share this page.",
+  "awards": [
+    {
+      "title": "Award Name",
+      "when": "2025",
+      "detail": "Issuing organization or competition · optional placement"
+    },
+    {
+      "title": "Second Award / Scholarship",
+      "when": "2024",
+      "detail": "Issuing organization"
+    }
+  ],
+  "groups": [
+    { "heading": "Programming & Software", "items": ["Python", "Java", "JavaScript", "C++"] },
+    { "heading": "CAD & Design", "items": ["SolidWorks", "Fusion 360", "Onshape", "AutoCAD"] },
+    { "heading": "Hardware & Fabrication", "items": ["3D Printing", "Arduino", "Soldering", "CNC / Machining"] },
+    { "heading": "Other", "items": ["Technical Writing", "Team Collaboration", "Project Management"] }
+  ]
+}

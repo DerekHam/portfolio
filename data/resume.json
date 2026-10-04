@@ -1,0 +1,31 @@
+{
+  "_comment": "Resume page. Put your PDF at the path in 'pdf'. 'skills' may contain simple HTML.",
+  "name": "Derek Han",
+  "email": "your.email@example.com",
+  "mailLink": "mailto:your.email@example.com",
+  "location": "City, Country",
+  "pdf": "assets/files/Derek_Han_Resume.pdf",
+  "education": [
+    {
+      "school": "School Name",
+      "when": "Expected 2027",
+      "detail": "Grade 12 · GPA / relevant coursework"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Role / Internship",
+      "when": "2025",
+      "org": "Organization",
+      "bullets": [
+        "Bullet point about your work.",
+        "Another key contribution."
+      ]
+    }
+  ],
+  "projects": [
+    { "name": "Project Name", "desc": "One-line description and tools used." },
+    { "name": "Project Name", "desc": "One-line description and tools used." }
+  ],
+  "skills": "List your technical skills here, or see the <a href=\"awards-skills.html\">Awards &amp; Skills</a> page."
+}

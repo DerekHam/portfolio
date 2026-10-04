@@ -1,0 +1,10 @@
+{
+  "_comment": "Home page text. 'about' may contain simple HTML.",
+  "eyebrow": "Engineering Portfolio",
+  "name": "Derek Han",
+  "lead": "High school senior having fun with his engineering skills. Creatively solved some problems along the way.",
+  "banner": "assets/img/banner.svg",
+  "photo": "assets/img/placeholder.svg",
+  "aboutHeading": "About Me",
+  "about": "<p>I am a Grade 12 student with a strong interest in STEM and engineering. I enjoy taking ideas from concept to finished build, whether that means CAD modeling, coding, or fabricating in the shop. This site documents my projects, experience, and the things I am learning along the way.</p><p>Replace this text with two or three sentences about your background, interests, and what you are looking for next.</p>"
+}

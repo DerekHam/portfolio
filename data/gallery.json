@@ -1,0 +1,37 @@
+{
+  "_comment": "Photos and artwork. Add items as { src, alt, caption }. Clicking a thumbnail opens it in a lightbox. Use any image path or full URL.",
+  "heading": "Photos & Artwork",
+  "lead": "A few things I have made and photographed outside of coursework.",
+  "images": [
+    {
+      "src": "assets/img/placeholder.svg",
+      "alt": "Placeholder artwork one",
+      "caption": "Replace with your photo or artwork"
+    },
+    {
+      "src": "assets/img/placeholder.svg",
+      "alt": "Placeholder artwork two",
+      "caption": "Caption for this piece"
+    },
+    {
+      "src": "assets/img/placeholder.svg",
+      "alt": "Placeholder artwork three",
+      "caption": "Another caption"
+    },
+    {
+      "src": "assets/img/placeholder.svg",
+      "alt": "Placeholder artwork four",
+      "caption": "Add as many as you like"
+    },
+    {
+      "src": "assets/img/placeholder.svg",
+      "alt": "Placeholder artwork five",
+      "caption": "Click to enlarge"
+    },
+    {
+      "src": "assets/img/placeholder.svg",
+      "alt": "Placeholder artwork six",
+      "caption": "Delete these examples in data/gallery.json"
+    }
+  ]
+}

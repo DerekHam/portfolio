@@ -1,0 +1,37 @@
+{
+  "_comment": "Contact rows. Leave 'href' empty for plain text (for example, Location).",
+  "heading": "Get in Touch",
+  "lead": "The best ways to reach me.",
+  "rows": [
+    {
+      "label": "Personal Email",
+      "value": "Derekzhizhihan09@outlook.com",
+      "href": "mailto:Derekzhizhihan09@outlook.com"
+    },
+    {
+      "label": "School Email",
+      "value": "zhizhi.han@student.keystoneacademy.cn",
+      "href": "mailto:zhizhi.han@student.keystoneacademy.cn"
+    },
+    {
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/your-handle",
+      "href": "https://www.linkedin.com/in/your-handle"
+    },
+    {
+      "label": "GitHub",
+      "value": "github.com/DerekHam",
+      "href": "https://github.com/DerekHam"
+    },
+    {
+      "label": "Instagram",
+      "value": "@DerekHam_",
+      "href": "https://www.instagram.com/derekham_"
+    },
+    {
+      "label": "Location",
+      "value": "Beijing, China",
+      "href": ""
+    }
+  ]
+}

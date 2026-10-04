@@ -1,0 +1,7 @@
+{
+  "_comment": "Blog page. Add posts as { date, title, url, summary }. Leave the array empty to show the placeholder message.",
+  "heading": "Blog / Notes",
+  "lead": "Occasional write-ups about projects, tools, and things I am learning.",
+  "emptyMessage": "No posts yet. Check back soon.",
+  "posts": []
+}
