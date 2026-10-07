@@ -65,15 +65,42 @@
       return cap ? cap.textContent : "";
     }
 
+    // High-res variant of an assets/img path lives under assets/hi (unless data-full says otherwise).
+    function highResOf(el, low) {
+      if (el.hasAttribute("data-full")) return el.getAttribute("data-full");
+      var marker = "assets/img/";
+      var i = low ? low.indexOf(marker) : -1;
+      if (i < 0) return "";
+      return low.slice(0, i) + "assets/hi/" + low.slice(i + marker.length);
+    }
+
+    var loadToken = 0;
+
     function show(i) {
       if (!items.length) return;
       idx = (i % items.length + items.length) % items.length;
       var el = items[idx];
       var img = el.querySelector("img");
-      var src = el.getAttribute("data-src") || (img ? img.getAttribute("src") : "");
+      var low = el.getAttribute("data-src") || (img ? img.getAttribute("src") : "");
+      var high = highResOf(el, low);
       var alt = img ? (img.getAttribute("alt") || "") : "";
-      if (lbImg) { lbImg.setAttribute("src", src); lbImg.setAttribute("alt", alt); }
+      var token = ++loadToken;
+
+      if (lbImg) {
+        lbImg.onerror = function () { this.onerror = null; if (this.src !== low) this.src = low; };
+        lbImg.setAttribute("src", low);
+        lbImg.setAttribute("alt", alt);
+      }
       if (lbCap) lbCap.textContent = captionOf(el);
+
+      // Show the low-res instantly, then swap in the high-res once it is ready.
+      if (high && high !== low) {
+        var pre = new Image();
+        pre.onload = function () {
+          if (token === loadToken && lbImg) lbImg.src = high;
+        };
+        pre.src = high;
+      }
       lb.hidden = false;
       lb.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");

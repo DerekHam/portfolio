@@ -135,7 +135,7 @@
     "title": "Stagecraft: <i>Smash The Wall</i>",
     "date": "2024-09 to 2025-04",
     "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
-    "featured": true,
+    "featured": false,
     "summary": "A 4.5m wide closet structure designed to be hoisted up during a Chinese musical Play.",
     "thumbnail": "assets/img/nanqiang/closet.jpeg",
     "images": [
@@ -200,6 +200,23 @@
     "links": [
       { "label": "View on GitHub", "url": "https://github.com/DerekHam/Human-RAM" },
       { "label": "Download for macOS", "url": "https://github.com/DerekHam/Human-RAM/releases/latest" }
+    ]
+  },
+  {
+    "id": "11",
+    "title": "Transportation Games!",
+    "date": "2023 and ongoing",
+    "tags": ["Creativity"],
+    "featured": true,
+    "summary": "I am an avid player of Transport Fever 2, 3, and Cities: Skylines, with a total playtime of 1200+ hours as of now.",
+    "thumbnail": "assets/img/tpf/card.png",
+    "images": ["assets/img/tpf/placeholder.svg"],
+    "description": [
+      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+    ],
+    "links": [
+      { "label": "Placeholder", "url": "https://derekhan.link" }
     ]
   },
   {

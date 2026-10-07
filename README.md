@@ -103,6 +103,27 @@ arrow keys / Esc). Each entry is either a plain path or an object with an option
 - One image renders full-width; two or more become a slider (swipe/scroll, or use the arrows).
 - The `thumbnail` is used for the card and as the fallback image when `images` is empty.
 
+### Display vs. lightbox copies (fast pages, sharp zoom)
+
+Every image is stored in **two sizes**:
+
+- `assets/img/...` — the **display** copy (max 1000px). Used by cards, the slider, and the
+  Gallery grid, so pages load quickly.
+- `assets/hi/...` — the **lightbox** copy (max 2560px) at the *same* sub-path. Loaded only
+  when an image is clicked.
+
+The lightbox finds the high-res copy by swapping `assets/img/` for `assets/hi/`, shows the
+small one instantly, then swaps in the sharp one once it has downloaded. If no high-res file
+exists, it silently falls back to the display copy. To override the path for one image, add
+a `full` field:
+
+```json
+{ "src": "assets/img/x.jpg", "full": "assets/hi/x.jpg", "caption": "…" }
+```
+
+Both tiers are generated from the full-resolution originals with orientation baked in and
+EXIF/GPS metadata stripped.
+
 ## Adding photos / artwork to the gallery
 
 Open `data/gallery.json` and add entries to the `images` array:

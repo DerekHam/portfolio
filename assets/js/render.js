@@ -262,6 +262,7 @@
         }
         if (fig) {
           fig.setAttribute("data-src", img.src || "");
+          if (img.full) fig.setAttribute("data-full", img.full);
           fig.setAttribute("data-caption", plain(img.caption || ""));
         }
         if (cap) {
