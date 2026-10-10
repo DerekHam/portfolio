@@ -1,15 +1,15 @@
 {
   "_comment": "Resume page. Put your PDF at the path in 'pdf'. 'skills' may contain simple HTML.",
   "name": "Derek Han",
-  "email": "your.email@example.com",
-  "mailLink": "mailto:your.email@example.com",
-  "location": "City, Country",
+  "email": "Derekzhizhihan09@outlook.com",
+  "mailLink": "mailto:Derekzhizhihan09@outlook.com",
+  "location": "Beijing, China",
   "pdf": "assets/files/Derek_Han_Resume.pdf",
   "education": [
     {
-      "school": "School Name",
+      "school": "Keystone Academy, Beijing",
       "when": "Expected 2027",
-      "detail": "Grade 12 · GPA / relevant coursework"
+      "detail": "Grade 12, currently in IBDP, SAT 1540/1600, TOEFL 114/120"
     }
   ],
   "experience": [

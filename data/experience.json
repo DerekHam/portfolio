@@ -1,43 +1,125 @@
 {
-  "_comment": "Work and extracurricular entries. Each 'bullets' value is a list of strings.",
+  "_comment": "Research/work and extracurricular entries, organized from the activities list. Each 'bullets' value is a list of strings.",
   "work": [
     {
-      "title": "Role / Internship Title",
-      "when": "2025-06 — 2025-08",
-      "org": "Organization Name · Location",
+      "title": "Founder, Designer & Experimental Engineer",
+      "when": "Grades 11–12",
+      "org": "Calico: Open-Source Educational Wind Tunnel Project",
       "bullets": [
-        "What you did and the impact — start with an action verb.",
-        "A tool, method, or result worth highlighting.",
-        "A quantified outcome if you have one (for example, reduced time by 20%)."
+        "Designed and built a low-cost wind tunnel for high school research; open-sourced the design, taught peers, and supported replication at a local school."
+      ],
+      "links": [
+        { "label": "Project page", "url": "project.html?id=00" },
+        { "label": "CAD files", "url": "https://cad.onshape.com/documents/f07feef52ce356bbf54fe64e/w/621ae0026c60244aebb38691/e/e1f404fcb63d616e99c0f38b" }
       ]
     },
     {
-      "title": "Second Role",
-      "when": "2024-06 — 2024-08",
-      "org": "Organization Name · Location",
+      "title": "Drone Designer & Computer Vision Researcher",
+      "when": "Grade 10",
+      "org": "Long-Range E-VTOL Delivery Drone Project · Generation AI Research, Peking University Stanford Center",
       "bullets": [
-        "Placeholder bullet one.",
-        "Placeholder bullet two."
+        "Developed a monocular depth estimation model for VTOL UAVs; enabled real-time spatial analysis; authored a paper on model structure and implementation."
       ]
     }
   ],
   "extras": [
     {
-      "title": "Club / Team / Activity",
-      "when": "2023 — Present",
-      "role": "Role (for example, President, Team Captain, Member)",
+      "title": "FIRST Robotics Competition Team 9411 (later restructured as 10558)",
+      "when": "Grades 9–11",
+      "role": "Founding Member, Engineering Captain & Lead Driver",
       "bullets": [
-        "What the group does and your contribution.",
-        "A leadership or teamwork highlight."
+        "Co-founded a 20+ member FRC team; secured ~$15K in funding and workspace; led mechanical design and prototyping; mentored younger teammates."
       ]
     },
     {
-      "title": "Volunteering / Community Service",
-      "when": "2024",
-      "role": "Organization",
+      "title": "Aerospace Club — The Sky Is NOT The Limit",
+      "when": "Grade 11",
+      "role": "Founder, President & Engineering Instructor",
       "bullets": [
-        "Describe the service and hours or scope."
+        "Led a 22-member team; designed and taught a 12-week engineering curriculum; mentored students building gliders, rockets, F1 wings, and research projects."
       ]
+    },
+    {
+      "title": "Parsecs: Collaborative Hard Science Fiction Wiki",
+      "when": "Grades 11–12",
+      "role": "Founder, Editor & Hard-Sci-Fi Worldbuilder",
+      "bullets": [
+        "Built a sci-fi universe linking physics, engineering, sociology, and literature; authored and edited 80+ knowledge pages; promoted the overview effect."
+      ],
+      "links": [
+        { "label": "Wiki", "url": "https://parsecs.fandom.com" },
+        { "label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link" }
+      ]
+    },
+    {
+      "title": "Weimar Pendulum & Smash the Wall; Student Musicals",
+      "when": "Grades 10–11",
+      "role": "Backstage Engineering Director & Structural Designer",
+      "bullets": [
+        "Engineered a 4.6 m working pendulum clock and suspended stage props; applied load calculations and structural redundancy to address safety risks."
+      ]
+    },
+    {
+      "title": "Dorm Council, Keystone Academy",
+      "when": "Grades 10–12",
+      "role": "Dorm Proctor & Student Facilities Improver",
+      "bullets": [
+        "Supported 45+ dorm students; organized weekend activities; improved shared spaces through lighting renovations, elevator logic, and 3D-printed organizers."
+      ]
+    },
+    {
+      "title": "Keytec Engineering & Fabrication Workshop, Keystone Academy",
+      "when": "Grades 11–12",
+      "role": "Pilot Student; Founding Cohort Member & Peer Equipment Trainer",
+      "bullets": [
+        "Among the first students trained on CNC routers and waterjet; developed hands-on fabrication skills; trained newer members to use workshop equipment."
+      ]
+    },
+    {
+      "title": "EniacXI Hackathon — Beijing Interschool Hackathon",
+      "when": "Grade 11",
+      "role": "Technical Instructor & Participant",
+      "bullets": [
+        "Provided technical guidance for 20+ attendees on site."
+      ]
+    },
+    {
+      "title": "Keystone Model United Nations Club",
+      "when": "Grade 9",
+      "role": "Participant & Event Organizer",
+      "bullets": [
+        "Participated in MUN conferences; organized club activities; planned a student-led conference; developed public speaking and policy analysis skills."
+      ]
+    },
+    {
+      "title": "Keystone Cookbook",
+      "when": "Grade 11",
+      "role": "Participant, Recipe Contributor",
+      "bullets": [
+        "Tested and contributed culturally diverse recipes; documented culinary traditions; supported a collaborative student publication."
+      ]
+    },
+    {
+      "title": "Archery Club",
+      "when": "Grades 9–11",
+      "role": "Participant",
+      "bullets": [
+        "Practiced weekly to improve technique and consistency; encouraged peers to participate and engage in club activities."
+      ]
+    },
+    {
+      "title": "WPI Frontiers Summer Program — Aerospace Engineering",
+      "when": "Summer, Grade 9",
+      "role": "Participant",
+      "bullets": [
+        "Conducted wind tunnel experiments; designed and built model aircraft; explored energy systems and environmental sustainability."
+      ]
+    },
+    {
+      "title": "UPenn Experimental Physics Research Academy",
+      "when": "Summer, Grade 11",
+      "role": "Participant",
+      "bullets": []
     }
   ]
 }

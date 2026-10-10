@@ -103,6 +103,23 @@ arrow keys / Esc). Each entry is either a plain path or an object with an option
 - One image renders full-width; two or more become a slider (swipe/scroll, or use the arrows).
 - The `thumbnail` is used for the card and as the fallback image when `images` is empty.
 
+**Videos:** any `images` entry can also be a YouTube video. Give it a `video` (or
+`youtube`) value — a full URL or just the video ID:
+
+```json
+"images": [
+  { "video": "https://youtu.be/aqz-KE-bpKQ", "caption": "Build timelapse" },
+  { "youtube": "aqz-KE-bpKQ", "poster": "assets/img/my-poster.jpg", "caption": "Test run" }
+]
+```
+
+- Videos show a poster with a play button. The poster defaults to the YouTube thumbnail;
+  add your own with `poster`.
+- On **project pages** a click plays the video inline; in the **Gallery** it opens in the
+  lightbox. Both support `caption`.
+- URLs and bare IDs both work: `https://youtu.be/ID`, `https://www.youtube.com/watch?v=ID`,
+  `https://www.youtube.com/shorts/ID`, or just `ID`.
+
 ### Display vs. lightbox copies (fast pages, sharp zoom)
 
 Every image is stored in **two sizes**:
@@ -158,7 +175,8 @@ images, the script stops without deleting anything.
 
 ## Adding photos / artwork to the gallery
 
-Open `data/gallery.json` and add entries to the `images` array:
+Open `data/gallery.json` and add entries to the `images` array (images, and YouTube
+videos in the same format as project images — see above):
 
 ```json
 { "src": "assets/img/my-photo.jpg", "alt": "Short description", "caption": "Shown under the enlarged image" }
@@ -167,6 +185,34 @@ Open `data/gallery.json` and add entries to the `images` array:
 `src` can be a local path (put files in `assets/img/`) or a full URL. Clicking a
 thumbnail opens it in a lightbox; left/right arrows and Esc work too. The gallery is
 linked discreetly in the footer of every page (and from the Home page).
+
+## Awards, skills & experience
+
+Two files, both plain JSON:
+
+- `data/awards-skills.json`
+  - `awards` — one object per honor: `{ "title", "when", "detail" }`.
+  - `groups` — the skill chips: `{ "heading", "items": [...] }`.
+- `data/experience.json`
+  - `work` — research/jobs: `{ "title", "when", "org", "bullets": [...] }`.
+  - `extras` — clubs and leadership: `{ "title", "when", "role", "bullets": [...] }`.
+
+**Links:** add an optional `links` array to any award or experience entry — it renders as a
+row of small buttons:
+
+```json
+"links": [
+  { "label": "Project page", "url": "project.html?id=00" },
+  { "label": "CAD files", "url": "https://example.com" }
+]
+```
+
+**Inline links:** the `title`, `detail`, `org`, `role`, and each `bullets` line accept simple
+HTML, so you can also embed a link directly, for example:
+
+```json
+"bullets": ["Wrote it up — see the <a href=\"https://example.com\">report</a>."]
+```
 
 ## Adding a blog post
 

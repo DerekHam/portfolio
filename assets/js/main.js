@@ -12,6 +12,12 @@
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $all(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
 
+  function embedIframe(id) {
+    return '<iframe src="https://www.youtube.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; ' +
+      'encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+
   /* ---------- Theme ---------- */
   function initTheme() {
     var btn = $(".theme-toggle");
@@ -51,6 +57,7 @@
     var lb = $("#lightbox");
     if (!lb) return;
     var lbImg = $("#lightbox-img");
+    var lbVideo = $("#lightbox-video");
     var lbCap = $("#lightbox-cap");
     var items = [];
     var idx = 0;
@@ -80,27 +87,35 @@
       if (!items.length) return;
       idx = (i % items.length + items.length) % items.length;
       var el = items[idx];
-      var img = el.querySelector("img");
-      var low = el.getAttribute("data-src") || (img ? img.getAttribute("src") : "");
-      var high = highResOf(el, low);
-      var alt = img ? (img.getAttribute("alt") || "") : "";
-      var token = ++loadToken;
-
-      if (lbImg) {
-        lbImg.onerror = function () { this.onerror = null; if (this.src !== low) this.src = low; };
-        lbImg.setAttribute("src", low);
-        lbImg.setAttribute("alt", alt);
-      }
+      var video = el.getAttribute("data-video");
       if (lbCap) lbCap.textContent = captionOf(el);
 
-      // Show the low-res instantly, then swap in the high-res once it is ready.
-      if (high && high !== low) {
-        var pre = new Image();
-        pre.onload = function () {
-          if (token === loadToken && lbImg) lbImg.src = high;
-        };
-        pre.src = high;
+      if (lbVideo && video) {
+        // Video item: swap the image out for an embedded player.
+        lbVideo.hidden = false;
+        lbVideo.innerHTML = embedIframe(video);
+        if (lbImg) { lbImg.hidden = true; lbImg.removeAttribute("src"); lbImg.removeAttribute("alt"); }
+      } else {
+        if (lbVideo) { lbVideo.hidden = true; lbVideo.innerHTML = ""; }
+        if (lbImg) {
+          lbImg.hidden = false;
+          var img = el.querySelector("img");
+          var low = el.getAttribute("data-src") || (img ? img.getAttribute("src") : "");
+          var high = highResOf(el, low);
+          var alt = img ? (img.getAttribute("alt") || "") : "";
+          var token = ++loadToken;
+          lbImg.onerror = function () { this.onerror = null; if (this.src !== low) this.src = low; };
+          lbImg.setAttribute("src", low);
+          lbImg.setAttribute("alt", alt);
+          // Show the low-res instantly, then swap in the high-res once it is ready.
+          if (high && high !== low) {
+            var pre = new Image();
+            pre.onload = function () { if (token === loadToken && lbImg && !lbImg.hidden) lbImg.src = high; };
+            pre.src = high;
+          }
+        }
       }
+
       lb.hidden = false;
       lb.setAttribute("aria-hidden", "false");
       document.body.classList.add("lightbox-open");
@@ -112,6 +127,7 @@
       lb.hidden = true;
       lb.setAttribute("aria-hidden", "true");
       document.body.classList.remove("lightbox-open");
+      if (lbVideo) { lbVideo.hidden = true; lbVideo.innerHTML = ""; }
       var el = items[idx];
       if (el && el.focus) el.focus();
     }
@@ -153,6 +169,21 @@
       var step = fig.getBoundingClientRect().width + gap;
       var dir = btn.classList.contains("gallery-next") ? 1 : -1;
       track.scrollBy({ left: dir * step, behavior: "smooth" });
+    });
+  }
+
+  /* ---------- Inline video embeds (project pages) ---------- */
+  function initVideoEmbeds() {
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest(".video-embed");
+      if (!btn) return;
+      var id = btn.getAttribute("data-video");
+      if (!id) return;
+      e.preventDefault();
+      var frame = document.createElement("div");
+      frame.className = "video-frame";
+      frame.innerHTML = embedIframe(id);
+      btn.parentNode.replaceChild(frame, btn);
     });
   }
 
@@ -199,6 +230,7 @@
     initFooter();
     initGallery();
     initSliders();
+    initVideoEmbeds();
     initReveal();
   });
 })();

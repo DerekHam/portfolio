@@ -59,14 +59,21 @@
     </div>
 
     <section class="wrap reveal">
-      <div id="gallery-grid" class="gallery-grid" data-list="images">
-        <template>
-          <button class="gallery-item" type="button" data-attrs="data-src:src,data-full:full" aria-label="View image">
-            <img data-attrs="src:src,alt:alt" alt="" loading="lazy" />
-            <span class="gallery-cap" data-bind="caption"></span>
-          </button>
-        </template>
-      </div>
+      <div id="gallery-grid" class="gallery-grid"></div>
+
+      <template id="tpl-gallery-image">
+        <button class="gallery-item" type="button" aria-label="View image">
+          <img alt="" loading="lazy" />
+          <span class="gallery-cap"></span>
+        </button>
+      </template>
+      <template id="tpl-gallery-video">
+        <button class="gallery-item gallery-item--video" type="button" aria-label="Play video">
+          <img alt="" loading="lazy" />
+          <span class="video-play" aria-hidden="true"></span>
+          <span class="gallery-cap"></span>
+        </button>
+      </template>
     </section>
   </main>
 
@@ -87,6 +94,7 @@
     <button class="lightbox-prev" data-prev type="button" aria-label="Previous image">&#8249;</button>
     <button class="lightbox-next" data-next type="button" aria-label="Next image">&#8250;</button>
     <figure class="lightbox-fig">
+      <div class="lightbox-video" id="lightbox-video" hidden></div>
       <img id="lightbox-img" src="" alt="" />
       <figcaption id="lightbox-cap"></figcaption>
     </figure>

@@ -41,6 +41,32 @@
     return d.textContent || "";
   }
 
+  /* ---------- Media (images + YouTube videos) ---------- */
+  function youtubeId(value) {
+    if (!value) return "";
+    var v = String(value).trim();
+    var m = v.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/))([A-Za-z0-9_-]{6,})/i);
+    if (m) return m[1];
+    if (/^[A-Za-z0-9_-]{6,}$/.test(v)) return v; // a bare video id
+    return "";
+  }
+
+  /* A media entry is a path string, an image object { src, caption, full, alt },
+     or a video object { video|youtube: <url or id>, caption, poster, title }. */
+  function mediaInfo(item) {
+    if (typeof item === "string") return { type: "image", src: item };
+    var o = item || {};
+    var vid = youtubeId(o.video || o.youtube);
+    if (vid) {
+      return { type: "video", video: vid, poster: o.poster || "", caption: o.caption || "", title: o.title || "" };
+    }
+    return { type: "image", src: o.src || "", caption: o.caption || "", alt: o.alt || "", full: o.full || "" };
+  }
+
+  function videoPoster(info) {
+    return info.poster || ("https://img.youtube.com/vi/" + info.video + "/hqdefault.jpg");
+  }
+
   /* ---------- Attribute binding ---------- */
   function applyAttrs(el, scope) {
     var spec = el.getAttribute("data-attrs");
@@ -154,6 +180,48 @@
     list.slice().sort(byId).forEach(function (p) { var n = cardNode(p); if (n) grid.appendChild(n); });
   }
 
+  function renderGalleryGrid(items) {
+    var grid = $("#gallery-grid");
+    if (!grid) return;
+    var tplI = document.getElementById("tpl-gallery-image");
+    var tplV = document.getElementById("tpl-gallery-video");
+    (items || []).forEach(function (item) {
+      var m = mediaInfo(item);
+
+      if (m.type === "video") {
+        if (!tplV) return;
+        var vf = tplV.content.cloneNode(true);
+        var vb = vf.querySelector(".gallery-item");
+        var vi = vf.querySelector("img");
+        var vc = vf.querySelector(".gallery-cap");
+        if (vb) vb.setAttribute("data-video", m.video);
+        if (vi) {
+          vi.setAttribute("src", videoPoster(m));
+          vi.setAttribute("alt", plain(m.title || m.caption) || "Video");
+        }
+        if (vc) vc.textContent = m.caption || "";
+        grid.appendChild(vf);
+        return;
+      }
+
+      if (!tplI) return;
+      var gf = tplI.content.cloneNode(true);
+      var gb = gf.querySelector(".gallery-item");
+      var gi = gf.querySelector("img");
+      var gc = gf.querySelector(".gallery-cap");
+      if (gb) {
+        gb.setAttribute("data-src", m.src || "");
+        if (m.full) gb.setAttribute("data-full", m.full);
+      }
+      if (gi) {
+        gi.setAttribute("src", m.src || "");
+        gi.setAttribute("alt", plain(m.alt || m.caption) || "Photo");
+      }
+      if (gc) gc.textContent = m.caption || "";
+      grid.appendChild(gf);
+    });
+  }
+
   function renderProjectGrid(projects) {
     var grid = $("#project-grid");
     if (!grid) return;
@@ -245,33 +313,54 @@
     }
 
     if (imgWrap) {
-      // Each image is either a path string or { src, caption, alt }.
+      // Each entry is an image (path or object) or a YouTube video object.
       var raw = (p.images && p.images.length) ? p.images : (p.thumbnail ? [p.thumbnail] : []);
       var tplImg = document.getElementById("tpl-detail-image");
+      var tplVid = document.getElementById("tpl-detail-video");
       if (raw.length === 1) imgWrap.classList.add("project-gallery--single");
       raw.forEach(function (item) {
+        var m = mediaInfo(item);
+
+        if (m.type === "video") {
+          if (!tplVid) return;
+          var vf = tplVid.content.cloneNode(true);
+          var vbtn = vf.querySelector(".video-embed");
+          var vimg = vf.querySelector("img");
+          var vcap = vf.querySelector("figcaption");
+          if (vbtn) vbtn.setAttribute("data-video", m.video);
+          if (vimg) {
+            vimg.setAttribute("src", videoPoster(m));
+            vimg.setAttribute("alt", plain(m.title || m.caption || p.title) || "Video");
+          }
+          if (vcap) {
+            if (m.caption) vcap.textContent = m.caption;
+            else vcap.parentNode && vcap.parentNode.removeChild(vcap);
+          }
+          imgWrap.appendChild(vf);
+          return;
+        }
+
         if (!tplImg) return;
-        var img = (typeof item === "string") ? { src: item } : (item || {});
         var frag = tplImg.content.cloneNode(true);
         var fig = frag.querySelector("[data-lightbox]");
         var el = frag.querySelector("img");
         var cap = frag.querySelector("figcaption");
         if (el) {
-          el.setAttribute("src", img.src || "");
-          el.setAttribute("alt", plain(img.alt || img.caption || p.title) || "Project image");
+          el.setAttribute("src", m.src || "");
+          el.setAttribute("alt", plain(m.alt || m.caption || p.title) || "Project image");
         }
         if (fig) {
-          fig.setAttribute("data-src", img.src || "");
-          if (img.full) fig.setAttribute("data-full", img.full);
-          fig.setAttribute("data-caption", plain(img.caption || ""));
+          fig.setAttribute("data-src", m.src || "");
+          if (m.full) fig.setAttribute("data-full", m.full);
+          fig.setAttribute("data-caption", plain(m.caption || ""));
         }
         if (cap) {
-          if (img.caption) cap.textContent = img.caption;
+          if (m.caption) cap.textContent = m.caption;
           else cap.parentNode && cap.parentNode.removeChild(cap);
         }
         imgWrap.appendChild(frag);
       });
-      // Arrows only make sense with more than one image.
+      // Arrows only make sense with more than one item.
       $all(".project-gallery-nav").forEach(function (btn) { btn.hidden = raw.length <= 1; });
     }
 
@@ -383,6 +472,10 @@
         }
 
         bindScope(document.body, data);
+
+        if (page === "gallery") {
+          renderGalleryGrid(Array.isArray(data.images) ? data.images : []);
+        }
 
         if (page === "blog") {
           var empty = document.getElementById("blog-empty");

@@ -67,10 +67,13 @@
         <template>
           <li>
             <div class="entry-head">
-              <h3 data-bind="title"></h3>
+              <h3 data-bind="title" data-html></h3>
               <span class="when" data-bind="when"></span>
             </div>
-            <div class="muted" data-bind="detail"></div>
+            <div class="muted" data-bind="detail" data-html></div>
+            <div class="entry-links" data-list="links">
+              <template><a class="btn" data-bind="label" data-attrs="href:url" target="_blank" rel="noopener"></a></template>
+            </div>
           </li>
         </template>
       </ul>

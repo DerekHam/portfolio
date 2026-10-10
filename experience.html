@@ -54,26 +54,29 @@
       <div class="wrap">
         <span class="kicker">[ Experience ]</span>
         <h1>Experience</h1>
-        <p class="lead">Internships, work, extracurriculars, and leadership.</p>
+        <p class="lead">Research, work, extracurriculars, and leadership.</p>
       </div>
     </div>
 
     <section class="wrap reveal">
       <div class="section-head">
-        <span class="kicker">[ 01 — Work &amp; Internships ]</span>
-        <h2>Internships &amp; Work</h2>
+        <span class="kicker">[ 01 — Research &amp; Work ]</span>
+        <h2>Research &amp; Work</h2>
       </div>
       <ul class="timeline" data-list="work">
         <template>
           <li>
             <div class="entry-head">
-              <h3 data-bind="title"></h3>
+              <h3 data-bind="title" data-html></h3>
               <span class="when" data-bind="when"></span>
             </div>
-            <div class="muted" data-bind="org"></div>
+            <div class="muted" data-bind="org" data-html></div>
             <ul class="bullets" data-list="bullets">
-              <template><li data-bind="."></li></template>
+              <template><li data-bind="." data-html></li></template>
             </ul>
+            <div class="entry-links" data-list="links">
+              <template><a class="btn" data-bind="label" data-attrs="href:url" target="_blank" rel="noopener"></a></template>
+            </div>
           </li>
         </template>
       </ul>
@@ -90,13 +93,16 @@
         <template>
           <li>
             <div class="entry-head">
-              <h3 data-bind="title"></h3>
+              <h3 data-bind="title" data-html></h3>
               <span class="when" data-bind="when"></span>
             </div>
-            <div class="muted" data-bind="role"></div>
+            <div class="muted" data-bind="role" data-html></div>
             <ul class="bullets" data-list="bullets">
-              <template><li data-bind="."></li></template>
+              <template><li data-bind="." data-html></li></template>
             </ul>
+            <div class="entry-links" data-list="links">
+              <template><a class="btn" data-bind="label" data-attrs="href:url" target="_blank" rel="noopener"></a></template>
+            </div>
           </li>
         </template>
       </ul>

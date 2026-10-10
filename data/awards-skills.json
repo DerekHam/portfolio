@@ -1,21 +1,42 @@
 {
-  "_comment": "Awards and skills share this page.",
+  "_comment": "Awards and skills share this page. Awards come from the honors list; groups are the skills.",
   "awards": [
     {
-      "title": "Award Name",
-      "when": "2025",
-      "detail": "Issuing organization or competition · optional placement"
+      "title": "Meritorious Award — HiMCM",
+      "when": "Grade 10",
+      "detail": "[International] Top 13% worldwide High School Mathematical Contest in Modeling. "
     },
     {
-      "title": "Second Award / Scholarship",
-      "when": "2024",
-      "detail": "Issuing organization"
+      "title": "Conrad Challenge — China Finalist",
+      "when": "Grade 10",
+      "detail": "[National] Best Innovation Award under Energy & Environment"
+    },
+    {
+      "title": "USA Computing Olympiad — Gold Division",
+      "when": "Grades 10–11",
+      "detail": "[International] Passed Silver Division"
+    },
+    {
+      "title": "Berkeley Mini Math Tournament (BmMT)",
+      "when": "Grade 9",
+      "detail": "[National] 8th in Puzzle Round, Gold (top 10%) in Relay Round, Bronze (top 30%) in Team Round. Silver (top 20%) overall"
+    },
+    {
+      "title": "World Youth Academy MUN — Best Delegate (Honorable Mention)",
+      "when": "Grade 10",
+      "detail": "[Regional] Participated in UN General Assembly as Delegate of Slovenia"
+    },
+    {
+      "title": "Generation AI 24-Hour Computer Vision Hackathon",
+      "when": "Grade 11",
+      "detail": "[National] 2nd of ~35 teams"
     }
   ],
   "groups": [
-    { "heading": "Programming & Software", "items": ["Python", "Java", "JavaScript", "C++"] },
-    { "heading": "CAD & Design", "items": ["SolidWorks", "Fusion 360", "Onshape", "AutoCAD"] },
-    { "heading": "Hardware & Fabrication", "items": ["3D Printing", "Arduino", "Soldering", "CNC / Machining"] },
-    { "heading": "Other", "items": ["Technical Writing", "Team Collaboration", "Project Management"] }
+    { "heading": "Programming & Software", "items": ["Python", "C++", "Computer Vision", "AI-assisted Programming"] },
+    { "heading": "CAD & Design", "items": [ "Onshape", "Rhino", "Parametric Design", "Collaborative Design"] },
+    { "heading": "Hardware & Fabrication", "items": ["3D Printing", "CNC Router", "Waterjet", "Laser Cutting", "Soldering", "Arduino/ESP32", ""] },
+    { "heading": "Languages", "items": [ "Chinese (Mandarin native)", "English, TOEFL 114/120", "German (Learning)"] },
+    { "heading": "Other", "items": ["Technical Writing", "Team Leadership", "Project Management"] }
   ]
 }
