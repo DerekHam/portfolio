@@ -1,0 +1,12 @@
+{
+  "_comment": "Blog post TEMPLATE. Copy this file to data/blog/<slug>.json (e.g. my-post.json), edit the fields, then add a matching entry to data/blog.json (with the same slug). 'body' is a list of HTML blocks, one per line.",
+  "title": "Post title",
+  "date": "2026-01-15",
+  "lead": "Optional one-line intro.",
+  "body": [
+    "<p>First paragraph.</p>",
+    "<h2>A heading</h2>",
+    "<p>More text — you can use <strong>bold</strong>, <a href=\"https://example.com\">links</a>, lists, and images.</p>",
+    "<ul><li>Point one</li><li>Point two</li></ul>"
+  ]
+}

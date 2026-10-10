@@ -35,6 +35,7 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
         <a href="experience.html">Experience</a>
         <a href="resume.html">Resume</a>
         <a href="awards-skills.html">Awards &amp; Skills</a>
@@ -59,9 +60,9 @@
 
     <section class="wrap reveal">
       <!--
-        To publish a post, add an entry to data/blog.json:
-          { "date": "2026-01-15", "title": "My Post", "url": "blog/my-post.html", "summary": "One line." }
-        Then create the page (e.g. blog/my-post.html).
+        Posts come from data/blog.json (the list) + data/blog/<slug>.json (the content).
+        To add one: copy data/blog/_template.json to data/blog/<slug>.json, fill it in,
+        then add a matching entry (with "slug") to data/blog.json.
       -->
       <p class="empty-state" id="blog-empty" data-bind="emptyMessage"></p>
 
@@ -81,7 +82,6 @@
     <div class="wrap footer-inner">
       <span>&copy; <span id="year"></span> <span data-bind="site.name">Derek Han</span></span>
       <span class="footer-links">
-        <a href="gallery.html">Gallery</a>
         <a href="#" data-social="email">Email</a>
         <a href="#" data-social="linkedin">LinkedIn</a>
         <a href="#" data-social="github">GitHub</a>

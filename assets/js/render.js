@@ -292,6 +292,42 @@
     }
   }
 
+  /* ---------- Blog post page ---------- */
+  function renderPostPage() {
+    var params = new URLSearchParams(window.location.search);
+    var slug = params.get("slug") || params.get("post");
+    var titleEl = $("#post-title");
+    var dateEl = $("#post-date");
+    var leadEl = $("#post-lead");
+    var bodyEl = $("#post-body");
+
+    function notFound() {
+      document.title = "Post not found — Derek Han";
+      if (titleEl) titleEl.textContent = "Post not found";
+      if (dateEl) dateEl.textContent = "";
+      if (leadEl) leadEl.hidden = true;
+      if (bodyEl) bodyEl.innerHTML = '<p class="empty-state">That post could not be found. <a href="blog.html">Back to the blog</a>.</p>';
+    }
+
+    if (!slug) { notFound(); return; }
+
+    return loadJSON("data/blog/" + encodeURIComponent(slug) + ".json").then(function (post) {
+      var title = post.title || "Post";
+      document.title = (plain(title) || "Post") + " — Derek Han";
+      if (titleEl) titleEl.innerHTML = title;
+      if (dateEl) {
+        dateEl.textContent = post.date || "";
+        dateEl.hidden = !post.date;
+      }
+      if (leadEl) {
+        if (post.lead) { leadEl.innerHTML = post.lead; leadEl.hidden = false; }
+        else { leadEl.hidden = true; }
+      }
+      var body = post.body;
+      if (bodyEl) bodyEl.innerHTML = Array.isArray(body) ? body.join("") : (body || "");
+    }).catch(function () { notFound(); });
+  }
+
   /* ---------- Error surface ---------- */
   function showError(msg) {
     var d = document.createElement("div");
@@ -330,8 +366,22 @@
         });
       }
 
+      if (page === "post") {
+        return renderPostPage();
+      }
+
       return loadJSON("data/" + page + ".json").then(function (data) {
         data.site = site;
+
+        // Blog index: derive each post's link from its slug.
+        if (page === "blog" && Array.isArray(data.posts)) {
+          data.posts.forEach(function (post) {
+            if (post && !post.url && post.slug) {
+              post.url = "post.html?slug=" + encodeURIComponent(post.slug);
+            }
+          });
+        }
+
         bindScope(document.body, data);
 
         if (page === "blog") {

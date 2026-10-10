@@ -234,7 +234,9 @@
       "<h2>What is inside</h2>",
       "<ul><li><strong>Content in data files</strong> — every page reads its text from a small JSON file, so updating the site means editing data, not markup.</li><li><strong>A tiny renderer</strong> — one script binds that data into HTML templates and builds the project grid.</li><li><strong>Projects page</strong> — filter by tag and sort by importance, start date, or end date.</li><li><strong>Dark mode, a gallery lightbox, and a responsive layout</strong> — the small touches that make it feel finished.</li></ul>",
       "<h2>Built with</h2>",
-      "<p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No dependencies, no build tools, and no tracking — just static files.</p>"
+      "<p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No dependencies, no build tools, and no tracking — just static files.</p>",
+      "<h2>A note on AI</h2>",
+      "<p>The code for this site was built with an AI assistant. The ideas and direction are mine, and I reviewed each change — but this page and the site's blog are the two places where the writing isn't entirely my own. Every project write-up and the rest of this portfolio are written by me.</p>"
     ],
     "links": [
       { "label": "You are looking at it", "url": "index.html" }

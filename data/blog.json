@@ -1,7 +1,20 @@
 {
-  "_comment": "Blog page. Add posts as { date, title, url, summary }. Leave the array empty to show the placeholder message.",
+  "_comment": "Blog index. Each post is an object: { date, title, summary, slug }. The slug must match a file at data/blog/<slug>.json. To link off-site instead, give the entry a 'url' and no slug.",
   "heading": "Blog / Notes",
   "lead": "Occasional write-ups about projects, tools, and things I am learning.",
   "emptyMessage": "No posts yet. Check back soon.",
-  "posts": []
+  "posts": [
+    {
+      "date": "2026-10-10",
+      "title": "Building this website",
+      "summary": "How this site is built, and a changelog I keep up to date as I work on it.",
+      "slug": "website"
+    },
+    {
+      "date": "2026-10-04",
+      "title": "Welcome to my blog",
+      "summary": "A place for longer notes on projects, tools, and whatever I am figuring out.",
+      "slug": "welcome"
+    }
+  ]
 }

@@ -170,14 +170,41 @@ linked discreetly in the footer of every page (and from the Home page).
 
 ## Adding a blog post
 
-Add an entry to `data/blog.json`:
+Blog posts are JSON-driven, like the rest of the site.
 
-```json
-{ "date": "2026-01-15", "title": "My Post", "url": "blog/my-post.html", "summary": "One line." }
-```
+1. **Copy the template** `data/blog/_template.json` to `data/blog/<slug>.json`
+   (for example `data/blog/wind-tunnel-notes.json`).
+2. **Fill it in** — `title`, `date`, an optional `lead`, and `body` (a list of HTML
+   blocks, one per line):
 
-Then create the linked page (for example `blog/my-post.html`). While `posts` is empty,
-the page shows the placeholder message.
+   ```json
+   {
+     "title": "Wind tunnel notes",
+     "date": "2026-01-15",
+     "lead": "Optional one-line intro.",
+     "body": [
+       "<p>First paragraph.</p>",
+       "<h2>A heading</h2>",
+       "<p>With <strong>bold</strong>, <a href=\"https://example.com\">links</a>, and lists.</p>"
+     ]
+   }
+   ```
+
+3. **Add it to the index** `data/blog.json` with the **same `slug`**:
+
+   ```json
+   {
+     "date": "2026-01-15",
+     "title": "Wind tunnel notes",
+     "summary": "One line shown in the list.",
+     "slug": "wind-tunnel-notes"
+   }
+   ```
+
+The post then appears in the list on the Blog page and gets its own page at
+`post.html?slug=wind-tunnel-notes`. To link somewhere off-site instead, give the entry a
+`url` and omit the `slug`. While `posts` is empty, the page shows the placeholder message.
+There's a ready example at `data/blog/welcome.json`.
 
 ## Deploy to GitHub Pages
 

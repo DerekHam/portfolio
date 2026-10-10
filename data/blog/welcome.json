@@ -1,0 +1,12 @@
+{
+  "_comment": "Sample blog post. Edit or delete this file and its entry in data/blog.json when you write your own. Copy data/blog/_template.json to start a new one.",
+  "title": "Welcome to my blog",
+  "date": "2026-10-04",
+  "lead": "A place for longer notes on projects, tools, and whatever I am figuring out.",
+  "body": [
+    "<p>This is a sample post, here so you can see how the blog works. Everything on this page comes from <code>data/blog/welcome.json</code> — edit it, or copy <code>data/blog/_template.json</code> to make a new one.</p>",
+    "<h2>Writing a new post</h2>",
+    "<ol><li>Copy <code>data/blog/_template.json</code> to <code>data/blog/your-slug.json</code> (for example <code>wind-tunnel-notes.json</code>).</li><li>Fill in <code>title</code>, <code>date</code>, an optional <code>lead</code>, and the <code>body</code> (a list of HTML blocks, one per line).</li><li>Add an entry to <code>data/blog.json</code> with the same <code>slug</code>.</li></ol>",
+    "<p>That is it — the post shows up in the list on the <a href=\"blog.html\">Blog</a> page and gets its own page at <code>post.html?slug=your-slug</code>.</p>"
+  ]
+}
