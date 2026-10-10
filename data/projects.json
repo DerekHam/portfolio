@@ -212,7 +212,7 @@
     "thumbnail": "assets/img/tpf/card.png",
     "images": ["assets/img/tpf/placeholder.svg"],
     "description": [
-      "<p>This is placeholder content so you can see how a project page looks.</p>",
+      "<p>I Like to play games, most are related to transportation. </p>",
       "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
     ],
     "links": [

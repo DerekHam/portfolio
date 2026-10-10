@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Placeholder image">
+  <rect width="800" height="500" fill="#e4e7ea"/>
+  <g stroke="#c3cad2" stroke-width="1">
+    <path d="M0 50h800M0 100h800M0 150h800M0 200h800M0 250h800M0 300h800M0 350h800M0 400h800M0 450h800"/>
+    <path d="M50 0v500M100 0v500M150 0v500M200 0v500M250 0v500M300 0v500M350 0v500M400 0v500M450 0v500M500 0v500M550 0v500M600 0v500M650 0v500M700 0v500M750 0v500"/>
+  </g>
+  <rect x="300" y="200" width="200" height="100" fill="none" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="400" y="258" font-family="monospace" font-size="20" fill="#5a6472" text-anchor="middle">IMAGE</text>
+</svg>

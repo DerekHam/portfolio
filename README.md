@@ -124,6 +124,38 @@ a `full` field:
 Both tiers are generated from the full-resolution originals with orientation baked in and
 EXIF/GPS metadata stripped.
 
+### Regenerating the images
+
+The full-resolution originals live **outside this repository** so it stays small. To rebuild
+both tiers, run the script — it **deletes `assets/img/` and `assets/hi/` completely**, then
+regenerates them from the originals:
+
+```bash
+python3 Scripts/regenerate-images.py
+```
+
+Requirements: Python 3 and Pillow (`pip install pillow`).
+
+By default it reads from:
+
+```
+~/Desktop/02 College/Portfolio-fullres-images/img
+```
+
+Point it somewhere else with an argument or the `FULLRES_DIR` environment variable:
+
+```bash
+python3 Scripts/regenerate-images.py "/path/to/full-res/images"
+FULLRES_DIR="/path/to/full-res/images" python3 Scripts/regenerate-images.py
+```
+
+The source folder must **mirror the `assets/img` layout** (same sub-folders and file names).
+Photos become JPEG, screenshots stay PNG. Hand-authored vectors such as `placeholder.svg`
+and `banner.svg` are **kept across runs and copied into both tiers**, even if they are missing
+from the source folder. Add or replace originals there, re-run the script, then commit the
+regenerated `assets/img/` and `assets/hi/`. If the source folder is missing or contains no
+images, the script stops without deleting anything.
+
 ## Adding photos / artwork to the gallery
 
 Open `data/gallery.json` and add entries to the `images` array:
@@ -193,8 +225,10 @@ data/                  YOUR CONTENT (edit these)
 assets/css/style.css   All styling + theme variables (light/dark)
 assets/js/main.js      Site behavior (theme, nav, scroll reveal)
 assets/js/render.js    Loads data/*.json and fills the HTML
-assets/img/            Images
+assets/img/            Display images (max 1000px) — generated
+assets/hi/             Lightbox images (max 2560px) — generated
 assets/files/          Resume PDF
+Scripts/regenerate-images.py  Rebuilds assets/img + assets/hi from the full-res originals
 favicon.svg            Site icon
 robots.txt, sitemap.xml  SEO
 ```
