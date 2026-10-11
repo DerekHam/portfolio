@@ -334,9 +334,10 @@ readable — adjust its strength with the `--hero-tint` variable in `assets/css/
 ### Home page background photo
 
 The Home page also has a full-page background photo (separate from the hero banner). It
-lives in `assets/css/style.css` as `.home-bg` (currently `assets/img/gallery/rainbow.jpeg`),
-with a transparent **black overlay** drawn on top of it. Adjust the overlay with the
-`--home-overlay` variable at the top of that file:
+lives in `assets/css/style.css` as `.home-bg` (currently `assets/bg/rainbow.jpeg` — the
+full-resolution original, kept in `assets/bg/` so the image regeneration script does not
+downscale it), with a transparent **black overlay** drawn on top of it. Adjust the overlay
+with the `--home-overlay` variable at the top of that file:
 
 ```css
 --home-overlay: 0.45;   /* 0 = no overlay (full photo), 1 = solid black */

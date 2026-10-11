@@ -264,7 +264,7 @@ section { padding-block: 64px; }
   right: 0;
   top: 0;
   height: calc(100% + var(--home-parallax));
-  background: url("../img/gallery/rainbow.jpeg") center top / cover no-repeat;
+  background: url("../bg/rainbow.jpeg") center top / cover no-repeat;
   will-change: transform;
 }
 /* Transparent black layer — tweak via --home-overlay */
