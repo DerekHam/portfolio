@@ -3,15 +3,15 @@
   "heading": "Photos & Artwork",
   "lead": "A few things I have made and photographed outside of coursework.",
   "images": [
-    { "src": "assets/img/gallery/bike.jpeg", "caption": " " },
-    { "src": "assets/img/gallery/bluebells-yard.jpeg", "caption": "" },
+    { "src": "assets/img/gallery/bike.jpeg", "caption": "My trustworthy bike. Added two racks and a phone holder so it better fits my need." },
+    { "src": "assets/img/gallery/bluebells-yard.jpeg", "caption": "Gotta love a steam train, especially if you can board one yourself!" },
     { "src": "assets/img/gallery/i-love-archery.jpeg", "caption": "This is an interesting way to take photos of the arrows I shot!" },
-    { "src": "assets/img/gallery/i-love-travelling.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/i-love-travelling.jpeg", "caption": "The Hessen countryside seen from an airplane approaching Frankfurt Flughafen. I love travelling." },
     { "src": "assets/img/gallery/rainbow.jpeg", "caption": "This is the background for the home page. It is taken during the UPenn Experimental Physics Summer school, a spectrum of Hydrogen (I think, can't remember)" },
     { "src": "assets/img/gallery/sunset-building-1.jpeg", "caption": "I love Beijing's Fall. Especially the one in CBD." },
-    { "src": "assets/img/gallery/sunset-building-2.jpeg", "caption": " " },
-    { "src": "assets/img/gallery/clouds-1.jpeg", "caption": " " },
-    { "src": "assets/img/gallery/clouds-2.jpeg", "caption": " " },
+    { "src": "assets/img/gallery/sunset-building-2.jpeg", "caption": "Even looks gorgeous after the sun sets!" },
+    { "src": "assets/img/gallery/clouds-1.jpeg", "caption": "Sometimes the cloud formations over Beijing makes you wonder..." },
+    { "src": "assets/img/gallery/clouds-2.jpeg", "caption": "...about how small we are, and what a grand planet we live on." },
     { "src": "assets/img/gallery/construction.jpeg", "caption": "This photo records the construction of Basis International School just across the road under an impending thunderstorm. It makes me feel how powerless we are against the nature, yet we still build nonetheless." },
     { "src": "assets/img/gallery/dalat-power-plant.JPG", "caption": "My Grandmother is born in Dalat Banner, Ordos, Inner Mongolia. I took this picture while our class is here for a school trip. The Dalat Power Plant is once the largest in Asia, tapping off the abundant coal resource in the region." },
     { "src": "assets/img/gallery/Huolong.jpeg", "caption": "The Huolong is a traditional Chinese New Year piece near Ordos, Inner Mongolia. It is used to bring good luck for the next year, and is made out of bricks with coal powder mixed inside." },
@@ -19,6 +19,7 @@
     { "src": "assets/img/gallery/hydro-power-dam.jpg", "caption": "I admire the engineering behind this hydroelectric project." },
     { "src": "assets/img/gallery/photo-chosen-for-yearbook.jpeg", "caption": "This photo taken from my dorm was chosen for the yearbook!" },
     { "src": "assets/img/gallery/Wintercore.jpeg", "caption": "WINTERCORE" },
-    { "src": "assets/img/gallery/xiangshawan-ropeway.JPG", "caption": "I was stranded at the terminus station by a flash flood 4 years old, and this ropeway took me out. Now I visited the ropeway once again. Thrilling memories..." }
+    { "src": "assets/img/gallery/xiangshawan-ropeway.JPG", "caption": "I was stranded at the terminus station by a flash flood 4 years old, and this ropeway took me out. Now I visited the ropeway once again. Thrilling memories..." },
+    { "video": "https://youtube.com/shorts/NQBaUhBG-k4", "caption": " " }
   ]
 }
