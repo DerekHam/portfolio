@@ -60,6 +60,9 @@
     if (vid) {
       return { type: "video", video: vid, poster: o.poster || "", caption: o.caption || "", title: o.title || "" };
     }
+    if (o.embed) {
+      return { type: "embed", src: o.embed, caption: o.caption || "", title: o.title || "", height: o.height || "" };
+    }
     return { type: "image", src: o.src || "", caption: o.caption || "", alt: o.alt || "", full: o.full || "" };
   }
 
@@ -204,6 +207,19 @@
         return;
       }
 
+      if (m.type === "embed") {
+        var ed = document.createElement("div");
+        ed.className = "gallery-item gallery-item--embed";
+        var ifr = document.createElement("iframe");
+        ifr.setAttribute("src", m.src);
+        ifr.setAttribute("title", m.title ? plain(m.title) : "Embedded content");
+        ifr.setAttribute("loading", "lazy");
+        ifr.setAttribute("allowfullscreen", "");
+        ed.appendChild(ifr);
+        grid.appendChild(ed);
+        return;
+      }
+
       if (!tplI) return;
       var gf = tplI.content.cloneNode(true);
       var gb = gf.querySelector(".gallery-item");
@@ -320,6 +336,25 @@
       if (raw.length === 1) imgWrap.classList.add("project-gallery--single");
       raw.forEach(function (item) {
         var m = mediaInfo(item);
+
+        if (m.type === "embed") {
+          var tplE = document.getElementById("tpl-detail-embed");
+          if (!tplE) return;
+          var ef = tplE.content.cloneNode(true);
+          var fr = ef.querySelector("iframe");
+          var ecap = ef.querySelector("figcaption");
+          if (fr) {
+            fr.setAttribute("src", m.src);
+            if (m.title) fr.setAttribute("title", plain(m.title));
+            if (m.height) fr.style.height = m.height;
+          }
+          if (ecap) {
+            if (m.caption) ecap.textContent = m.caption;
+            else ecap.parentNode && ecap.parentNode.removeChild(ecap);
+          }
+          imgWrap.appendChild(ef);
+          return;
+        }
 
         if (m.type === "video") {
           if (!tplVid) return;

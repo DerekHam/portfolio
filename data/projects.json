@@ -81,7 +81,9 @@
     "featured": true,
     "summary": "Collaborative science-fiction novel, dedicated to explore the future under realistic technological and societal advancements.",
     "thumbnail": "assets/img/parsecs/card.png",
-    "images": ["assets/img/placeholder.svg"],
+    "images": [
+      { "embed": "https://parsecs-starmap.derekhan.link", "caption": "Interactive starmap" }
+    ],
     "description": [
       "<p>This is placeholder content so you can see how a project page looks.</p>",
       "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"

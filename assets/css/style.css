@@ -19,6 +19,13 @@
   --shadow: 0 1px 2px rgba(16, 20, 26, 0.06), 0 8px 24px rgba(16, 20, 26, 0.05);
   --hero-tint: rgba(238, 240, 242, 0.68);
 
+  /* Home page background photo + overlay. Raise the overlay to mute the image
+     (helps the foreground stay legible); lower it to show more of the photo. */
+  --home-overlay: 0.45;
+  /* How much further the background image travels than the page as you scroll.
+     0 = moves with the content (no parallax); larger = slower background. */
+  --home-parallax: 35vh;
+
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -241,6 +248,32 @@ section { padding-block: 64px; }
   pointer-events: none;
 }
 .hero .wrap { position: relative; z-index: 3; }
+
+/* ---------- Home page background photo ---------- */
+.home-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+/* The photo is taller than the viewport so it can travel (parallax). */
+.home-bg-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: calc(100% + var(--home-parallax));
+  background: url("../img/gallery/rainbow.jpeg") center top / cover no-repeat;
+  will-change: transform;
+}
+/* Transparent black layer — tweak via --home-overlay */
+.home-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--home-overlay));
+}
 .hero-inner { padding-block: 88px 72px; }
 
 .hero-grid {
@@ -713,6 +746,21 @@ section { padding-block: 64px; }
   border: 0;
   display: block;
 }
+
+/* ---------- Embedded pages (e.g. an interactive map) ---------- */
+.project-figure--embed { flex: 1 1 100%; width: 100%; max-width: none; }
+.project-embed {
+  width: 100%;
+  height: 80vh;
+  min-height: 460px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-sunken);
+  display: block;
+}
+.project-gallery--single .project-figure--embed { width: 100%; }
+.gallery-item--embed { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.gallery-item--embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* Slider arrows */
 .project-gallery-nav {

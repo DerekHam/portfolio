@@ -120,6 +120,18 @@ arrow keys / Esc). Each entry is either a plain path or an object with an option
 - URLs and bare IDs both work: `https://youtu.be/ID`, `https://www.youtube.com/watch?v=ID`,
   `https://www.youtube.com/shorts/ID`, or just `ID`.
 
+**Embeds:** an `images` entry can also embed a whole page (for example an interactive map)
+with an `embed` value — it renders as a large inline frame (80vh tall) instead of an image:
+
+```json
+"images": [
+  { "embed": "https://parsecs-starmap.derekhan.link", "caption": "Interactive starmap" }
+]
+```
+
+The embedded site must allow framing (no `X-Frame-Options: deny`). Optional `title` and
+`height` fields are supported. In the Gallery an embed spans the full row.
+
 ### Display vs. lightbox copies (fast pages, sharp zoom)
 
 Every image is stored in **two sizes**:
@@ -318,3 +330,22 @@ with `"banner"` in `data/home.json` (for example `"assets/img/mybanner.jpg"`; le
 empty to show no banner). The grid stays on top, and a translucent tint keeps the text
 readable — adjust its strength with the `--hero-tint` variable in `assets/css/style.css`
 (lower opacity = more visible banner, higher = easier-to-read text).
+
+### Home page background photo
+
+The Home page also has a full-page background photo (separate from the hero banner). It
+lives in `assets/css/style.css` as `.home-bg` (currently `assets/img/gallery/rainbow.jpeg`),
+with a transparent **black overlay** drawn on top of it. Adjust the overlay with the
+`--home-overlay` variable at the top of that file:
+
+```css
+--home-overlay: 0.45;   /* 0 = no overlay (full photo), 1 = solid black */
+```
+
+Higher values mute the photo (helps a busy image stay in the background); lower values show
+more of it. Note the current photo is dark, so it reads best in dark mode.
+
+The photo also **parallaxes**: its top edge starts at the **bottom of the banner** (the hero)
+and its bottom edge ends at the **bottom of the page**, drifting slower than the content in
+between. Control the strength with `--home-parallax` (currently `35vh`) — the extra distance
+the image drifts; `0` disables the effect.

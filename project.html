@@ -59,13 +59,13 @@
     </div>
 
     <section class="wrap">
-      <article class="prose">
+      <article>
         <div class="project-gallery-wrap">
           <div id="project-images" class="project-gallery"></div>
           <button class="project-gallery-nav gallery-prev" type="button" aria-label="Previous images" hidden>&#8249;</button>
           <button class="project-gallery-nav gallery-next" type="button" aria-label="Next images" hidden>&#8250;</button>
         </div>
-        <div id="project-description"></div>
+        <div id="project-description" class="prose"></div>
         <div id="project-links" class="hero-actions" style="margin-top:28px;"></div>
       </article>
     </section>
@@ -107,6 +107,12 @@
         <img alt="" loading="lazy" />
         <span class="video-play" aria-hidden="true"></span>
       </button>
+      <figcaption></figcaption>
+    </figure>
+  </template>
+  <template id="tpl-detail-embed">
+    <figure class="project-figure project-figure--embed">
+      <iframe class="project-embed" title="Embedded content" loading="lazy" allowfullscreen></iframe>
       <figcaption></figcaption>
     </figure>
   </template>
