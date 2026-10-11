@@ -17,7 +17,9 @@
       { "src": "assets/img/calico/leak-test.jpeg", "caption": " " },
       { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": " " },
       { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": " " },
-      { "src": "assets/img/calico/approval.jpeg", "caption": " " }
+      { "src": "assets/img/calico/approval.jpeg", "caption": " " },
+      { "src": "assets/img/calico/calico-1.jpeg", "caption": " " },
+      { "src": "assets/img/calico/calico-2.jpeg", "caption": " " }
     ],
     "description": [
       "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p>",
@@ -158,8 +160,13 @@
     "tags": ["Fabrication", "CAD"],
     "featured": true,
     "summary": "An integrated enclosure for my laser cutter and 3D printer. Used often until school got a shiny new workshop.",
-    "thumbnail": "assets/img/3d-printer-rack/card.png",
-    "images": ["assets/img/placeholder.svg"],
+    "thumbnail": "assets/img/3d-printer-rack/full-rack.jpeg",
+    "images": [
+      { "src": "assets/img/3d-printer-rack/full-rack.jpeg", "caption": " " },
+      { "src": "assets/img/3d-printer-rack/filter.jpeg", "caption": " " },
+      { "src": "assets/img/3d-printer-rack/shelves.jpeg", "caption": " " },
+      { "src": "assets/img/3d-printer-rack/laser-cutter-at-home.jpeg", "caption": " " }
+    ],
     "description": [
       "<p>This is placeholder content so you can see how a project page looks.</p>",
       "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
@@ -209,8 +216,16 @@
     "tags": ["Creativity"],
     "featured": true,
     "summary": "I am an avid player of Transport Fever 2, 3, and Cities: Skylines, with a total playtime of 1200+ hours as of now.",
-    "thumbnail": "assets/img/tpf/card.png",
-    "images": ["assets/img/tpf/placeholder.svg"],
+    "thumbnail": "assets/img/games/20260227_223642_img-0.jpg",
+    "images": [
+      { "src": "assets/img/games/20260227_223642_img-0.jpg", "caption": " " },
+      { "src": "assets/img/games/20260227_224319_img-3.jpg", "caption": " " },
+      { "src": "assets/img/games/20260304_012355_img-4.jpeg", "caption": " " },
+      { "src": "assets/img/games/20260312_010723_img-0.jpg", "caption": " " },
+      { "src": "assets/img/games/20260320_235138_img-2.jpg", "caption": " " },
+      { "src": "assets/img/games/20260320_235215_img-4.jpg", "caption": " " },
+      { "src": "assets/img/games/20260320_235657_img-7.jpg", "caption": " " }
+    ],
     "description": [
       "<p>I Like to play games, most are related to transportation. </p>",
       "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
