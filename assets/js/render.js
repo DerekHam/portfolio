@@ -236,6 +236,16 @@
       if (gc) gc.textContent = m.caption || "";
       grid.appendChild(gf);
     });
+
+    // Deep link: gallery.html?photo=<src> opens that photo in the lightbox.
+    var photoParam = new URLSearchParams(window.location.search).get("photo");
+    if (photoParam) {
+      var match = null;
+      $all(".gallery-item", grid).forEach(function (el) {
+        if (!match && el.getAttribute("data-src") === photoParam) match = el;
+      });
+      if (match) window.setTimeout(function () { match.click(); }, 0);
+    }
   }
 
   function renderProjectGrid(projects) {
