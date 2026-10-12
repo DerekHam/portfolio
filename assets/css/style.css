@@ -247,22 +247,23 @@ section { padding-block: 64px; }
 .hero .wrap { position: relative; z-index: 3; }
 
 /* ---------- Home page background photo ----------
-   Sits behind the content, starting at the bottom of the banner, and scrolls
-   with the page so the whole image passes by as you scroll down. */
-body[data-page="home"] { position: relative; }
-
+   Fixed behind the content; it starts at the bottom of the banner and drifts
+   slower than the page (parallax) while showing the whole image. */
 .home-bg {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0; /* JS sets this to the bottom of the hero/banner */
+  position: fixed;
+  inset: 0;
   z-index: -1;
+  overflow: hidden;
   pointer-events: none;
 }
 .home-bg-img {
-  width: 100%;
-  aspect-ratio: 3024 / 4032; /* match the photo so the whole image is shown */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  aspect-ratio: 3024 / 4032; /* full image; JS drifts the whole thing */
   background: url("../bg/rainbow.jpeg") center top / cover no-repeat;
+  will-change: transform;
 }
 /* Transparent black layer — tweak via --home-overlay */
 .home-bg::after {

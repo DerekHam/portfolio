@@ -346,6 +346,6 @@ with the `--home-overlay` variable at the top of that file:
 Higher values mute the photo (helps a busy image stay in the background); lower values show
 more of it. Note the current photo is dark, so it reads best in dark mode.
 
-The photo starts at the **bottom of the banner** and scrolls with the page, so the whole
-image passes by as you scroll down. (It is not fixed and does not parallax — that keeps its
-top aligned with the banner while still showing the entire image.)
+The photo **parallaxes** (asynchronous scrolling): it is anchored to the **bottom of the
+banner** and the **bottom of the page**, drifting slower than the content. It's sized to the
+photo's full aspect ratio, so the whole image is shown (not cropped) as you scroll through it.

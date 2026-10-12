@@ -187,22 +187,28 @@
     });
   }
 
-  /* ---------- Home background photo ----------
-     Start the photo at the bottom of the banner so it scrolls with the page and
-     the whole image passes by as you scroll down. */
-  function initHomeBackground() {
-    var layer = $(".home-bg");
+  /* ---------- Home background parallax ----------
+     The photo is anchored to the banner's bottom and the page's bottom, and drifts
+     slower than the content (asynchronous scrolling) while showing the whole image. */
+  function initParallax() {
+    var layer = $(".home-bg-img");
     var hero = $(".hero");
-    if (!layer || !hero) return;
+    if (!layer) return;
 
-    function place() {
-      layer.style.top = (hero.offsetTop + hero.offsetHeight) + "px";
+    function apply() {
+      var winH = window.innerHeight;
+      var max = Math.max(1, document.documentElement.scrollHeight - winH);
+      var start = hero ? (hero.offsetTop + hero.offsetHeight) : 0;
+      var span = Math.max(1, max - start);
+      var progress = Math.min(1, Math.max(0, (window.pageYOffset - start) / span));
+      var travel = layer.offsetHeight - winH;
+      layer.style.transform = "translate3d(0," + (-travel * progress) + "px,0)";
     }
 
-    window.addEventListener("resize", place);
-    window.addEventListener("load", place);
-    if ("ResizeObserver" in window) new ResizeObserver(place).observe(hero);
-    place();
+    window.addEventListener("scroll", apply, { passive: true });
+    window.addEventListener("resize", apply);
+    window.addEventListener("load", apply);
+    apply();
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -249,7 +255,7 @@
     initGallery();
     initSliders();
     initVideoEmbeds();
-    initHomeBackground();
+    initParallax();
     initReveal();
   });
 })();

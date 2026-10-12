@@ -18,8 +18,8 @@
       { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": " " },
       { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": " " },
       { "src": "assets/img/calico/approval.jpeg", "caption": " " },
-      { "src": "assets/img/calico/calico-1.jpeg", "caption": " " },
-      { "src": "assets/img/calico/calico-2.jpeg", "caption": " " }
+      { "src": "assets/img/calico/calico-1.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." },
+      { "src": "assets/img/calico/calico-2.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." }
     ],
     "description": [
       "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p>",
