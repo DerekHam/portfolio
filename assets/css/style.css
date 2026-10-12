@@ -22,9 +22,6 @@
   /* Home page background photo + overlay. Raise the overlay to mute the image
      (helps the foreground stay legible); lower it to show more of the photo. */
   --home-overlay: 0.45;
-  /* How much further the background image travels than the page as you scroll.
-     0 = moves with the content (no parallax); larger = slower background. */
-  --home-parallax: 35vh;
 
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -249,23 +246,23 @@ section { padding-block: 64px; }
 }
 .hero .wrap { position: relative; z-index: 3; }
 
-/* ---------- Home page background photo ---------- */
+/* ---------- Home page background photo ----------
+   Sits behind the content, starting at the bottom of the banner, and scrolls
+   with the page so the whole image passes by as you scroll down. */
+body[data-page="home"] { position: relative; }
+
 .home-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-/* The photo is taller than the viewport so it can travel (parallax). */
-.home-bg-img {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
-  height: calc(100% + var(--home-parallax));
+  top: 0; /* JS sets this to the bottom of the hero/banner */
+  z-index: -1;
+  pointer-events: none;
+}
+.home-bg-img {
+  width: 100%;
+  aspect-ratio: 3024 / 4032; /* match the photo so the whole image is shown */
   background: url("../bg/rainbow.jpeg") center top / cover no-repeat;
-  will-change: transform;
 }
 /* Transparent black layer — tweak via --home-overlay */
 .home-bg::after {

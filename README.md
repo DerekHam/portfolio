@@ -346,7 +346,6 @@ with the `--home-overlay` variable at the top of that file:
 Higher values mute the photo (helps a busy image stay in the background); lower values show
 more of it. Note the current photo is dark, so it reads best in dark mode.
 
-The photo also **parallaxes**: its top edge starts at the **bottom of the banner** (the hero)
-and its bottom edge ends at the **bottom of the page**, drifting slower than the content in
-between. Control the strength with `--home-parallax` (currently `35vh`) — the extra distance
-the image drifts; `0` disables the effect.
+The photo starts at the **bottom of the banner** and scrolls with the page, so the whole
+image passes by as you scroll down. (It is not fixed and does not parallax — that keeps its
+top aligned with the banner while still showing the entire image.)

@@ -187,29 +187,22 @@
     });
   }
 
-  /* ---------- Home background parallax ----------
-     The photo is pinned to the top of the page and the bottom of the page (so it
-     starts and ends in step with the content) but travels slower in between. */
-  function initParallax() {
-    var layer = $(".home-bg-img");
-    if (!layer) return;
+  /* ---------- Home background photo ----------
+     Start the photo at the bottom of the banner so it scrolls with the page and
+     the whole image passes by as you scroll down. */
+  function initHomeBackground() {
+    var layer = $(".home-bg");
     var hero = $(".hero");
+    if (!layer || !hero) return;
 
-    function apply() {
-      var winH = window.innerHeight;
-      var docH = document.documentElement.scrollHeight;
-      var max = Math.max(1, docH - winH);
-      // Anchor the top of the photo to the bottom of the banner (the hero), not the page top.
-      var start = hero ? (hero.offsetTop + hero.offsetHeight) : 0;
-      var span = Math.max(1, max - start);
-      var progress = Math.min(1, Math.max(0, (window.pageYOffset - start) / span));
-      var travel = layer.offsetHeight - winH;
-      layer.style.transform = "translate3d(0," + (-travel * progress) + "px,0)";
+    function place() {
+      layer.style.top = (hero.offsetTop + hero.offsetHeight) + "px";
     }
 
-    window.addEventListener("scroll", apply, { passive: true });
-    window.addEventListener("resize", apply);
-    apply();
+    window.addEventListener("resize", place);
+    window.addEventListener("load", place);
+    if ("ResizeObserver" in window) new ResizeObserver(place).observe(hero);
+    place();
   }
 
   /* ---------- Scroll reveal ---------- */
@@ -256,7 +249,7 @@
     initGallery();
     initSliders();
     initVideoEmbeds();
-    initParallax();
+    initHomeBackground();
     initReveal();
   });
 })();
