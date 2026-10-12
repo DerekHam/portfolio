@@ -65,8 +65,33 @@
           <button class="project-gallery-nav gallery-prev" type="button" aria-label="Previous images" hidden>&#8249;</button>
           <button class="project-gallery-nav gallery-next" type="button" aria-label="Next images" hidden>&#8250;</button>
         </div>
-        <div id="project-description" class="prose"></div>
-        <div id="project-links" class="hero-actions" style="margin-top:28px;"></div>
+
+        <div class="project-layout">
+          <div id="project-description" class="prose"></div>
+
+          <aside class="project-sidebar">
+            <div class="sidebar-card">
+              <img id="sidebar-thumb" class="sidebar-thumb" alt="" hidden />
+              <dl class="sidebar-meta">
+                <dt>Date</dt>
+                <dd id="sidebar-date">—</dd>
+                <dt>Tags</dt>
+                <dd><div class="tags" id="sidebar-tags"></div></dd>
+              </dl>
+              <div id="project-links" class="hero-actions" style="margin-top:16px;"></div>
+            </div>
+
+            <nav class="sidebar-block" id="project-toc" hidden aria-label="On this page">
+              <h2 class="sidebar-title">On this page</h2>
+              <ol class="toc-list" id="project-toc-list"></ol>
+            </nav>
+
+            <section class="sidebar-block" id="project-highlights" hidden>
+              <h2 class="sidebar-title">Highlights</h2>
+              <div class="highlight-grid" id="project-highlights-grid"></div>
+            </section>
+          </aside>
+        </div>
       </article>
     </section>
   </main>

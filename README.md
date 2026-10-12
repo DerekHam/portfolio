@@ -132,6 +132,28 @@ with an `embed` value — it renders as a large inline frame (80vh tall) instead
 The embedded site must allow framing (no `X-Frame-Options: deny`). Optional `title` and
 `height` fields are supported. In the Gallery an embed spans the full row.
 
+### Project page sidebar
+
+On wide screens the write-up sits in a column with a **sticky sidebar** on the right carrying:
+
+- **Details** — thumbnail, date, tags, and the link buttons.
+- **On this page** — a table of contents built automatically from the write-up's `h2`/`h3`
+  headings (hidden if there are fewer than two).
+- **Highlights** — a small thumbnail grid of your chosen media (hidden when empty).
+
+Fill the Highlights section with an optional `highlights` array (same shape as `images` —
+photos and YouTube videos):
+
+```json
+"highlights": [
+  { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie" },
+  { "video": "https://youtu.be/…", "caption": "Test run" }
+]
+```
+
+Clicking a highlight opens it in the lightbox (photos enlarge; videos play), and it only
+cycles through the highlights — not the whole slider.
+
 ### Display vs. lightbox copies (fast pages, sharp zoom)
 
 Every image is stored in **two sizes**:

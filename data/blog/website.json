@@ -23,6 +23,7 @@
     "<p>Everything that went into this site, newest first.</p>",
     "<h3>Latest</h3>",
     "<ul>",
+    "<li>Project pages now have a sticky <strong>sidebar</strong> — details, an auto table of contents, and curated <strong>highlights</strong> — which fills the wide-screen gap beside the write-up.</li>",
     "<li>The Parsecs project page now <strong>embeds the interactive starmap</strong> full-width; any project can embed a page with a new <code>embed</code> media type.</li>",
     "<li>The Home page background photo now uses an <strong>anchored parallax</strong> — it starts at the bottom of the banner and ends at the bottom of the page, drifting slower in between.</li>",
     "<li>Added new photos across the projects and the Gallery (Calico, the 3D-printer rack, and Transportation Games) and re-synced every image from the full-resolution originals.</li>",

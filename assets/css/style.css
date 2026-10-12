@@ -760,6 +760,96 @@ section { padding-block: 64px; }
 .gallery-item--embed { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
 .gallery-item--embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 
+/* ---------- Project page layout (write-up + sidebar) ---------- */
+.project-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 40px;
+  align-items: start;
+}
+
+.project-sidebar {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  max-height: calc(100vh - var(--header-h) - 48px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-card,
+.sidebar-block {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.sidebar-thumb {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+.sidebar-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 12px;
+}
+.sidebar-meta { margin: 0; }
+.sidebar-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.sidebar-meta dt:first-child { margin-top: 0; }
+.sidebar-meta dd { margin: 4px 0 0; }
+
+.toc-list { list-style: none; margin: 0; padding: 0; }
+.toc-list a {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 4px 0;
+  text-decoration: none;
+}
+.toc-list a:hover { color: var(--accent); }
+.toc-list .toc-sub a { padding-left: 14px; font-size: 0.84rem; }
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.highlight-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-sunken);
+  cursor: zoom-in;
+}
+.highlight-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.highlight-item .video-play::before { width: 40px; height: 40px; }
+.highlight-item .video-play::after { border-width: 8px 0 8px 13px; }
+
+/* Anchor jumps clear the sticky header */
+.prose :is(h2, h3) { scroll-margin-top: calc(var(--header-h) + 24px); }
+
+@media (max-width: 900px) {
+  .project-layout { grid-template-columns: 1fr; }
+  .project-sidebar { position: static; max-height: none; overflow: visible; }
+}
+
 /* Slider arrows */
 .project-gallery-nav {
   position: absolute;

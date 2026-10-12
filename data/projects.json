@@ -21,6 +21,11 @@
       { "src": "assets/img/calico/calico-1.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." },
       { "src": "assets/img/calico/calico-2.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." }
     ],
+    "highlights": [
+      { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie — the full assembly" },
+      { "src": "assets/img/calico/diffuser-1.jpeg", "caption": "Diffuser and flow straightener" },
+      { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": "Calico Kitten smoke test" }
+    ],
     "description": [
       "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p>",
       "<p>There are currently two wind tunnels: <b>Calico Biggie</b> and <b>Calico Kitten</b>. Both have parametric CAD files. ",
@@ -196,6 +201,11 @@
       { "src": "assets/img/human-ram/notes-review-light.png", "caption": " " },
       { "src": "assets/img/human-ram/diary-light.png", "caption": " " },
       { "src": "assets/img/human-ram/settings-light.png", "caption": " " }
+    ],
+    "highlights": [
+      { "src": "assets/img/human-ram/menu-bar-light.png", "caption": "The menu bar" },
+      { "src": "assets/img/human-ram/capture-light.png", "caption": "Capture overlay" },
+      { "src": "assets/img/human-ram/daily-scan-light.png", "caption": "The daily scan" }
     ],
     "description": [
       "<p>Human RAM is a macOS menu-bar app I built for myself. Most to-do apps ask you to organize; this one asks almost nothing. You press a global hotkey, type a thought on one line, and the app decides when it should come back to you. The whole design rests on a simple metaphor: your mind is RAM, and this is a small external module for it.</p>",

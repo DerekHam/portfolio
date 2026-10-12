@@ -64,7 +64,14 @@
 
     var ITEM_SELECTOR = ".gallery-item, [data-lightbox]";
 
-    function collect() { items = $all(ITEM_SELECTOR); }
+    function collect(setName) {
+      // Items sharing a data-lightbox-set navigate together; items without one
+      // form the default set for the page.
+      setName = setName || "";
+      items = $all(ITEM_SELECTOR).filter(function (el) {
+        return (el.getAttribute("data-lightbox-set") || "") === setName;
+      });
+    }
 
     function captionOf(el) {
       if (el.hasAttribute("data-caption")) return el.getAttribute("data-caption");
@@ -136,7 +143,7 @@
       var item = e.target.closest(ITEM_SELECTOR);
       if (item) {
         e.preventDefault();
-        collect();
+        collect(item.getAttribute("data-lightbox-set") || "");
         show(items.indexOf(item));
         return;
       }
