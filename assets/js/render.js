@@ -94,6 +94,7 @@
     applyAttrs(el, scope);
     if (!el.hasAttribute("data-bind")) return;
     var val = getPath(scope, el.getAttribute("data-bind"));
+    if (Array.isArray(val)) val = val.join("");
     if (el.hasAttribute("data-html")) {
       el.innerHTML = val == null ? "" : String(val);
     } else {
