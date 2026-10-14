@@ -241,6 +241,19 @@ row of small buttons:
 ]
 ```
 
+Add `"download"` to a link to make the browser **download** the file instead of opening it
+(the value sets the saved filename). Put the file in `assets/files/`:
+
+```json
+"links": [
+  {
+    "label": "Dev Log (PDF)",
+    "url": "assets/files/calico-wind-tunnel-dev-log.pdf",
+    "download": "Calico Wind Tunnel Dev Log.pdf"
+  }
+]
+```
+
 **Inline links:** the `title`, `detail`, `org`, `role`, and each `bullets` line accept simple
 HTML, so you can also embed a link directly, for example:
 

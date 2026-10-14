@@ -6,5 +6,10 @@
   "banner": "assets/img/banner.svg",
   "photo": "assets/img/placeholder.svg",
   "aboutHeading": "About Me",
-  "about": "<p>I am a Grade 12 student with a strong interest in STEM and engineering. I enjoy taking ideas from concept to finished build, whether that means CAD modeling, coding, or fabricating in the shop. This site documents my projects, experience, and the things I am learning along the way.</p><p>Replace this text with two or three sentences about your background, interests, and what you are looking for next.</p>"
+  "about": [
+    "<p>A quote, though modified, that I like is</p>",
+    "<h3><q>I chose to build my wind tunnel and many other things in the past years not because they are easy, but because I thought they were easy.</q></h3>",
+    "<p>That was basically how I approached my projects: started naïvely, encountered too many problems, and persisted through some. Nevertheless, all of them were projects of great fun and learning opportunities</p>",
+    "<p>And, to be honest, who can say the race to the moon wasn't that? They practically sailed across the atlantic on a washing machine, but came back with tons of knowledge learned. I should do the same. Engineering projects in high school, if not anytime, is at least 50% for the learning.</p>"
+  ]
 }

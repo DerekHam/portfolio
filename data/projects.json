@@ -40,6 +40,11 @@
     ],
     "links": [
       {
+        "label": "Wind Tunnel Dev Log (PDF)",
+        "url": "assets/files/calico-wind-tunnel-dev-log.pdf",
+        "download": "Calico Wind Tunnel Dev Log.pdf"
+      },
+      {
         "label": "CAD Files",
         "url": "https://cad.onshape.com/documents/f07feef52ce356bbf54fe64e/w/621ae0026c60244aebb38691/e/e1f404fcb63d616e99c0f38b?renderMode=0&uiState=6ac2644cba27a009fb6c7b1e"
       }

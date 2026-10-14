@@ -421,7 +421,13 @@
         if (!tplLink) return;
         var frag = tplLink.content.cloneNode(true);
         var a = frag.querySelector("a");
-        if (a) { a.setAttribute("href", l.url || "#"); a.textContent = l.label || "Link"; }
+        if (a) {
+          a.setAttribute("href", l.url || "#");
+          a.textContent = l.label || "Link";
+          if (l.download) {
+            a.setAttribute("download", typeof l.download === "string" ? l.download : "");
+          }
+        }
         linkWrap.appendChild(frag);
       });
     }
