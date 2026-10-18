@@ -24,7 +24,7 @@ Everything you normally change is in the `data/` folder. Edit the JSON, refresh 
 | `data/home.json` | Home hero text, hero banner image, and the About paragraphs |
 | `data/projects.json` | All projects (cards, filters, and project pages) |
 | `data/experience.json` | Internships/work and extracurriculars/leadership |
-| `data/resume.json` | Resume page content and the PDF path |
+| `data/resume.json` | Resume page content and the PDF path (page currently hidden/unlisted) |
 | `data/awards-skills.json` | Awards and the skill groups |
 | `data/blog.json` | Blog posts list |
 | `data/contact.json` | Contact rows |
@@ -336,7 +336,7 @@ index.html             Home / About
 projects.html          Filterable project grid
 project.html           Single project page (?id=...)
 experience.html        Internships + extracurriculars
-resume.html            Resume / CV
+resume.html            Resume / CV (hidden — no nav link, noindex)
 awards-skills.html     Awards & skills
 blog.html              Blog
 gallery.html           Photos & artwork (lightbox)
@@ -347,7 +347,7 @@ assets/js/main.js      Site behavior (theme, nav, scroll reveal)
 assets/js/render.js    Loads data/*.json and fills the HTML
 assets/img/            Display images (max 1000px) — generated
 assets/hi/             Lightbox images (max 2560px) — generated
-assets/files/          Resume PDF
+assets/files/          Downloadable files (dev log PDF, resume PDF)
 Scripts/regenerate-images.py  Rebuilds assets/img + assets/hi from the full-res originals
 favicon.svg            Site icon
 robots.txt, sitemap.xml  SEO
