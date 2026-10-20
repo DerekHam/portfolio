@@ -21,9 +21,9 @@
     (function () {
       try {
         var t = localStorage.getItem("theme");
-        if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        if (!t) t = "dark";
         document.documentElement.setAttribute("data-theme", t);
-      } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+      } catch (e) { document.documentElement.setAttribute("data-theme", "dark"); }
     })();
   </script>
 </head>
