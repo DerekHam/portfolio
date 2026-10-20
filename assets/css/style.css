@@ -9,19 +9,22 @@
   --bg-elev: #ffffff;
   --bg-sunken: #e4e7ea;
   --ink: #1a1d21;
-  --muted: #5a6472;
+  --muted: #545e6b;
   --line: #d3d8de;
   --line-strong: #b9c1ca;
-  --accent: #2b6cb0;
-  --accent-soft: rgba(43, 108, 176, 0.12);
-  --accent-2: #e8590c;
-  --accent-2-soft: rgba(232, 89, 12, 0.12);
+  --accent: #2865a6;
+  --accent-soft: rgba(40, 101, 166, 0.12);
+  --accent-2: #b03d06;
+  --accent-2-soft: rgba(176, 61, 6, 0.12);
   --shadow: 0 1px 2px rgba(16, 20, 26, 0.06), 0 8px 24px rgba(16, 20, 26, 0.05);
   --hero-tint: rgba(238, 240, 242, 0.68);
 
   /* Home page background photo + overlay. Raise the overlay to mute the image
-     (helps the foreground stay legible); lower it to show more of the photo. */
-  --home-overlay: 0.45;
+     (helps the foreground stay legible); lower it to show more of the photo.
+     Light mode uses a near-opaque light wash so dark text stays readable over
+     the photo; dark mode keeps the photo prominent behind light text. */
+  --home-overlay: 0.95;
+  --home-overlay-color: 238, 240, 242;
 
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -45,6 +48,8 @@
   --accent-2-soft: rgba(255, 122, 61, 0.16);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 28px rgba(0, 0, 0, 0.35);
   --hero-tint: rgba(15, 17, 21, 0.8);
+  --home-overlay: 0.45;
+  --home-overlay-color: 0, 0, 0;
 }
 
 /* ---------- Reset ---------- */
@@ -265,12 +270,12 @@ section { padding-block: 64px; }
   background: url("../bg/rainbow.jpeg") center top / cover no-repeat;
   will-change: transform;
 }
-/* Transparent black layer — tweak via --home-overlay */
+/* Theme-colored wash over the photo — tweak via --home-overlay(-color) */
 .home-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, var(--home-overlay));
+  background: rgba(var(--home-overlay-color), var(--home-overlay));
 }
 .hero-inner { padding-block: 88px 72px; }
 

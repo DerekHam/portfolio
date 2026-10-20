@@ -371,15 +371,24 @@ readable — adjust its strength with the `--hero-tint` variable in `assets/css/
 The Home page also has a full-page background photo (separate from the hero banner). It
 lives in `assets/css/style.css` as `.home-bg` (currently `assets/bg/rainbow.jpeg` — the
 full-resolution original, kept in `assets/bg/` so the image regeneration script does not
-downscale it), with a transparent **black overlay** drawn on top of it. Adjust the overlay
-with the `--home-overlay` variable at the top of that file:
+downscale it), with a translucent wash drawn on top of it. Adjust the wash with the
+`--home-overlay` (opacity) and `--home-overlay-color` (RGB) variables at the top of that
+file:
 
 ```css
---home-overlay: 0.45;   /* 0 = no overlay (full photo), 1 = solid black */
+/* Light theme */
+--home-overlay: 0.95;
+--home-overlay-color: 238, 240, 242;  /* matches --bg */
+
+/* Dark theme */
+--home-overlay: 0.45;
+--home-overlay-color: 0, 0, 0;
 ```
 
-Higher values mute the photo (helps a busy image stay in the background); lower values show
-more of it. Note the current photo is dark, so it reads best in dark mode.
+Higher opacity values mute the photo (which keeps foreground text legible); lower values
+show more of it. Light mode uses a near-opaque light wash because the photo is dark and
+dark text over it is hard to read; dark mode keeps the photo prominent behind light text.
+If you lower the light-mode value, re-check the contrast of body text over the photo.
 
 The photo **parallaxes** (asynchronous scrolling): it is anchored to the **bottom of the
 banner** and the **bottom of the page**, drifting slower than the content. It's sized to the
