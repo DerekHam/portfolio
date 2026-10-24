@@ -217,6 +217,12 @@
         ifr.setAttribute("loading", "lazy");
         ifr.setAttribute("allowfullscreen", "");
         ed.appendChild(ifr);
+        if (m.caption) {
+          var ecap = document.createElement("span");
+          ecap.className = "gallery-cap";
+          ecap.textContent = m.caption;
+          ed.appendChild(ecap);
+        }
         grid.appendChild(ed);
         return;
       }
