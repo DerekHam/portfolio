@@ -749,6 +749,8 @@ section { padding-block: 64px; }
   border: 0;
   display: block;
 }
+/* Vertical video (Instagram reels) keeps its 9:16 shape instead of 16:9. */
+.video-frame.is-portrait { aspect-ratio: 9 / 16; max-width: 420px; }
 
 /* ---------- Embedded pages (e.g. an interactive map) ---------- */
 .project-figure--embed { flex: 1 1 100%; width: 100%; max-width: none; }
@@ -913,6 +915,15 @@ section { padding-block: 64px; }
 }
 .gallery-item:hover img,
 .gallery-item:focus-visible img { transform: scale(1.05); }
+/* Videos without a thumbnail (e.g. Instagram reels) keep the play badge on a
+   plain tile instead of a broken image. */
+.gallery-item.is-posterless,
+.highlight-item.is-posterless {
+  background-color: #12161c;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 12px, transparent 12px 24px),
+    radial-gradient(120% 120% at 50% 0%, var(--accent-soft), transparent 70%);
+}
 .gallery-cap {
   position: absolute;
   left: 0;
@@ -970,6 +981,8 @@ body.lightbox-open { overflow: hidden; }
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 .lightbox-video[hidden] { display: none; }
+/* Portrait player for vertical videos, so the reel is not letterboxed in 16:9. */
+.lightbox-video.is-portrait { width: auto; height: min(80vh, 800px); aspect-ratio: 9 / 16; }
 #lightbox-img[hidden] { display: none; }
 
 .lightbox-cap {

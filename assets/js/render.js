@@ -41,7 +41,7 @@
     return d.textContent || "";
   }
 
-  /* ---------- Media (images + YouTube videos) ---------- */
+  /* ---------- Media (images, YouTube videos, Instagram reels) ---------- */
   function youtubeId(value) {
     if (!value) return "";
     var v = String(value).trim();
@@ -51,14 +51,33 @@
     return "";
   }
 
+  function instagramRef(value) {
+    if (!value) return null;
+    var m = String(value).trim().match(/instagram\.com\/(reels?|p|tv)\/([A-Za-z0-9_-]+)/i);
+    if (!m) return null;
+    var kind = m[1].toLowerCase();
+    if (kind === "reels") kind = "reel";
+    return { kind: kind, id: m[2] };
+  }
+
   /* A media entry is a path string, an image object { src, caption, full, alt },
-     or a video object { video|youtube: <url or id>, caption, poster, title }. */
+     or a video object { video|youtube|instagram: <url or id>, caption, poster, title }. */
   function mediaInfo(item) {
     if (typeof item === "string") return { type: "image", src: item };
     var o = item || {};
     var vid = youtubeId(o.video || o.youtube);
     if (vid) {
-      return { type: "video", video: vid, poster: o.poster || "", caption: o.caption || "", title: o.title || "" };
+      return {
+        type: "video", provider: "youtube", video: vid,
+        poster: o.poster || "", caption: o.caption || "", title: o.title || ""
+      };
+    }
+    var ig = instagramRef(o.video || o.instagram);
+    if (ig) {
+      return {
+        type: "video", provider: "instagram", kind: ig.kind, video: ig.id,
+        poster: o.poster || "", caption: o.caption || "", title: o.title || ""
+      };
     }
     if (o.embed) {
       return { type: "embed", src: o.embed, caption: o.caption || "", title: o.title || "", height: o.height || "" };
@@ -67,7 +86,28 @@
   }
 
   function videoPoster(info) {
-    return info.poster || ("https://img.youtube.com/vi/" + info.video + "/hqdefault.jpg");
+    if (info.poster) return info.poster;
+    if (info.provider === "instagram") return ""; // no predictable thumbnail
+    return "https://img.youtube.com/vi/" + info.video + "/hqdefault.jpg";
+  }
+
+  /* Value stored in data-video: a bare YouTube id, or "ig:<kind>:<id>". */
+  function videoRef(info) {
+    return info.provider === "instagram"
+      ? "ig:" + (info.kind || "reel") + ":" + info.video
+      : info.video;
+  }
+
+  /* Fill a tile's poster image. Videos without one (Instagram) keep just the
+     play badge, so drop the <img> rather than leaving a broken image behind. */
+  function applyPoster(img, info, alt) {
+    if (!img) return;
+    img.setAttribute("alt", plain(alt || info.caption) || "Video");
+    var src = videoPoster(info);
+    if (src) { img.setAttribute("src", src); return; }
+    var host = img.parentNode;
+    if (host) host.classList.add("is-posterless");
+    if (host) host.removeChild(img);
   }
 
   /* ---------- Attribute binding ---------- */
@@ -198,11 +238,8 @@
         var vb = vf.querySelector(".gallery-item");
         var vi = vf.querySelector("img");
         var vc = vf.querySelector(".gallery-cap");
-        if (vb) vb.setAttribute("data-video", m.video);
-        if (vi) {
-          vi.setAttribute("src", videoPoster(m));
-          vi.setAttribute("alt", plain(m.title || m.caption) || "Video");
-        }
+        if (vb) vb.setAttribute("data-video", videoRef(m));
+        applyPoster(vi, m, m.title || m.caption);
         if (vc) vc.textContent = m.caption || "";
         grid.appendChild(vf);
         return;
@@ -379,11 +416,8 @@
           var vbtn = vf.querySelector(".video-embed");
           var vimg = vf.querySelector("img");
           var vcap = vf.querySelector("figcaption");
-          if (vbtn) vbtn.setAttribute("data-video", m.video);
-          if (vimg) {
-            vimg.setAttribute("src", videoPoster(m));
-            vimg.setAttribute("alt", plain(m.title || m.caption || p.title) || "Video");
-          }
+          if (vbtn) vbtn.setAttribute("data-video", videoRef(m));
+          applyPoster(vimg, m, m.title || m.caption || p.title);
           if (vcap) {
             if (m.caption) vcap.textContent = m.caption;
             else vcap.parentNode && vcap.parentNode.removeChild(vcap);
@@ -485,12 +519,11 @@
       btn.setAttribute("data-lightbox-set", "highlights");
       btn.setAttribute("data-caption", plain(m.caption || ""));
       if (m.type === "video") {
-        btn.setAttribute("data-video", m.video);
+        btn.setAttribute("data-video", videoRef(m));
         var vip = document.createElement("img");
-        vip.setAttribute("src", videoPoster(m));
-        vip.setAttribute("alt", plain(m.title || m.caption || p.title) || "Video");
         vip.loading = "lazy";
         btn.appendChild(vip);
+        applyPoster(vip, m, m.title || m.caption || p.title);
         var play = document.createElement("span");
         play.className = "video-play";
         play.setAttribute("aria-hidden", "true");

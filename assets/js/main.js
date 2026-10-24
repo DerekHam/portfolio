@@ -12,8 +12,15 @@
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $all(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
 
-  function embedIframe(id) {
-    return '<iframe src="https://www.youtube.com/embed/' + id +
+  function embedIframe(ref) {
+    var v = String(ref || "");
+    var ig = v.match(/^ig:(reel|p|tv):([A-Za-z0-9_-]+)$/);
+    if (ig) {
+      return '<iframe src="https://www.instagram.com/' + ig[1] + '/' + ig[2] +
+        '/embed" title="Instagram video" scrolling="no" allow="autoplay; encrypted-media" ' +
+        'allowfullscreen></iframe>';
+    }
+    return '<iframe src="https://www.youtube.com/embed/' + v +
       '?autoplay=1&rel=0" title="Video" allow="accelerometer; autoplay; clipboard-write; ' +
       'encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
   }
@@ -100,10 +107,11 @@
       if (lbVideo && video) {
         // Video item: swap the image out for an embedded player.
         lbVideo.hidden = false;
+        lbVideo.classList.toggle("is-portrait", /^ig:/.test(video));
         lbVideo.innerHTML = embedIframe(video);
         if (lbImg) { lbImg.hidden = true; lbImg.removeAttribute("src"); lbImg.removeAttribute("alt"); }
       } else {
-        if (lbVideo) { lbVideo.hidden = true; lbVideo.innerHTML = ""; }
+        if (lbVideo) { lbVideo.hidden = true; lbVideo.classList.remove("is-portrait"); lbVideo.innerHTML = ""; }
         if (lbImg) {
           lbImg.hidden = false;
           var img = el.querySelector("img");
@@ -189,6 +197,7 @@
       e.preventDefault();
       var frame = document.createElement("div");
       frame.className = "video-frame";
+      if (/^ig:/.test(id)) frame.classList.add("is-portrait");
       frame.innerHTML = embedIframe(id);
       btn.parentNode.replaceChild(frame, btn);
     });

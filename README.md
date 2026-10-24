@@ -103,22 +103,26 @@ arrow keys / Esc). Each entry is either a plain path or an object with an option
 - One image renders full-width; two or more become a slider (swipe/scroll, or use the arrows).
 - The `thumbnail` is used for the card and as the fallback image when `images` is empty.
 
-**Videos:** any `images` entry can also be a YouTube video. Give it a `video` (or
-`youtube`) value — a full URL or just the video ID:
+**Videos:** any `images` entry can also be a YouTube video or an Instagram reel. Give it a
+`video` (or `youtube` / `instagram`) value — a full URL or just the YouTube video ID:
 
 ```json
 "images": [
   { "video": "https://youtu.be/aqz-KE-bpKQ", "caption": "Build timelapse" },
-  { "youtube": "aqz-KE-bpKQ", "poster": "assets/img/my-poster.jpg", "caption": "Test run" }
+  { "youtube": "aqz-KE-bpKQ", "poster": "assets/img/my-poster.jpg", "caption": "Test run" },
+  { "video": "https://www.instagram.com/reel/ABC123xyz/", "caption": "Quick shop clip" }
 ]
 ```
 
 - Videos show a poster with a play button. The poster defaults to the YouTube thumbnail;
-  add your own with `poster`.
+  add your own with `poster`. Instagram reels have no predictable thumbnail, so they show
+  the play button on a plain tile unless you set `poster`.
 - On **project pages** a click plays the video inline; in the **Gallery** it opens in the
-  lightbox. Both support `caption`.
-- URLs and bare IDs both work: `https://youtu.be/ID`, `https://www.youtube.com/watch?v=ID`,
+  lightbox. Both support `caption`. Reels play in a 9:16 (portrait) frame.
+- YouTube URLs and bare IDs both work: `https://youtu.be/ID`, `https://www.youtube.com/watch?v=ID`,
   `https://www.youtube.com/shorts/ID`, or just `ID`.
+- Instagram reel URLs work too: `https://www.instagram.com/reel/ID/` (post and IGTV links
+  are accepted as well). Reels must be public for the embed to load.
 
 **Embeds:** an `images` entry can also embed a whole page (for example an interactive map)
 with an `embed` value — it renders as a large inline frame (80vh tall) instead of an image:
@@ -142,7 +146,7 @@ On wide screens the write-up sits in a column with a **sticky sidebar** on the r
 - **Highlights** — a small thumbnail grid of your chosen media (hidden when empty).
 
 Fill the Highlights section with an optional `highlights` array (same shape as `images` —
-photos and YouTube videos):
+photos, YouTube videos, and Instagram reels):
 
 ```json
 "highlights": [
@@ -209,8 +213,8 @@ images, the script stops without deleting anything.
 
 ## Adding photos / artwork to the gallery
 
-Open `data/gallery.json` and add entries to the `images` array (images, and YouTube
-videos in the same format as project images — see above):
+Open `data/gallery.json` and add entries to the `images` array (images, plus YouTube
+videos and Instagram reels in the same format as project images — see above):
 
 ```json
 { "src": "assets/img/my-photo.jpg", "alt": "Short description", "caption": "Shown under the enlarged image" }
