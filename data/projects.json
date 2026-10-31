@@ -65,7 +65,16 @@
       "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p>",
       "<p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>"
     ],
-    "links": []
+    "links": [
+      {
+        "label": "V1 CAD Files",
+        "url": "https://cad.onshape.com/documents/330550b9810319aac90c02ee/w/a60a4ffe48a78f1bea793c80/e/3492a55b40d1c8a03360a54f?renderMode=0&uiState=6addef889c05ed31a66ce707"
+      },
+      {
+        "label": "V2 CAD Files",
+        "url": "https://cad.onshape.com/documents/284c76c456bda19e11d6a18f/w/018c708ec11a33922a9754c9/e/0ecf75946c3ae8fe83384e08?renderMode=0&uiState=6addeefaa7772a3fa57ac721"
+      }
+    ]
   },
   {
     "id": "03",
@@ -74,14 +83,24 @@
     "tags": ["Aerospace", "Fabrication", "CAD", "RC"],
     "featured": true,
     "summary": "A series of low or unpowered gliders, designed so they comply with strict Beijing drone regulations. Unfortunately forced to discontinue.",
-    "thumbnail": "assets/img/placeholder.svg",
+    "thumbnail": "assets/img/glider/card.png",
     "images": [
       { "src": "assets/img/glider/horn.jpeg", "caption": " " },
       { "src": "assets/img/glider/lightweight-airframe.jpeg", "caption": " " },
       { "src": "assets/img/glider/v1-snapped.jpeg", "caption": " " }
     ],
-    "description": "<p>Another placeholder so the home page grid is not empty.</p>",
-    "links": []
+    "description": ["<p>I was into building drones, but Beijing Municipal Government said: \"No you will not build drones.\" so I built gliders, which are technically not drones, until they are, so then I had to stop, so my parents won't go to jail. </p>",
+      "<p>I can't wait to start again in college! (rubs hand in excitement)</p>"],
+    "links": [
+      {
+        "label": "Glider V1 CAD (Powered)",
+        "url": "https://cad.onshape.com/documents/7a7bfae2ec87386abced25f7/w/6c21c9a79bcb237d73e94830/e/f24cc96b029f14d5d8039074?renderMode=0&uiState=6addef48af8bb20a04c1ec5b"
+      },
+      {
+        "label": "Glider V2 CAD (Unpowered)",
+        "url": "https://cad.onshape.com/documents/11302ad23768e5ccea1bf939/w/abd1e868b13c0e0c3d42a3f0/e/8aa3324f8b6fcc1b1c7415d9"
+      }
+    ]
   },
   {
     "id": "01",
@@ -95,12 +114,14 @@
       { "embed": "https://parsecs-starmap.derekhan.link", "caption": "Interactive starmap" }
     ],
     "description": [
-      "<p>This is placeholder content so you can see how a project page looks.</p>",
-      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+      "<p>Please click on the embedded page to explore the wiki.</p>",
+      "<p>Alternatively, click on the interactive starmap if the page is not loading. Go to the website to see more detailed info.</p>",
+      "<h3>Contact me to join writers' group!</h3>"
     ],
     "links": [
       { "label": "Go to website", "url": "https://parsecs.fandom.com" },
-      { "label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link" }
+      { "label": "Interactive Starmap", "url": "https://parsecs-starmap.derekhan.link" },
+      { "label": "Contacts", "url": "https://derekhan.link/contact.html" }
     ]
   },
   {
@@ -118,10 +139,12 @@
       { "src": "assets/img/alarm/v2.jpeg", "caption": " " }
     ],
     "description": [
-      "<p>This is placeholder content so you can see how a project page looks.</p>",
-      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+      "<p>Apparently, I can't wake up in the morning, and the school is not happy about that. Being me, I pursued the problem not as a habitual issue of me (though it really is), but as an engineering problem on how to wake me up most efficiently.</p>",
+      "<p>I quickly found out that maybe fixing my routine issues is a better solution, but the light alarm remained useful, as it gives me a more natural and gentle way to start my day than blasting alarms by my ears.</p>"
     ],
-    "links": []
+    "links": [
+      { "label": "CAD Files", "url": "https://cad.onshape.com/documents/5b6fab1ddb9e7ab8377a30ad/w/22dc21329881b44c300d14ef/e/36dcb5d025eabb546d301939"}
+    ]
   },
   {
     "id": "08",
