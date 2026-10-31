@@ -14,6 +14,22 @@ python3 -m http.server 8000
 
 Then open <http://localhost:8000>.
 
+## Publishing (one click)
+
+Double-click **`Publish.command`** in Finder (or run `./Publish.command`). It:
+
+1. compares the full-resolution originals against `Scripts/images-manifest.json` and
+   rebuilds `assets/img` + `assets/hi` only when images were added, edited or deleted;
+2. checks that every file in `data/` still parses as valid JSON;
+3. commits everything and pushes to GitHub, where Pages then publishes it.
+
+The originals folder defaults to `~/Desktop/02 College/Portfolio-fullres-images/img`;
+set `FULLRES_DIR` to use a different one. It needs Python 3 with Pillow
+(`python3 -m pip install pillow`), which the image script already requires.
+
+If macOS refuses to open the file the first time, right-click it → **Open**, or run
+`chmod +x Publish.command` once in Terminal.
+
 ## Where to edit your content
 
 Everything you normally change is in the `data/` folder. Edit the JSON, refresh the page.
@@ -188,6 +204,10 @@ regenerates them from the originals:
 ```bash
 python3 Scripts/regenerate-images.py
 ```
+
+`Publish.command` runs this for you whenever it detects a change, and records the originals'
+checksums in `Scripts/images-manifest.json` so unchanged images are never rebuilt twice.
+The script is deterministic: unchanged originals always produce byte-identical output.
 
 Requirements: Python 3 and Pillow (`pip install pillow`).
 
