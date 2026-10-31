@@ -9,15 +9,15 @@
     "summary": "Two open-sourced wind tunnels designed for middle- and high- school use.",
     "thumbnail": "assets/img/calico/full-view.jpeg",
     "images": [
-      { "src": "assets/img/calico/full-view.jpeg", "caption": " " },
-      { "src": "assets/img/calico/intake-view.jpeg", "caption": " " },
-      { "src": "assets/img/calico/diffuser-1.jpeg", "caption": " " },
-      { "src": "assets/img/calico/diffuser-2.jpeg", "caption": " " },
-      { "src": "assets/img/calico/frame-1.jpeg", "caption": " " },
-      { "src": "assets/img/calico/leak-test.jpeg", "caption": " " },
-      { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": " " },
-      { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": " " },
-      { "src": "assets/img/calico/approval.jpeg", "caption": " " },
+      { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie — the full assembly" },
+      { "src": "assets/img/calico/intake-view.jpeg", "caption": "The incomplete air intake & flow conditioning section of my wind tunnel. " },
+      { "src": "assets/img/calico/diffuser-1.jpeg", "caption": "Constructing the diffuser…" },
+      { "src": "assets/img/calico/diffuser-2.jpeg", "caption": "Almost done!" },
+      { "src": "assets/img/calico/frame-1.jpeg", "caption": "Testing the frame structural integritiy before assembling with the trolley." },
+      { "src": "assets/img/calico/leak-test.jpeg", "caption": "Testing for leaks…" },
+      { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": "A test for the Calico Kitten. I have no cars besides me, so I got a train toy from my toddler years to work." },
+      { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": "Mr. Chris Hansen teaching me Rhino CAM" },
+      { "src": "assets/img/calico/approval.jpeg", "caption": "Yes, this is his \"design approved\" face. " },
       { "src": "assets/img/calico/calico-1.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." },
       { "src": "assets/img/calico/calico-2.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." }
     ],
@@ -59,11 +59,13 @@
     "summary": "An efficient, fast, and easily carried catamaran stemmed from a bird monitoring boat.",
     "thumbnail": "assets/img/catamaran/card.png",
     "images": [
-      { "src": "assets/img/catamaran/card.png", "caption": " " }
+      { "url": "https://youtu.be/l4PK6CLHE0c?si=Q2vhXI0AUKTswtan", "caption": "Catamaran on Liangma River - POV" },
+      { "url": "https://youtube.com/shorts/jY1MIndGaHU?feature=share", "caption": "Catamaran on Chaoyang Lake" }
     ],
     "description": [
       "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p>",
-      "<p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>"
+      "<p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>", 
+      "<p>Apparently, with a 3S 2200mAh battery, it can sail for over an hour! I got physically exhausted after that long test.</p>"
     ],
     "links": [
       {
