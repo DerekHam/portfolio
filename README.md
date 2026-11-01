@@ -21,7 +21,8 @@ Double-click **`Publish.command`** in Finder (or run `./Publish.command`). It:
 1. compares the full-resolution originals against `Scripts/images-manifest.json` and
    rebuilds `assets/img` + `assets/hi` only when images were added, edited or deleted;
 2. checks that every file in `data/` still parses as valid JSON;
-3. commits everything and pushes to GitHub, where Pages then publishes it.
+3. rebuilds the downloadable resume PDF from `resume.html` and `data/resume.json`;
+4. commits everything and pushes to GitHub, where Pages then publishes it.
 
 The originals folder defaults to `~/Desktop/02 College/Portfolio-fullres-images/img`;
 set `FULLRES_DIR` to use a different one. It needs Python 3 with Pillow
@@ -40,7 +41,7 @@ Everything you normally change is in the `data/` folder. Edit the JSON, refresh 
 | `data/home.json` | Home hero text, hero banner image, and the About paragraphs |
 | `data/projects.json` | All projects (cards, filters, and project pages) |
 | `data/experience.json` | Internships/work and extracurriculars/leadership |
-| `data/resume.json` | Resume page content and the PDF path (page currently hidden/unlisted) |
+| `data/resume.json` | Resume page content and PDF path; rebuild the PDF with `Scripts/build-resume-pdf.py` (page is hidden/unlisted) |
 | `data/awards-skills.json` | Awards and the skill groups |
 | `data/blog.json` | Blog posts list |
 | `data/contact.json` | Contact rows |
@@ -289,6 +290,23 @@ HTML, so you can also embed a link directly, for example:
 "bullets": ["Wrote it up — see the <a href=\"https://example.com\">report</a>."]
 ```
 
+## Resume PDF
+
+The download button on the home page and the resume page serve
+`assets/files/Derek_Han_Resume.pdf`. That PDF is generated from `resume.html`, which reads
+`data/resume.json`, so editing the JSON and rebuilding keeps the download in sync.
+
+Rebuild it manually with:
+
+```bash
+python3 Scripts/build-resume-pdf.py
+```
+
+`Publish.command` runs the same script automatically before committing. The script uses
+headless Chrome/Chromium (set `CHROME=/path/to/chrome` if it is not found) and prints the
+page with the site's A4 resume print styles. The resume content uses **Candara** with
+`Segoe UI` / `Trebuchet MS` fallbacks; the PDF embeds Candara when the font is installed.
+
 ## Adding a blog post
 
 Blog posts are JSON-driven, like the rest of the site.
@@ -377,6 +395,7 @@ assets/img/            Display images (max 1000px) — generated
 assets/hi/             Lightbox images (max 2560px) — generated
 assets/files/          Downloadable files (dev log PDF, resume PDF)
 Scripts/regenerate-images.py  Rebuilds assets/img + assets/hi from the full-res originals
+Scripts/build-resume-pdf.py  Rebuilds assets/files/Derek_Han_Resume.pdf from resume.html
 favicon.svg            Site icon
 robots.txt, sitemap.xml  SEO
 ```

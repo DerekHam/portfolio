@@ -264,6 +264,23 @@
     mo.observe(document.body, { childList: true, subtree: true });
   }
 
+  /* ---------- Resume downloads ---------- */
+  // The PDF is rebuilt by Publish.command, but browsers may cache the old file.
+  // Add a unique query string on click so the download is always the newest copy.
+  function initResumeDownloads() {
+    $all("[data-resume-download]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        var href = link.getAttribute("href");
+        if (!href || href === "#") return;
+        try {
+          var url = new URL(href, window.location.href);
+          url.searchParams.set("v", Date.now());
+          link.setAttribute("href", url.toString());
+        } catch (e) {}
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initTheme();
     initNav();
@@ -273,5 +290,6 @@
     initVideoEmbeds();
     initParallax();
     initReveal();
+    initResumeDownloads();
   });
 })();

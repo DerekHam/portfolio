@@ -1,31 +1,133 @@
 {
-  "_comment": "Resume page. Put your PDF at the path in 'pdf'. 'skills' may contain simple HTML.",
-  "name": "Derek Han",
+  "_comment": "Resume page. The PDF is rebuilt by Scripts/build-resume-pdf.py. 'skills' may contain simple HTML.",
+  "name": "Zhizhi (Derek) Han",
   "email": "Derekzhizhihan09@outlook.com",
   "mailLink": "mailto:Derekzhizhihan09@outlook.com",
+  "phone": "+86 130 0190 8073",
+  "phoneLink": "tel:+8613001908073",
   "location": "Beijing, China",
+  "portfolio": "derekhan.link",
+  "portfolioLink": "https://derekhan.link",
   "pdf": "assets/files/Derek_Han_Resume.pdf",
   "education": [
     {
       "school": "Keystone Academy, Beijing",
-      "when": "Expected 2027",
-      "detail": "Grade 12, currently in IBDP, SAT 1540/1600, TOEFL 114/120"
+      "when": "Expected May 2027",
+      "detail": "IB Diploma Candidate — HL Physics, Design Technology, Mathematics AA; SL Geography, English A, Chinese A. Predicted IB: 40/42 subject points (TOK/EE pending). SAT 1540 (740 EBRW / 800 Math). TOEFL 114/120 (Reading 30, Listening 30, Speaking 25, Writing 29)."
+    }
+  ],
+  "summer": [
+    {
+      "title": "WPI Frontiers — Aerospace Engineering",
+      "when": "July 2024",
+      "org": "Worcester Polytechnic Institute",
+      "bullets": [
+        "Conducted wind-tunnel experiments and designed model aircraft."
+      ]
+    },
+    {
+      "title": "Experimental Physics Research Academy",
+      "when": "July–August 2026",
+      "org": "University of Pennsylvania",
+      "bullets": [
+        "Studied mechanics, electromagnetism, quantum dynamics, and astrophysics; completed a final project on wind-farm layout and efficiency."
+      ]
+    }
+  ],
+  "honors": [
+    {
+      "title": "USA Computing Olympiad",
+      "when": "Grade 11",
+      "detail": "Gold Division; Silver Division, Grade 10."
+    },
+    {
+      "title": "HiMCM",
+      "when": "Grade 10",
+      "detail": "Meritorious Award, top 13% worldwide."
+    },
+    {
+      "title": "Conrad Challenge",
+      "when": "Grade 10",
+      "detail": "China Finalist; Best Innovation Award, Energy & Environment."
+    },
+    {
+      "title": "Generation AI 24-Hour Computer Vision Hackathon",
+      "when": "Grade 11",
+      "detail": "2nd of ~35 teams."
+    },
+    {
+      "title": "Berkeley Mini Math Tournament",
+      "when": "Grade 9",
+      "detail": "8th nationally in Puzzle Round; Gold in Relay Round; Silver overall."
+    },
+    {
+      "title": "TEDx Keystone Academy",
+      "when": "2025",
+      "detail": "Speaker."
     }
   ],
   "experience": [
     {
-      "title": "Role / Internship",
-      "when": "2025",
-      "org": "Organization",
+      "title": "Calico Wind Tunnels — Founder, Designer & Experimental Engineer",
+      "when": "November 2025–Present",
+      "org": "Open-source educational wind tunnel project",
       "bullets": [
-        "Bullet point about your work.",
-        "Another key contribution."
+        "Designed and built two open-source educational wind tunnels: the 3.5 m Calico Biggie (400×400×800 mm test section, 15 m/s) and the sub-$15 Calico Kitten.",
+        "Led parametric Onshape CAD and CNC, laser, and 3D-printed fabrication; kept the Biggie prototype to ~$550 and published a public build log.",
+        "Open-sourced the design files, trained peers, and supported replication at another Beijing school."
+      ]
+    },
+    {
+      "title": "Student Musicals — Backstage Engineering Director & Structural Designer",
+      "when": "2024–2026",
+      "org": "Weimar Pendulum & Smash the Wall",
+      "bullets": [
+        "Engineered a 3.6 m working pendulum clock for Weimar Pendulum and a 4.5 m suspended closet structure for Smash the Wall.",
+        "Applied load calculations and structural redundancy to address safety risks in live performances; coordinated fabrication and rigging with the production team."
+      ]
+    },
+    {
+      "title": "RC Catamarans & Gliders — Designer & Fabricator",
+      "when": "2024–2026",
+      "org": "Independent engineering projects",
+      "bullets": [
+        "Iterated three 1 m catamarans (2-minute disassembly, over 1-hour runtime) and two glider airframes; Onshape CAD, composite and 3D-printed construction, and field testing."
       ]
     }
   ],
-  "projects": [
-    { "name": "Project Name", "desc": "One-line description and tools used." },
-    { "name": "Project Name", "desc": "One-line description and tools used." }
+  "activities": [
+    {
+      "title": "Aerospace Club — Founder, President & Engineering Instructor",
+      "when": "2025–Present",
+      "org": "The Sky Is NOT The Limit, Keystone Academy",
+      "bullets": [
+        "Founded the school's first aerospace club; led 22 members; designed and taught a 12-week aerodynamics curriculum; guided glider, rocket, and F1-wing projects."
+      ]
+    },
+    {
+      "title": "FRC Team 9411/10558 — Founding Member, Engineering Captain (1 year) & Lead Driver",
+      "when": "2023–2026",
+      "org": "Keystone Academy",
+      "bullets": [
+        "Co-founded a 20+ member team; secured ~$15K in funding and workspace; led mechanical design and prototyping; mentored younger members."
+      ]
+    },
+    {
+      "title": "KEyTEC Engineering & Fabrication Workshop — Founding Cohort & Peer Equipment Trainer",
+      "when": "2025–Present",
+      "org": "Keystone Academy",
+      "bullets": [
+        "First student trained on CNC router and waterjet; trained peers and refined designs for fabrication."
+      ]
+    },
+    {
+      "title": "Parsecs — Founder, Editor & Worldbuilder",
+      "when": "2025–Present",
+      "org": "Collaborative hard science fiction wiki",
+      "bullets": [
+        "Built a collaborative hard-sci-fi wiki linking physics, engineering, sociology, and literature; authored and edited 50+ pages; built an interactive starmap."
+      ]
+    }
   ],
-  "skills": "List your technical skills here, or see the <a href=\"awards-skills.html\">Awards &amp; Skills</a> page."
+  "skills": "Programming: Python, C++; computer vision.<br>CAD &amp; Fabrication: Onshape, Rhino, parametric design; 3D printing, CNC router, waterjet, laser cutting, soldering, Arduino/ESP32.<br>Languages: Mandarin (native), English (fluent), German (learning).<br>Interests: aerospace, public transit, urban planning, archery, cooking, hard sci-fi, simulation games."
 }

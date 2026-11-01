@@ -1020,3 +1020,172 @@ body.lightbox-open { overflow: hidden; }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
 }
+
+/* ---------- Resume page ---------- */
+/* Candara is the resume's body face. It is present on most Windows/Office
+   installs; the fallbacks keep the page readable everywhere else. */
+.resume-page .resume-head,
+.resume-page .resume-section,
+.resume-page .resume-section .kicker,
+.resume-page .resume-contact {
+  font-family: Candara, "Segoe UI", "Trebuchet MS", sans-serif;
+}
+
+.resume-page .resume-section .kicker {
+  font-family: Candara, "Segoe UI", "Trebuchet MS", sans-serif !important;
+  letter-spacing: 0.08em;
+}
+
+.resume-page .resume-section .kicker::before { content: "[ "; }
+.resume-page .resume-section .kicker::after { content: " ]"; }
+
+.resume-page .entry-head .when,
+.resume-page .when {
+  font-family: Candara, "Segoe UI", "Trebuchet MS", sans-serif !important;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm 13mm;
+  }
+
+  .resume-page {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .resume-page .site-header,
+  .resume-page .site-footer,
+  .resume-page .skip-link,
+  .resume-page .page-head,
+  .resume-page .resume-head .btn {
+    display: none !important;
+  }
+
+  .resume-page main,
+  .resume-page #main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-page .wrap {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-page section.wrap.reveal {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-page .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .resume-page .resume-head {
+    display: block !important;
+    margin: 0 0 5pt !important;
+  }
+
+  .resume-page .resume-head h2 {
+    font-size: 18pt !important;
+    line-height: 1.1 !important;
+    margin: 0 0 2.5pt !important;
+    color: #111 !important;
+  }
+
+  .resume-page .resume-contact {
+    font-size: 8.3pt !important;
+    line-height: 1.25 !important;
+    color: #333 !important;
+  }
+
+  .resume-page .resume-section {
+    margin: 5.5pt 0 0 !important;
+    padding: 5.5pt 0 0 !important;
+    border-top: 0.7pt solid #333 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.28 !important;
+    color: #111 !important;
+    break-inside: avoid;
+  }
+
+  .resume-page .resume-section .kicker {
+    font-size: 9.2pt !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em !important;
+    margin: 0 0 2.5pt !important;
+    color: #111 !important;
+  }
+
+  .resume-page .resume-section .kicker::before,
+  .resume-page .resume-section .kicker::after {
+    content: none !important;
+  }
+
+  .resume-page .resume-section h3 {
+    font-size: 9.8pt !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    color: #111 !important;
+  }
+
+  .resume-page .entry-head {
+    display: table !important;
+    width: 100% !important;
+  }
+
+  .resume-page .entry-head h3 {
+    display: table-cell !important;
+    text-align: left !important;
+  }
+
+  .resume-page .entry-head .when {
+    display: table-cell !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    font-size: 8.3pt !important;
+  }
+
+  .resume-page .resume-section > div[data-list] > div {
+    margin-bottom: 3.5pt !important;
+  }
+
+  .resume-page [data-list="summer"] .muted,
+  .resume-page [data-list="experience"] .muted,
+  .resume-page [data-list="activities"] .muted {
+    display: none !important;
+  }
+
+  .resume-page .resume-honors li {
+    margin-bottom: 1.1pt !important;
+  }
+
+  .resume-page .bullets {
+    margin: 1.5pt 0 0 !important;
+    padding-left: 11pt !important;
+    color: #333 !important;
+  }
+
+  .resume-page .bullets li {
+    margin-bottom: 1pt !important;
+  }
+
+  .resume-page .muted {
+    color: #333 !important;
+  }
+
+  .resume-page a {
+    color: #111 !important;
+    text-decoration: none !important;
+  }
+
+  .resume-page p {
+    margin: 0 !important;
+  }
+}

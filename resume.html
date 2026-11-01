@@ -21,7 +21,7 @@
     })();
   </script>
 </head>
-<body data-page="resume">
+<body class="resume-page" data-page="resume">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -63,17 +63,19 @@
         <div>
           <h2 style="margin: 0 0 4px;" data-bind="name"></h2>
           <div class="resume-contact">
-            <a data-bind="email" data-attrs="href:mailLink"></a>
-            &nbsp;&middot;&nbsp; <span data-bind="location"></span>
-            &nbsp;&middot;&nbsp; <a href="#" data-social="linkedin">LinkedIn</a>
-            &nbsp;&middot;&nbsp; <a href="#" data-social="github">GitHub</a>
+            <span data-bind="location"></span>
+            &nbsp;|&nbsp; Email: <a data-bind="email" data-attrs="href:mailLink"></a>
+            &nbsp;|&nbsp; Phone: <a data-bind="phone" data-attrs="href:phoneLink"></a>
+            <br>
+            Portfolio: <a data-bind="portfolio" data-attrs="href:portfolioLink"></a>
+            &nbsp;|&nbsp; GitHub: <a href="#" data-social="github">github.com/DerekHam</a>
           </div>
         </div>
-        <a class="btn btn--primary" data-attrs="href:pdf" download>Download PDF</a>
+        <a class="btn btn--primary" data-attrs="href:pdf" download="Zhizhi_Han_Resume.pdf" data-resume-download title="Download the latest resume PDF">Download Resume</a>
       </div>
 
       <div class="resume-section">
-        <span class="kicker">[ Education ]</span>
+        <span class="kicker">Education</span>
         <div data-list="education">
           <template>
             <div style="margin-bottom:16px;">
@@ -88,7 +90,34 @@
       </div>
 
       <div class="resume-section">
-        <span class="kicker">[ Experience ]</span>
+        <span class="kicker">Summer Programs</span>
+        <div data-list="summer">
+          <template>
+            <div style="margin-bottom:16px;">
+              <div class="entry-head">
+                <h3 data-bind="title"></h3>
+                <span class="when" data-bind="when"></span>
+              </div>
+              <div class="muted" data-bind="org"></div>
+              <ul class="bullets" data-list="bullets">
+                <template><li data-bind="."></li></template>
+              </ul>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <div class="resume-section">
+        <span class="kicker">Honors &amp; Awards</span>
+        <ul class="bullets resume-honors" data-list="honors">
+          <template>
+            <li><strong data-bind="title"></strong> &mdash; <span data-bind="detail"></span></li>
+          </template>
+        </ul>
+      </div>
+
+      <div class="resume-section">
+        <span class="kicker">Research &amp; Engineering</span>
         <div data-list="experience">
           <template>
             <div style="margin-bottom:16px;">
@@ -106,16 +135,25 @@
       </div>
 
       <div class="resume-section">
-        <span class="kicker">[ Projects ]</span>
-        <ul class="bullets" data-list="projects">
+        <span class="kicker">Leadership &amp; Activities</span>
+        <div data-list="activities">
           <template>
-            <li><strong data-bind="name"></strong> &mdash; <span data-bind="desc"></span></li>
+            <div style="margin-bottom:16px;">
+              <div class="entry-head">
+                <h3 data-bind="title"></h3>
+                <span class="when" data-bind="when"></span>
+              </div>
+              <div class="muted" data-bind="org"></div>
+              <ul class="bullets" data-list="bullets">
+                <template><li data-bind="."></li></template>
+              </ul>
+            </div>
           </template>
-        </ul>
+        </div>
       </div>
 
       <div class="resume-section">
-        <span class="kicker">[ Skills ]</span>
+        <span class="kicker">Skills &amp; Interests</span>
         <p class="muted" data-bind="skills" data-html="true"></p>
       </div>
     </section>
@@ -126,7 +164,6 @@
       <span>&copy; <span id="year"></span> <span data-bind="site.name">Derek Han</span></span>
       <span class="footer-links">
         <a href="#" data-social="email">Email</a>
-        <a href="#" data-social="linkedin">LinkedIn</a>
         <a href="#" data-social="github">GitHub</a>
       </span>
     </div>

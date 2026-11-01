@@ -5,7 +5,8 @@
 #  Double-click this file in Finder (or run ./Publish.command in Terminal) to:
 #    1. check the full-resolution image folder for new / changed / deleted images
 #    2. rebuild assets/img + assets/hi when anything changed
-#    3. commit everything and push to GitHub (Pages then serves it)
+#    3. rebuild the resume PDF from resume.html and data/resume.json
+#    4. commit everything and push to GitHub (Pages then serves it)
 #
 #  The image check compares SHA-256 checksums against Scripts/images-manifest.json,
 #  which this script keeps up to date. Point FULLRES_DIR at a different originals
@@ -162,6 +163,14 @@ if bad:
     sys.exit(1)
 print("  All %d data files are valid JSON." % len(paths))
 PY
+
+# --- Rebuild the resume PDF -------------------------------------------------
+step "Rebuilding the resume PDF"
+if python3 Scripts/build-resume-pdf.py; then
+  echo "  Resume PDF is up to date."
+else
+  printf '  ! Could not rebuild the resume PDF; the existing file will be used.\n'
+fi
 
 # --- Commit and push --------------------------------------------------------
 step "Publishing to GitHub"

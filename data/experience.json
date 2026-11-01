@@ -20,6 +20,12 @@
       "bullets": [
         "Developed a monocular depth estimation model for VTOL UAVs; enabled real-time spatial analysis; authored a paper on model structure and implementation."
       ]
+    },
+    {
+      "title": "UPenn Experimental Physics Research Academy",
+      "when": "Summer, Grade 11",
+      "role": "Participant",
+      "bullets": []
     }
   ],
   "extras": [
@@ -114,12 +120,6 @@
       "bullets": [
         "Conducted wind tunnel experiments; designed and built model aircraft; explored energy systems and environmental sustainability."
       ]
-    },
-    {
-      "title": "UPenn Experimental Physics Research Academy",
-      "when": "Summer, Grade 11",
-      "role": "Participant",
-      "bullets": []
     }
   ]
 }
