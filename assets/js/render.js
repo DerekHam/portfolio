@@ -27,6 +27,15 @@
     });
   }
 
+  /* Projects marked "template": true are authoring scaffolding — never shown. */
+  function loadProjects() {
+    return loadJSON("data/projects.json").then(function (list) {
+      return (Array.isArray(list) ? list : []).filter(function (p) {
+        return p && p.template !== true;
+      });
+    });
+  }
+
   function getPath(obj, path) {
     if (!path || path === ".") return obj;
     return path.split(".").reduce(function (o, k) {
@@ -632,14 +641,14 @@
       if (footer) bindScope(footer, { site: site });
 
       if (page === "projects" || page === "project") {
-        return loadJSON("data/projects.json").then(function (projects) {
+        return loadProjects().then(function (projects) {
           if (page === "projects") renderProjectGrid(projects);
           else renderProjectDetail(projects);
         });
       }
 
       if (page === "home") {
-        return Promise.all([loadJSON("data/home.json"), loadJSON("data/projects.json")]).then(function (r) {
+        return Promise.all([loadJSON("data/home.json"), loadProjects()]).then(function (r) {
           r[0].site = site;
           bindScope(document.body, r[0]);
           renderFeatured(r[1]);

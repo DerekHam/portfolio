@@ -89,9 +89,13 @@ You control styling by editing the HTML template markup and `assets/css/style.cs
 
 ## Adding a project
 
-Open `data/projects.json` and copy one `{ ... }` object in the array. The Projects page
-grid and its filter buttons update automatically from each project's `tags`. Set
-`"featured": true` to also show it on the Home page.
+Open `data/projects.json`. The **last entry in the array is a ready-made template** —
+copy that whole `{ ... }` block, give it a unique numeric `id`, delete the
+`"template": true` line, and fill in the fields. (Any entry with `"template": true` is
+ignored everywhere: no card on Projects or Home, and no `project.html?id=...` page.)
+
+The Projects page grid and its filter buttons update automatically from each project's
+`tags`. Set `"featured": true` to also show it on the Home page.
 
 ### Ordering projects
 

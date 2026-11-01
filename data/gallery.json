@@ -13,7 +13,7 @@
     { "src": "assets/img/gallery/clouds-1.jpeg", "caption": "Sometimes the cloud formations over Beijing makes you wonder..." },
     { "src": "assets/img/gallery/clouds-2.jpeg", "caption": "...about how small we are, and what a grand planet we live on." },
     { "src": "assets/img/gallery/construction.jpeg", "caption": "This photo records the construction of Basis International School just across the road under an impending thunderstorm. It makes me feel how powerless we are against the nature, yet we still build nonetheless." },
-    { "src": "assets/img/gallery/dalat-power-plant.JPG", "caption": "My Grandmother is born in Dalat Banner, Ordos, Inner Mongolia. I took this picture while our class is here for a school trip. The Dalat Power Plant is once the largest in Asia, tapping off the abundant coal resource in the region." },
+    { "src": "assets/img/gallery/dalat-power-plant.JPG", "caption": "My Grandmother is born in Dalad Banner, Ordos, Inner Mongolia. I took this picture while our class is here for a school trip. The Dalat Power Plant is once the largest in Asia, tapping off the abundant coal resource in the region." },
     { "src": "assets/img/gallery/Huolong.jpeg", "caption": "The Huolong is a traditional Chinese New Year piece near Ordos, Inner Mongolia. It is used to bring good luck for the next year, and is made out of bricks with coal powder mixed inside." },
     { "src": "assets/img/gallery/hydro-and-road.JPG", "caption": "Gotta love a mountain road and a hydroelectric dam!" },
     { "src": "assets/img/gallery/hydro-power-dam.jpg", "caption": "I admire the engineering behind this hydroelectric project." },
@@ -21,6 +21,6 @@
     { "src": "assets/img/gallery/Wintercore.jpeg", "caption": "WINTERCORE" },
     { "src": "assets/img/gallery/xiangshawan-ropeway.JPG", "caption": "I was stranded at the terminus station by a flash flood 4 years old, and this ropeway took me out. Now I visited the ropeway once again. Thrilling memories..." },
     { "video": "https://youtube.com/shorts/NQBaUhBG-k4", "caption": "Choo Choo! this is a video taken on the Bluebell Railways, a heritage railway in the UK. The steam looks very fun as the train passes under the bridge." },
-    { "video": "https://www.instagram.com/reel/Dbw-yEkOBxs/", "caption": "As you can see, I like trains!", "title": "Instagram reel: a train passing by" }
+    { "video": "https://www.instagram.com/reel/Dbw-yEkOBxs/", "caption": "As you can see, I like trains!", "title": "" }
   ]
 }

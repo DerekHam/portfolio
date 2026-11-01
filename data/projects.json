@@ -19,7 +19,7 @@
       { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": "Mr. Chris Hansen teaching me Rhino CAM" },
       { "src": "assets/img/calico/approval.jpeg", "caption": "Yes, this is his \"design approved\" face. " },
       { "src": "assets/img/calico/calico-1.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." },
-      { "src": "assets/img/calico/calico-2.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." }
+      { "src": "assets/img/calico/calico-2.jpeg", "caption": "Aww, how cute (´･ω･`)" }
     ],
     "highlights": [
       { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie — the full assembly" },
@@ -297,6 +297,37 @@
     ],
     "links": [
       { "label": "You are looking at it", "url": "index.html" }
+    ]
+  },
+  {
+    "_comment": "PROJECT TEMPLATE — copy this block, give it a unique numeric id, delete the \"template\": true line, then fill in the fields. While \"template\" is true this entry is ignored everywhere: no card on Projects or Home, and no project.html?id=... page. Delete unused fields if you like.",
+    "template": true,
+    "id": "90",
+    "title": "Project title",
+    "date": "2026-01 to 2026-06",
+    "tags": ["CAD", "Fabrication"],
+    "featured": false,
+    "summary": "One or two sentences that sell the project on its card.",
+    "thumbnail": "assets/img/placeholder.svg",
+    "images": [
+      { "src": "assets/img/placeholder.svg", "caption": "What this photo shows" },
+      { "src": "assets/img/placeholder.svg", "caption": "A second view" },
+      { "video": "https://youtu.be/aqz-KE-bpKQ", "caption": "Optional: a YouTube video" }
+    ],
+    "highlights": [
+      { "src": "assets/img/placeholder.svg", "caption": "Sidebar highlight" }
+    ],
+    "description": [
+      "<p>Opening paragraph: what it is, why you made it, and what it does.</p>",
+      "<h2>How it works</h2>",
+      "<p>Simple HTML is allowed here: <b>bold</b>, <i>italic</i>, <a href=\"https://example.com\">links</a>, and lists.</p>",
+      "<ul><li>A design decision and why you made it</li><li>Another decision, a constraint, or a measurement</li></ul>",
+      "<h2>Results</h2>",
+      "<p>What you measured, learned, or shipped. Numbers and outcomes help.</p>"
+    ],
+    "links": [
+      { "label": "CAD Files", "url": "https://example.com/cad" },
+      { "label": "Dev Log (PDF)", "url": "assets/files/my-dev-log.pdf", "download": "My Dev Log.pdf" }
     ]
   }
 ]
