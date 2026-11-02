@@ -352,7 +352,7 @@
 
   }
 
-  function renderProjectDetail(projects) {
+  function renderProjectDetail(projects, site) {
     var params = new URLSearchParams(window.location.search);
     var id = params.get("id");
     var p = projects.filter(function (x) { return String(x.id) === String(id); })[0];
@@ -482,6 +482,12 @@
     }
 
     renderProjectSidebar(p, descEl);
+
+    // Let the PDF exporter know the project is ready (and give it the data so
+    // it does not need to fetch the JSON again).
+    document.dispatchEvent(new CustomEvent("project:rendered", {
+      detail: { project: p, site: site || null, projects: projects }
+    }));
   }
 
   /* ---------- Project sidebar: details, table of contents, highlights ---------- */
@@ -643,7 +649,7 @@
       if (page === "projects" || page === "project") {
         return loadProjects().then(function (projects) {
           if (page === "projects") renderProjectGrid(projects);
-          else renderProjectDetail(projects);
+          else renderProjectDetail(projects, site);
         });
       }
 

@@ -164,6 +164,16 @@ if bad:
 print("  All %d data files are valid JSON." % len(paths))
 PY
 
+# --- Rebuild embed previews -------------------------------------------------
+# Embedded pages cannot be captured by the browser-side PDF exporter, so take
+# screenshots of them for the project PDFs.
+step "Rebuilding embed previews"
+if python3 Scripts/build-embed-previews.py; then
+  echo "  Embed previews are up to date."
+else
+  printf '  ! Could not rebuild embed previews; existing previews will be used.\n'
+fi
+
 # --- Rebuild the resume PDF -------------------------------------------------
 step "Rebuilding the resume PDF"
 if python3 Scripts/build-resume-pdf.py; then

@@ -54,13 +54,13 @@
     "id": "02",
     "title": "RC Catamarans",
     "date": "2025-04 to 2026-06",
-    "tags": ["Robotics", "Fabrication", "CAD", "RC"],
+    "tags": ["Fabrication", "CAD", "Remote Control"],
     "featured": true,
     "summary": "An efficient, fast, and easily carried catamaran stemmed from a bird monitoring boat.",
     "thumbnail": "assets/img/catamaran/card.png",
     "images": [
-      { "url": "https://youtu.be/l4PK6CLHE0c?si=Q2vhXI0AUKTswtan", "caption": "Catamaran on Liangma River - POV" },
-      { "url": "https://youtube.com/shorts/jY1MIndGaHU?feature=share", "caption": "Catamaran on Chaoyang Lake" }
+      { "video": "https://youtu.be/l4PK6CLHE0c?si=Q2vhXI0AUKTswtan", "caption": "Catamaran on Liangma River - POV" },
+      { "video": "https://youtube.com/shorts/jY1MIndGaHU?feature=share", "caption": "Catamaran on Chaoyang Lake" }
     ],
     "description": [
       "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p>",
@@ -82,7 +82,7 @@
     "id": "03",
     "title": "RC Gliders",
     "date": "2024-06 to 2026-10",
-    "tags": ["Aerospace", "Fabrication", "CAD", "RC"],
+    "tags": ["Aerospace", "Fabrication", "CAD", "Remote Control"],
     "featured": true,
     "summary": "A series of low or unpowered gliders, designed so they comply with strict Beijing drone regulations. Unfortunately forced to discontinue.",
     "thumbnail": "assets/img/glider/card.png",
@@ -91,8 +91,10 @@
       { "src": "assets/img/glider/lightweight-airframe.jpeg", "caption": " " },
       { "src": "assets/img/glider/v1-snapped.jpeg", "caption": " " }
     ],
-    "description": ["<p>I was into building drones, but Beijing Municipal Government said: \"No you will not build drones.\" so I built gliders, which are technically not drones, until they are, so then I had to stop, so my parents won't go to jail. </p>",
-      "<p>I can't wait to start again in college! (rubs hand in excitement)</p>"],
+    "description": [
+      "<p>I was into building drones, but Beijing Municipal Government said: \"No you will not build drones.\" so I built gliders, which are technically not drones, until they are, so then I had to stop, so my parents won't go to jail. </p>",
+      "<p>I can't wait to start again in college! (rubs hand in excitement)</p>"
+    ],
     "links": [
       {
         "label": "Glider V1 CAD (Powered)",
@@ -107,8 +109,8 @@
   {
     "id": "01",
     "title": "Parsecs Wiki",
-    "date": "2025-09, ongoing",
-    "tags": ["Creativity", "Coding", "Arts", "ongoing"],
+    "date": "2025-09, Ongoing",
+    "tags": ["Coding", "Arts", "Ongoing"],
     "featured": true,
     "summary": "Collaborative science-fiction novel, dedicated to explore the future under realistic technological and societal advancements.",
     "thumbnail": "assets/img/parsecs/card.png",
@@ -130,15 +132,15 @@
     "id": "06",
     "title": "Wakey Wakey!",
     "date": "2025-11 to 2026-05",
-    "tags": ["Creativity", "Coding", "Arts", "ongoing"],
-    "featured": true,
+    "tags": ["CAD", "Fabrication", "Ongoing"],
+    "featured": false,
     "summary": "Regular alarm clocks wasn't working for me, so I made one that automatically turns the light on for my dorm. My roommate loved it.",
     "thumbnail": "assets/img/alarm/final.jpeg",
     "images": [
-      { "src": "assets/img/alarm/final.jpeg", "caption": " " },
-      { "src": "assets/img/alarm/interface.jpeg", "caption": " " },
-      { "src": "assets/img/alarm/print-quality-check.jpeg", "caption": " " },
-      { "src": "assets/img/alarm/v2.jpeg", "caption": " " }
+      { "src": "assets/img/alarm/final.jpeg", "caption": "Final product, works well!" },
+      { "src": "assets/img/alarm/interface.jpeg", "caption": "Testing the lid to see if it fit" },
+      { "src": "assets/img/alarm/print-quality-check.jpeg", "caption": "Comparing print quality of two directions" },
+      { "src": "assets/img/alarm/v2.jpeg", "caption": "Second iteration, this one barely works" }
     ],
     "description": [
       "<p>Apparently, I can't wake up in the morning, and the school is not happy about that. Being me, I pursued the problem not as a habitual issue of me (though it really is), but as an engineering problem on how to wake me up most efficiently.</p>",
@@ -152,7 +154,7 @@
     "id": "08",
     "title": "The Pendulum from <i>Weimar Pendulum</i>",
     "date": "2025-09 to 2026-02",
-    "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
+    "tags": ["Fabrication", "Arts"],
     "featured": true,
     "summary": "The director asked me to make a working mechanical pendulum for an immersive English Musical, I said \"Hell yeah\".",
     "thumbnail": "assets/img/weimar-pendulum/curtain-call.jpeg",
@@ -162,18 +164,20 @@
       { "src": "assets/img/weimar-pendulum/with-pendulum.JPG", "caption": " " }
     ],
     "description": [
-      "<p>This is placeholder content so you can see how a project page looks.</p>",
-      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+      "<p><i>Weimar Pendulum</i> is a student-directed original immersive musical in our school. It is about the story of Heinz Winterfeld, a clockmaker from Munich trying to unite the people with a clock tower to prevent Hitler from taking power.</p>",
+      "<p>It resonated quite well with me, for I was for a period into WWII history, I can speak some German, and I have visited Marienplatz, the place where the clock tower is built in the musical, during a layover in Munich.</p>", 
+      "<p>I designed the entire pendulum mechanism, learning how to draw an escapement mechanism from scratch. Eventually, the pendulum barely worked, but I still consider as a success, for I had to take some rather unorthodox ways of making things to keep everything under budget, under time constraint, and meet the theatrical need of a longer pendulum. </p>",
+      "<p>The show was a great success, seeing more and more people come during the three consecutive days of performing. Even an encore was requested, but it was turned down because the blackbox had other reservations. Sad. Nevertheless, I had a blast working as backstage, moving the props on and off as the audiences transition from one room to another in the meantime.</p>"
     ],
     "links": [
-      { "label": "Photos", "url": "https://derekhan.link" }
+      { "label": "Photos", "url": "" }
     ]
   },
   {
     "id": "09",
     "title": "Stagecraft: <i>Smash The Wall</i>",
     "date": "2024-09 to 2025-04",
-    "tags": ["Creativity", "Fabrication", "Arts", "Stagecraft"],
+    "tags": ["Fabrication", "Arts"],
     "featured": false,
     "summary": "A 4.5m wide closet structure designed to be hoisted up during a Chinese musical Play.",
     "thumbnail": "assets/img/nanqiang/closet.jpeg",
@@ -220,7 +224,7 @@
     "id": "04",
     "title": "Human RAM",
     "date": "2025-09 to present",
-    "tags": ["Coding"],
+    "tags": ["Coding", "Ongoing"],
     "featured": false,
     "summary": "A macOS menu-bar app that treats attention like computer memory. Built for my own busy schedule, and now used by friends with same time-management struggles.",
     "thumbnail": "assets/img/human-ram/capture-light.png",
@@ -254,8 +258,8 @@
   {
     "id": "11",
     "title": "Transportation Games!",
-    "date": "2023 and ongoing",
-    "tags": ["Creativity"],
+    "date": "2023 and Ongoing",
+    "tags": ["Arts", "Ongoing"],
     "featured": true,
     "summary": "I am an avid player of Transport Fever 2, 3, and Cities: Skylines, with a total playtime of 1200+ hours as of now.",
     "thumbnail": "assets/img/games/20260227_223642_img-0.jpg",
@@ -280,7 +284,7 @@
     "id": "99",
     "title": "This Website",
     "date": "2026-10 to present",
-    "tags": ["Software", "Web", "Coding"],
+    "tags": ["Software", "Coding", "Ongoing"],
     "featured": false,
     "summary": "The portfolio you are looking at, catalogued as one of its own projects. A small matryoshka doll of a website.",
     "thumbnail": "assets/img/website/home-light.png",

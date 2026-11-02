@@ -157,6 +157,21 @@ with an `embed` value — it renders as a large inline frame (80vh tall) instead
 The embedded site must allow framing (no `X-Frame-Options: deny`). Optional `title` and
 `height` fields are supported. In the Gallery an embed spans the full row.
 
+In the **project PDF export**, an embed is printed as a screenshot of the page
+(not a blank frame), because a PDF cannot run an interactive embed. The exporter
+looks for `assets/previews/<slug>.png` first, then falls back to the project
+`thumbnail`. To use your own image instead, add a `preview` (or `poster`) field:
+
+```json
+{ "embed": "https://example.com/map", "preview": "assets/img/my-map-shot.png", "caption": "Interactive map" }
+```
+
+`Scripts/build-embed-previews.py` (run by `Publish.command`) takes those
+screenshots with headless Chrome. The slug is the embed URL lowercased with
+everything except letters and digits turned into `-` (for example
+`https://parsecs-starmap.derekhan.link` → `parsecs-starmap-derekhan-link.png`).
+It keeps existing screenshots when a page cannot be reached.
+
 ### Project page sidebar
 
 On wide screens the write-up sits in a column with a **sticky sidebar** on the right carrying:
@@ -178,6 +193,37 @@ photos, YouTube videos, and Instagram reels):
 
 Clicking a highlight opens it in the lightbox (photos enlarge; videos play), and it only
 cycles through the highlights — not the whole slider.
+
+### Exporting a project as a PDF
+
+Every project page has two export buttons at the top right:
+
+- **Export PDF** downloads that project as one multi-page A4 PDF named
+  `<project title> — Derek Han.pdf`.
+- **Export all featured** combines every project marked `"featured": true` into
+  a single PDF (`N Featured Projects — Derek Han.pdf`), each project starting on
+  a new page. Projects appear in the same id order as the site.
+
+Each project in the export has its title, date, tags and summary, then **all of
+its images**, then the write-up and the link list.
+
+- The PDF is generated in the browser, so it always matches the current content;
+  there is nothing to rebuild or keep in sync.
+- It reuses the site's fonts, accent colors and typography, and is always
+  light-mode (dark pages would print poorly).
+- Images are laid out 4 per row (2 for a pair, full width for a single one) so
+  they stay compact. Each tile keeps its caption, and videos show their poster
+  with a play badge and link to the video.
+- **Embedded pages are printed as a screenshot** of the page as it looks on the
+  web, with a small “Live page” badge. The tile links to the live embed. See
+  [Embeds](#project-images-gallery-with-captions) below for how the screenshot
+  is supplied.
+- Links are clickable and underlined.
+
+The PDF engine (`assets/vendor/html2pdf.bundle.min.js`, which bundles html2canvas
+and jsPDF) is loaded only when the button is clicked, so normal page loads are
+unaffected. The exporter itself lives in `assets/js/export.js`; its layout styles
+are the `.pdf-*` rules in `assets/css/style.css`.
 
 ### Display vs. lightbox copies (fast pages, sharp zoom)
 
@@ -391,10 +437,14 @@ data/                  YOUR CONTENT (edit these)
 assets/css/style.css   All styling + theme variables (light/dark)
 assets/js/main.js      Site behavior (theme, nav, scroll reveal)
 assets/js/render.js    Loads data/*.json and fills the HTML
+assets/js/export.js    Project page → PDF export (loaded by project.html)
+assets/vendor/         Third-party libraries loaded on demand (html2pdf)
 assets/img/            Display images (max 1000px) — generated
 assets/hi/             Lightbox images (max 2560px) — generated
+assets/previews/       Screenshots of embedded pages, used in project PDFs
 assets/files/          Downloadable files (dev log PDF, resume PDF)
 Scripts/regenerate-images.py  Rebuilds assets/img + assets/hi from the full-res originals
+Scripts/build-embed-previews.py  Screenshots embedded pages into assets/previews
 Scripts/build-resume-pdf.py  Rebuilds assets/files/Derek_Han_Resume.pdf from resume.html
 favicon.svg            Site icon
 robots.txt, sitemap.xml  SEO

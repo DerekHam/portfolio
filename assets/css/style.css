@@ -893,6 +893,367 @@ section { padding-block: 64px; }
   .gallery-next { right: 2px; }
 }
 
+/* ---------- Project PDF export ---------- */
+.project-head-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.project-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.project-export-btn { padding: 9px 14px; font-size: 0.8rem; }
+.project-export-btn[hidden] { display: none; }
+.project-export-btn:disabled { opacity: 0.65; cursor: progress; transform: none; }
+.project-export-btn svg { flex: none; }
+
+/* Off-screen host for the print document. It stays rendered (not display:none)
+   so html2canvas can measure it. */
+.pdf-export-host {
+  position: absolute;
+  left: -20000px;
+  top: 0;
+  width: 695px; /* A4 width minus the PDF's 13 mm side margins */
+  pointer-events: none;
+  background: #ffffff;
+}
+
+/* A light, self-contained version of the site's design tokens. The PDF is
+   always light-mode and uses the same fonts, accent colors and type scale. */
+.pdf-doc {
+  --bg: #ffffff;
+  --bg-elev: #ffffff;
+  --bg-sunken: #f1f3f5;
+  --ink: #1a1d21;
+  --muted: #545e6b;
+  --line: #d3d8de;
+  --line-strong: #b9c1ca;
+  --accent: #2865a6;
+  --accent-soft: rgba(40, 101, 166, 0.12);
+  --accent-2: #b03d06;
+  --accent-2-soft: rgba(176, 61, 6, 0.12);
+
+  width: 695px;
+  box-sizing: border-box;
+  padding: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: auto;
+  text-rendering: auto;
+}
+
+.pdf-brand { display: flex; align-items: center; gap: 9px; margin: 0 0 18px; }
+.pdf-brand-mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.pdf-brand-name { font-weight: 600; font-size: 16px; color: var(--ink); }
+
+.pdf-head {
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 16px;
+  margin: 0 0 18px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 6px;
+}
+.pdf-title {
+  font-size: 30px;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.pdf-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.pdf-meta .tag { font-size: 10px; padding: 2px 7px; }
+.pdf-summary { max-width: 62ch; margin: 0; color: var(--muted); font-size: 14px; }
+
+/* Each project in a multi-project export starts on a fresh page. The small
+   padding keeps sub-pixel page rounding from leaving a sliver of the next
+   project's header at the bottom of the previous page. */
+.pdf-project--new-page {
+  break-before: page;
+  page-break-before: always;
+  padding-top: 10px;
+}
+
+.pdf-section { margin: 0 0 24px; padding: 0; }
+.pdf-section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.pdf-prose { max-width: none; font-size: 14px; line-height: 1.55; }
+.pdf-prose h2 { font-size: 19px; margin: 18px 0 6px; }
+.pdf-prose h3 { font-size: 16px; margin: 16px 0 5px; }
+.pdf-prose p {
+  margin: 0 0 9px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-prose ul,
+.pdf-prose ol { margin: 6px 0 10px; padding-left: 20px; }
+.pdf-prose li {
+  margin-bottom: 4px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-prose img {
+  width: auto;
+  max-width: 100%;
+  max-height: 220px;
+  margin: 8px 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  object-fit: contain;
+}
+.pdf-prose code {
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--bg-sunken);
+  font-size: 0.9em;
+}
+
+/* Compact image rows: three per row, two for a pair, full-width for one. */
+.pdf-media { display: block; }
+.pdf-media-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 10px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-media-row:last-child { margin-bottom: 0; }
+.pdf-media--pair .pdf-media-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pdf-media--single .pdf-media-row { grid-template-columns: 1fr; }
+.pdf-media-item {
+  margin: 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg-sunken);
+  color: var(--muted);
+  text-decoration: none;
+}
+.pdf-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pdf-media--single .pdf-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: auto;
+  max-height: 380px;
+}
+.pdf-media--single .pdf-thumb img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+}
+.pdf-thumb--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: var(--bg-sunken);
+  background-image: repeating-linear-gradient(135deg, rgba(40, 101, 166, 0.06) 0 10px, transparent 10px 20px);
+}
+.pdf-thumb--embed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-style: dashed;
+}
+/* When a screenshot of the embedded page is available, show it like a real
+   preview; the placeholder label/address only appear if the shot is missing. */
+.pdf-thumb--embed-shot { border-style: solid; }
+.pdf-thumb--embed-shot .pdf-thumb-label,
+.pdf-thumb--embed-shot .pdf-thumb-url { display: none; }
+/* A single embed preview reads better edge-to-edge than letterboxed. */
+.pdf-media--single .pdf-thumb--embed-shot { display: block; }
+.pdf-media--single .pdf-thumb--embed-shot img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+.pdf-embed-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(10, 12, 15, 0.68);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+/* Without a screenshot, fall back to a compact banner with the address. */
+.pdf-media--single .pdf-thumb--embed {
+  aspect-ratio: auto;
+  min-height: 120px;
+  max-height: none;
+  gap: 6px;
+}
+.pdf-thumb-label {
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+.pdf-thumb--embed .pdf-thumb-label { color: var(--accent); }
+.pdf-thumb-url {
+  max-width: 100%;
+  padding: 0 10px;
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  color: var(--muted);
+  text-align: center;
+}
+.pdf-media-item figcaption {
+  margin-top: 5px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.pdf-media-note { opacity: 0.8; }
+
+.pdf-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.pdf-play::before {
+  content: "";
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(10, 12, 15, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+.pdf-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  border-style: solid;
+  border-width: 7px 0 7px 11px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.pdf-link-list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pdf-link-list li {
+  font-size: 13px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-link-list a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.pdf-link-label {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.pdf-link-url {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.pdf-prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pdf-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--muted);
+}
+
 /* ---------- Gallery ---------- */
 .gallery-grid {
   display: grid;
