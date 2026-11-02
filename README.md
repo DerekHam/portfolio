@@ -170,7 +170,9 @@ looks for `assets/previews/<slug>.png` first, then falls back to the project
 screenshots with headless Chrome. The slug is the embed URL lowercased with
 everything except letters and digits turned into `-` (for example
 `https://parsecs-starmap.derekhan.link` → `parsecs-starmap-derekhan-link.png`).
-It keeps existing screenshots when a page cannot be reached.
+It keeps existing screenshots when a page cannot be reached, or when the capture
+still looks like a loading screen (common for heavy WebGL pages in headless
+Chrome) — the project thumbnail is used in that case.
 
 ### Project page sidebar
 
