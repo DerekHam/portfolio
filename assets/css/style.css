@@ -26,7 +26,10 @@
   --home-overlay: 0.95;
   --home-overlay-color: 238, 240, 242;
 
-  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Body face. Candara ships with Windows and Microsoft Office; the fallbacks
+     keep the page close to the same humanist look elsewhere. IBM Plex Sans is
+     still loaded, so it covers machines without Candara/Segoe UI. */
+  --font-sans: Candara, "Segoe UI", "Trebuchet MS", "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --wrap: 1100px;
@@ -1022,8 +1025,8 @@ body.lightbox-open { overflow: hidden; }
 }
 
 /* ---------- Resume page ---------- */
-/* Candara is the resume's body face. It is present on most Windows/Office
-   installs; the fallbacks keep the page readable everywhere else. */
+/* The body is already Candara. These rules keep the resume's mono-styled bits
+   (kicker, dates) on the same face as the rest of the document. */
 .resume-page .resume-head,
 .resume-page .resume-section,
 .resume-page .resume-section .kicker,

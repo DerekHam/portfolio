@@ -195,7 +195,7 @@
     "title": "3D Printer Enclosure & Rack",
     "date": "2024-02 to 2024-09",
     "tags": ["Fabrication", "CAD"],
-    "featured": true,
+    "featured": false,
     "summary": "An integrated enclosure for my laser cutter and 3D printer. Used often until school got a shiny new workshop.",
     "thumbnail": "assets/img/3d-printer-rack/full-rack.jpeg",
     "images": [
@@ -221,7 +221,7 @@
     "title": "Human RAM",
     "date": "2025-09 to present",
     "tags": ["Coding"],
-    "featured": true,
+    "featured": false,
     "summary": "A macOS menu-bar app that treats attention like computer memory. Built for my own busy schedule, and now used by friends with same time-management struggles.",
     "thumbnail": "assets/img/human-ram/capture-light.png",
     "images": [
@@ -281,7 +281,7 @@
     "title": "This Website",
     "date": "2026-10 to present",
     "tags": ["Software", "Web", "Coding"],
-    "featured": true,
+    "featured": false,
     "summary": "The portfolio you are looking at, catalogued as one of its own projects. A small matryoshka doll of a website.",
     "thumbnail": "assets/img/website/home-light.png",
     "images": ["assets/img/website/home-light.png", "assets/img/website/projects-light.png"],
