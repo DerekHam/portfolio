@@ -262,7 +262,7 @@
     "date": "2023 and Ongoing",
     "tags": ["Arts", "Ongoing"],
     "featured": true,
-    "summary": "I am an avid player of Transport Fever 2, 3, and Cities: Skylines, with a total playtime of 1200+ hours as of now.",
+    "summary": "I am an avid player of Transport Fever 2, 3, and Cities: Skylines, with a combined playtime of 1200+ hours as of now.",
     "thumbnail": "assets/img/games/20260227_223642_img-0.jpg",
     "images": [
       { "src": "assets/img/games/20260227_223642_img-0.jpg", "caption": " " },
@@ -275,7 +275,8 @@
     ],
     "description": [
       "<p>I Like to play games, most are related to transportation. </p>",
-      "<p>Edit data/projects.json to add your own projects. The filter buttons on the Projects page are generated automatically from the tags you use.</p>"
+      "<p>In these games, I take the chance to build cities and transport networks in the way I think they should be. Most turned out profitable, given that public transportation is not any less inconvenient than private transportation.</p>", 
+      "<p>I challenge myself to create the most efficient and least environmentally impactful transport systems in challenging terrains. </p>"
     ],
     "links": [
       { "label": "Placeholder", "url": "https://derekhan.link" }
