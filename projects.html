@@ -56,6 +56,12 @@
         <span class="kicker">[ Projects ]</span>
         <h1>Projects</h1>
         <p class="lead">A filterable archive of my engineering and STEM work. Filter by tag below.</p>
+        <div class="projects-export">
+          <button id="project-export-all" class="btn project-export-btn" type="button" aria-label="Download every featured project as one PDF" hidden>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg>
+            <span>Export all featured</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -96,6 +102,7 @@
   </template>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/export.js"></script>
   <script src="assets/js/render.js"></script>
 </body>
 </html>

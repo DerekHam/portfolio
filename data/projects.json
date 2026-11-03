@@ -81,7 +81,7 @@
   {
     "id": "03",
     "title": "RC Gliders",
-    "date": "2024-06 to 2026-10",
+    "date": "2024-06 to 2026-03",
     "tags": ["Aerospace", "Fabrication", "CAD", "Remote Control"],
     "featured": true,
     "summary": "A series of low or unpowered gliders, designed so they comply with strict Beijing drone regulations. Unfortunately forced to discontinue.",
@@ -167,7 +167,8 @@
       "<p><i>Weimar Pendulum</i> is a student-directed original immersive musical in our school. It is about the story of Heinz Winterfeld, a clockmaker from Munich trying to unite the people with a clock tower to prevent Hitler from taking power.</p>",
       "<p>It resonated quite well with me, for I was for a period into WWII history, I can speak some German, and I have visited Marienplatz, the place where the clock tower is built in the musical, during a layover in Munich.</p>", 
       "<p>I designed the entire pendulum mechanism, learning how to draw an escapement mechanism from scratch. Eventually, the pendulum barely worked, but I still consider as a success, for I had to take some rather unorthodox ways of making things to keep everything under budget, under time constraint, and meet the theatrical need of a longer pendulum. </p>",
-      "<p>The show was a great success, seeing more and more people come during the three consecutive days of performing. Even an encore was requested, but it was turned down because the blackbox had other reservations. Sad. Nevertheless, I had a blast working as backstage, moving the props on and off as the audiences transition from one room to another in the meantime.</p>"
+      "<p>The show was a great success, seeing more and more people come during the three consecutive days of performing. Even an encore was requested, but it was turned down because the blackbox had other reservations. Sad. </p>",
+      "<p>Nevertheless, I had a blast working as backstage, moving the props on and off as the audiences transition from one room to another in the meantime.</p>"
     ],
     "links": [
       { "label": "Photos", "url": "" }

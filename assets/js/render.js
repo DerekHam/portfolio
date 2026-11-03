@@ -301,9 +301,15 @@
     }
   }
 
-  function renderProjectGrid(projects) {
+  function renderProjectGrid(projects, site) {
     var grid = $("#project-grid");
     if (!grid) return;
+
+    // Let the PDF exporter wire up the "Export all featured" button.
+    document.dispatchEvent(new CustomEvent("projects:rendered", {
+      detail: { projects: projects, site: site || null }
+    }));
+
     if (!projects.length) {
       grid.innerHTML = '<p class="empty-state" style="grid-column:1/-1;">No projects yet. Add some in data/projects.json.</p>';
       return;
@@ -648,7 +654,7 @@
 
       if (page === "projects" || page === "project") {
         return loadProjects().then(function (projects) {
-          if (page === "projects") renderProjectGrid(projects);
+          if (page === "projects") renderProjectGrid(projects, site);
           else renderProjectDetail(projects, site);
         });
       }

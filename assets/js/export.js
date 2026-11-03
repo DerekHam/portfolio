@@ -518,20 +518,21 @@
 
   /* ---------- Page wiring ---------- */
   function init() {
-    if (document.body.getAttribute("data-page") !== "project") return;
+    var page = document.body.getAttribute("data-page");
+    if (page !== "project" && page !== "projects") return;
 
-    var btnOne = $("#project-export");
+    var btnOne = page === "project" ? $("#project-export") : null;
     var btnAll = $("#project-export-all");
     if (!btnOne && !btnAll) return;
 
+    var buttons = [btnOne, btnAll].filter(Boolean);
     var project = null;
     var site = null;
     var projects = [];
     var busy = false;
 
     function setButtonsBusy(active) {
-      [btnOne, btnAll].forEach(function (b) {
-        if (!b) return;
+      buttons.forEach(function (b) {
         b.disabled = active;
         if (!active) b.removeAttribute("aria-busy");
       });
@@ -562,7 +563,13 @@
       site = detail.site || null;
       projects = detail.projects || [];
       if (project && btnOne) btnOne.hidden = false;
-      if (btnAll && featuredProjects(projects).length) btnAll.hidden = false;
+    });
+
+    document.addEventListener("projects:rendered", function (e) {
+      var detail = e.detail || {};
+      site = detail.site || null;
+      projects = detail.projects || [];
+      if (btnAll) btnAll.hidden = featuredProjects(projects).length === 0;
     });
 
     if (btnOne) {

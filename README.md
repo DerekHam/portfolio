@@ -198,13 +198,13 @@ cycles through the highlights — not the whole slider.
 
 ### Exporting a project as a PDF
 
-Every project page has two export buttons at the top right:
+Each project page has an **Export PDF** button at the top right. It downloads
+that project as one multi-page A4 PDF named `<project title> — Derek Han.pdf`.
 
-- **Export PDF** downloads that project as one multi-page A4 PDF named
-  `<project title> — Derek Han.pdf`.
-- **Export all featured** combines every project marked `"featured": true` into
-  a single PDF (`N Featured Projects — Derek Han.pdf`), each project starting on
-  a new page. Projects appear in the same id order as the site.
+The **Projects** page has an **Export all featured** button under the page intro.
+It combines every project marked `"featured": true` into a single PDF
+(`N Featured Projects — Derek Han.pdf`), each project starting on a new page.
+Projects appear in the same id order as the site.
 
 Each project in the export has its title, date, tags and summary, then **all of
 its images**, then the write-up and the link list.
@@ -213,9 +213,10 @@ its images**, then the write-up and the link list.
   there is nothing to rebuild or keep in sync.
 - It reuses the site's fonts, accent colors and typography, and is always
   light-mode (dark pages would print poorly).
-- Images are laid out 4 per row (2 for a pair, full width for a single one) so
-  they stay compact. Each tile keeps its caption, and videos show their poster
-  with a play badge and link to the video.
+- Images keep their own aspect ratio — they are not cropped or stretched — and
+  are laid out 4 per row (2 for a pair, full width for a single one) so they
+  stay compact. Each tile keeps its caption, and videos show their poster with a
+  play badge and link to the video.
 - **Embedded pages are printed as a screenshot** of the page as it looks on the
   web, with a small “Live page” badge. The tile links to the live embed. See
   [Embeds](#project-images-gallery-with-captions) below for how the screenshot
