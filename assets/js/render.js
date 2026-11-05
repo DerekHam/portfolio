@@ -70,8 +70,10 @@
   }
 
   /* A media entry is a path string, an image object { src, caption, full, alt },
-     or a video object { video|youtube|instagram: <url or id>, caption, poster, title }. */
+     a manifest reference { media: "<id>" }, or a video object
+     { video|youtube|instagram: <url or id>, caption, poster, title }. */
   function mediaInfo(item) {
+    if (window.SiteMedia) return window.SiteMedia.resolveEntry(item);
     if (typeof item === "string") return { type: "image", src: item };
     var o = item || {};
     var vid = youtubeId(o.video || o.youtube);
@@ -205,8 +207,14 @@
     if (titleLink) titleLink.setAttribute("href", url);
     var img = frag.querySelector(".card-media img");
     if (img) {
-      img.setAttribute("src", p.thumbnail || "assets/img/placeholder.svg");
+      var thumbPath = p.thumbnail || "assets/img/placeholder.svg";
+      var thumbMedia = window.SiteMedia ? window.SiteMedia.imageForSource(thumbPath) : null;
+      img.setAttribute("src", window.SiteMedia ? window.SiteMedia.thumbnailForPath(thumbPath) : thumbPath);
       img.setAttribute("alt", plain(p.title) || "Project");
+      if (thumbMedia && thumbMedia.width) {
+        img.setAttribute("width", thumbMedia.width);
+        img.setAttribute("height", thumbMedia.height);
+      }
     }
     var article = frag.querySelector(".card");
     if (article) article.setAttribute("data-tags", (p.tags || []).join("|"));
@@ -242,6 +250,13 @@
       var m = mediaInfo(item);
 
       if (m.type === "video") {
+        if (window.SiteMedia) {
+          var mediaButton = window.SiteMedia.createVideoButton(m, {
+            gallery: true,
+            className: "gallery-item gallery-item--video"
+          });
+          if (mediaButton) { grid.appendChild(mediaButton); return; }
+        }
         if (!tplV) return;
         var vf = tplV.content.cloneNode(true);
         var vb = vf.querySelector(".gallery-item");
@@ -278,15 +293,25 @@
       var gb = gf.querySelector(".gallery-item");
       var gi = gf.querySelector("img");
       var gc = gf.querySelector(".gallery-cap");
+      var thumb = m.thumbnail || m.source || "assets/img/placeholder.svg";
       if (gb) {
-        gb.setAttribute("data-src", m.src || "");
-        if (m.full) gb.setAttribute("data-full", m.full);
+        gb.setAttribute("data-media-id", m.id || "");
+        gb.setAttribute("data-src", m.source || thumb);
+        gb.setAttribute("data-preview", thumb);
+        gb.setAttribute("data-full-src", m.fullUrl || "");
+        gb.setAttribute("data-fallback-src", m.fallbackUrl || "");
+        if (m.ratio) gb.setAttribute("data-aspect", m.ratio);
+        if (m.type === "missing") gb.classList.add("is-missing");
       }
       if (gi) {
-        gi.setAttribute("src", m.src || "");
+        gi.setAttribute("src", thumb);
         gi.setAttribute("alt", plain(m.alt || m.caption) || "Photo");
+        gi.setAttribute("loading", "lazy");
+        gi.setAttribute("decoding", "async");
+        if (m.width) gi.setAttribute("width", m.width);
+        if (m.height) gi.setAttribute("height", m.height);
       }
-      if (gc) gc.textContent = m.caption || "";
+      if (gc) gc.textContent = m.type === "missing" ? "Media unavailable" : (m.caption || "");
       grid.appendChild(gf);
     });
 
@@ -295,7 +320,8 @@
     if (photoParam) {
       var match = null;
       $all(".gallery-item", grid).forEach(function (el) {
-        if (!match && el.getAttribute("data-src") === photoParam) match = el;
+        if (!match && (el.getAttribute("data-src") === photoParam ||
+          el.getAttribute("data-media-id") === photoParam)) match = el;
       });
       if (match) window.setTimeout(function () { match.click(); }, 0);
     }
@@ -426,6 +452,21 @@
         }
 
         if (m.type === "video") {
+          if (window.SiteMedia) {
+            var mediaBtn = window.SiteMedia.createVideoButton(m, { className: "video-embed" });
+            if (mediaBtn) {
+              var mediaFig = document.createElement("figure");
+              mediaFig.className = "project-figure project-figure--video";
+              mediaFig.appendChild(mediaBtn);
+              if (m.caption) {
+                var mediaCap = document.createElement("figcaption");
+                mediaCap.textContent = m.caption;
+                mediaFig.appendChild(mediaCap);
+              }
+              imgWrap.appendChild(mediaFig);
+              return;
+            }
+          }
           if (!tplVid) return;
           var vf = tplVid.content.cloneNode(true);
           var vbtn = vf.querySelector(".video-embed");
@@ -446,17 +487,28 @@
         var fig = frag.querySelector("[data-lightbox]");
         var el = frag.querySelector("img");
         var cap = frag.querySelector("figcaption");
+        var thumb = m.thumbnail || m.source || "assets/img/placeholder.svg";
         if (el) {
-          el.setAttribute("src", m.src || "");
+          el.setAttribute("src", thumb);
           el.setAttribute("alt", plain(m.alt || m.caption || p.title) || "Project image");
+          el.setAttribute("loading", "lazy");
+          el.setAttribute("decoding", "async");
+          if (m.width) el.setAttribute("width", m.width);
+          if (m.height) el.setAttribute("height", m.height);
         }
         if (fig) {
-          fig.setAttribute("data-src", m.src || "");
-          if (m.full) fig.setAttribute("data-full", m.full);
+          fig.setAttribute("data-media-id", m.id || "");
+          fig.setAttribute("data-src", m.source || thumb);
+          fig.setAttribute("data-preview", thumb);
+          fig.setAttribute("data-full-src", m.fullUrl || "");
+          fig.setAttribute("data-fallback-src", m.fallbackUrl || "");
+          if (m.ratio) fig.setAttribute("data-aspect", m.ratio);
           fig.setAttribute("data-caption", plain(m.caption || ""));
+          if (m.type === "missing") fig.classList.add("is-missing");
         }
         if (cap) {
-          if (m.caption) cap.textContent = m.caption;
+          if (m.type === "missing") cap.textContent = "Media unavailable";
+          else if (m.caption) cap.textContent = m.caption;
           else cap.parentNode && cap.parentNode.removeChild(cap);
         }
         imgWrap.appendChild(frag);
@@ -533,31 +585,40 @@
     items.forEach(function (item) {
       var m = mediaInfo(item);
       if (m.type === "embed") return;
+
+      if (m.type === "video") {
+        var vbtn = window.SiteMedia ? window.SiteMedia.createVideoButton(m, { className: "highlight-item" }) : null;
+        if (vbtn) {
+          vbtn.setAttribute("data-lightbox", "");
+          vbtn.setAttribute("data-lightbox-set", "highlights");
+          vbtn.setAttribute("data-caption", plain(m.caption || ""));
+          grid.appendChild(vbtn);
+          return;
+        }
+      }
+
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "highlight-item";
       btn.setAttribute("data-lightbox", "");
       btn.setAttribute("data-lightbox-set", "highlights");
       btn.setAttribute("data-caption", plain(m.caption || ""));
-      if (m.type === "video") {
-        btn.setAttribute("data-video", videoRef(m));
-        var vip = document.createElement("img");
-        vip.loading = "lazy";
-        btn.appendChild(vip);
-        applyPoster(vip, m, m.title || m.caption || p.title);
-        var play = document.createElement("span");
-        play.className = "video-play";
-        play.setAttribute("aria-hidden", "true");
-        btn.appendChild(play);
-      } else {
-        btn.setAttribute("data-src", m.src || "");
-        if (m.full) btn.setAttribute("data-full", m.full);
-        var im = document.createElement("img");
-        im.setAttribute("src", m.src || "");
-        im.setAttribute("alt", plain(m.alt || m.caption || p.title) || "Photo");
-        im.loading = "lazy";
-        btn.appendChild(im);
-      }
+      var thumb = m.thumbnail || m.source || "assets/img/placeholder.svg";
+      btn.setAttribute("data-media-id", m.id || "");
+      btn.setAttribute("data-src", m.source || thumb);
+      btn.setAttribute("data-preview", thumb);
+      btn.setAttribute("data-full-src", m.fullUrl || "");
+      btn.setAttribute("data-fallback-src", m.fallbackUrl || "");
+      if (m.ratio) btn.setAttribute("data-aspect", m.ratio);
+      if (m.type === "missing") btn.classList.add("is-missing");
+      var im = document.createElement("img");
+      im.setAttribute("src", thumb);
+      im.setAttribute("alt", plain(m.alt || m.caption || p.title) || "Photo");
+      im.loading = "lazy";
+      im.decoding = "async";
+      if (m.width) im.setAttribute("width", m.width);
+      if (m.height) im.setAttribute("height", m.height);
+      btn.appendChild(im);
       grid.appendChild(btn);
     });
     section.hidden = grid.children.length === 0;
@@ -567,8 +628,14 @@
     var thumb = document.getElementById("sidebar-thumb");
     if (thumb) {
       if (p.thumbnail) {
-        thumb.setAttribute("src", p.thumbnail);
+        var thumbPath = p.thumbnail;
+        thumb.setAttribute("src", window.SiteMedia ? window.SiteMedia.thumbnailForPath(thumbPath) : thumbPath);
         thumb.setAttribute("alt", plain(p.title) || "Project");
+        var thumbMedia = window.SiteMedia ? window.SiteMedia.imageForSource(thumbPath) : null;
+        if (thumbMedia && thumbMedia.width) {
+          thumb.setAttribute("width", thumbMedia.width);
+          thumb.setAttribute("height", thumbMedia.height);
+        }
         thumb.hidden = false;
       } else {
         thumb.hidden = true;
@@ -643,7 +710,10 @@
     var page = document.body.getAttribute("data-page");
     if (!page) return;
 
-    loadJSON("data/site.json").then(function (site) {
+    var mediaReady = window.SiteMedia ? window.SiteMedia.load() : Promise.resolve();
+
+    Promise.all([loadJSON("data/site.json"), mediaReady]).then(function (results) {
+      var site = results[0];
       applySite(site);
 
       // Bind shared chrome (brand name / initials) on every page.

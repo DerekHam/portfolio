@@ -5,8 +5,9 @@
 #  Double-click this file in Finder (or run ./Publish.command in Terminal) to:
 #    1. check the full-resolution image folder for new / changed / deleted images
 #    2. rebuild assets/img + assets/hi when anything changed
-#    3. rebuild the resume PDF from resume.html and data/resume.json
-#    4. commit everything and push to GitHub (Pages then serves it)
+#    3. rebuild the WebP thumbnails used by the lightweight galleries
+#    4. rebuild the resume PDF from resume.html and data/resume.json
+#    5. commit everything and push to GitHub (Pages then serves it)
 #
 #  The image check compares SHA-256 checksums against Scripts/images-manifest.json,
 #  which this script keeps up to date. Point FULLRES_DIR at a different originals
@@ -142,6 +143,10 @@ else
   echo "  Skipping the rebuild: the images are already up to date."
 fi
 
+# --- Rebuild the GitHub-hosted WebP thumbnails ------------------------------
+step "Rebuilding WebP thumbnails"
+python3 Scripts/build-thumbnails.py
+
 # --- Content sanity check ---------------------------------------------------
 step "Validating the content files"
 python3 - <<'PY'
@@ -163,6 +168,18 @@ if bad:
     sys.exit(1)
 print("  All %d data files are valid JSON." % len(paths))
 PY
+
+# --- Media manifest + references -------------------------------------------
+step "Validating the media manifest"
+python3 Scripts/validate-media.py
+
+# --- Migration inventory ----------------------------------------------------
+step "Updating the media migration inventory"
+if python3 Scripts/build-media-inventory.py; then
+  echo "  Inventory is up to date."
+else
+  printf '  ! Could not update the media inventory; publishing continues.\n'
+fi
 
 # --- Rebuild embed previews -------------------------------------------------
 # Embedded pages cannot be captured by the browser-side PDF exporter, so take

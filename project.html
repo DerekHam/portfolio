@@ -122,6 +122,10 @@
     <figure class="lightbox-fig">
       <div class="lightbox-video" id="lightbox-video" hidden></div>
       <img id="lightbox-img" src="" alt="" />
+      <div class="lightbox-status media-status" id="lightbox-status" role="status" aria-live="polite" hidden>
+        <span class="media-spinner" aria-hidden="true"></span>
+        <span class="media-status-text"></span>
+      </div>
       <figcaption id="lightbox-cap"></figcaption>
     </figure>
   </div>
@@ -150,6 +154,8 @@
   </template>
   <template id="tpl-detail-link"><a class="btn" target="_blank" rel="noopener"></a></template>
 
+  <script src="assets/js/media-config.js"></script>
+  <script src="assets/js/media.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/export.js"></script>
   <script src="assets/js/render.js"></script>

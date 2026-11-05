@@ -3,6 +3,11 @@
 A plain HTML/CSS/JS portfolio. The **text lives in `data/*.json`** and is loaded into
 the HTML and styled by CSS. No build step.
 
+**Media is hybrid:** small WebP thumbnails/posters live in this repository (GitHub
+Pages), high-resolution lightbox images live in Cloudflare R2, and videos play from
+Cloudflare Stream. Everything is described by `data/media.json`; see
+[Media architecture](#media-architecture-r2--cloudflare-stream).
+
 ## Local preview
 
 JSON is loaded with `fetch()`, so the site must be served over http — do **not**
@@ -20,9 +25,12 @@ Double-click **`Publish.command`** in Finder (or run `./Publish.command`). It:
 
 1. compares the full-resolution originals against `Scripts/images-manifest.json` and
    rebuilds `assets/img` + `assets/hi` only when images were added, edited or deleted;
-2. checks that every file in `data/` still parses as valid JSON;
-3. rebuilds the downloadable resume PDF from `resume.html` and `data/resume.json`;
-4. commits everything and pushes to GitHub, where Pages then publishes it.
+2. rebuilds the small WebP thumbnails in `assets/thumbnails/` from those display copies;
+3. checks that every file in `data/` still parses as valid JSON and that every media
+   reference resolves;
+4. rebuilds the downloadable resume PDF from `resume.html` and `data/resume.json`;
+5. updates `MEDIA-MIGRATION.md` and `Scripts/media-inventory.csv`;
+6. commits everything and pushes to GitHub, where Pages then publishes it.
 
 The originals folder defaults to `~/Desktop/02 College/Portfolio-fullres-images/img`;
 set `FULLRES_DIR` to use a different one. It needs Python 3 with Pillow
@@ -37,7 +45,7 @@ Everything you normally change is in the `data/` folder. Edit the JSON, refresh 
 
 | File | Controls |
 |---|---|
-| `data/site.json` | Your name, brand initials, email/LinkedIn/GitHub links |
+| `data/site.json` | Your name, brand initials, public site URL (used in PDF exports), email/LinkedIn/GitHub links |
 | `data/home.json` | Home hero text, hero banner image, and the About paragraphs |
 | `data/projects.json` | All projects (cards, filters, and project pages) |
 | `data/experience.json` | Internships/work and extracurriculars/leadership |
@@ -46,6 +54,8 @@ Everything you normally change is in the `data/` folder. Edit the JSON, refresh 
 | `data/blog.json` | Blog posts list |
 | `data/contact.json` | Contact rows |
 | `data/gallery.json` | Photos &amp; artwork shown in the gallery |
+| `data/media.json` | Media manifest: stable IDs, captions, dimensions, WebP thumbnails, R2 keys, Stream UIDs |
+| `assets/js/media-config.js` | Public R2 base URL and Cloudflare Stream customer code (no secrets) |
 
 Notes:
 - Files may contain `_comment` keys for guidance — they are ignored.
@@ -109,41 +119,41 @@ numeric-aware, so `2` sorts before `10`.
 
 A project's `images` array is shown as a **horizontal slider** on its page (so it does not
 push the description down), and every image can open in a lightbox (click to enlarge,
-arrow keys / Esc). Each entry is either a plain path or an object with an optional caption:
+arrow keys / Esc). Each entry is a **media ID from `data/media.json`** (recommended), a
+legacy image path, or a video object:
 
 ```json
 "images": [
-  "assets/img/my-project/overview.jpg",
-  { "src": "assets/img/my-project/diagram.png", "caption": "Cross-section of the test section" },
-  { "src": "assets/img/my-project/result.png", "caption": "Lift vs. angle of attack" }
+  { "media": "calico-full-view" },
+  { "media": "calico-diffuser-1", "caption": "Optional per-page caption override" },
+  "assets/img/my-project/legacy-direct-path.jpg"
 ]
 ```
 
-- Use plain strings when you do not need a caption.
-- `caption` is optional; `alt` is optional too (falls back to the caption or the project title).
+- Add the image and its metadata to `data/media.json` first (see
+  [Adding media](#adding-media-images-and-videos)), then reference its `id` here.
+- `caption` and `alt` in `media.json` are used everywhere; add them on the page entry only
+  when that page needs a different caption.
 - One image renders full-width; two or more become a slider (swipe/scroll, or use the arrows).
 - The `thumbnail` is used for the card and as the fallback image when `images` is empty.
+  Project `thumbnail` values point at the WebP files in `assets/thumbnails/`.
 
-**Videos:** any `images` entry can also be a YouTube video or an Instagram reel. Give it a
-`video` (or `youtube` / `instagram`) value — a full URL or just the YouTube video ID:
+**Videos:** a `media.json` video entry can be a Cloudflare Stream video (preferred) or a
+legacy YouTube/Instagram fallback. Reference it by ID:
 
 ```json
 "images": [
-  { "video": "https://youtu.be/aqz-KE-bpKQ", "caption": "Build timelapse" },
-  { "youtube": "aqz-KE-bpKQ", "poster": "assets/img/my-poster.jpg", "caption": "Test run" },
-  { "video": "https://www.instagram.com/reel/ABC123xyz/", "caption": "Quick shop clip" }
+  { "media": "video-catamaran-pov" }
 ]
 ```
 
-- Videos show a poster with a play button. The poster defaults to the YouTube thumbnail;
-  add your own with `poster`. Instagram reels have no predictable thumbnail, so they show
-  the play button on a plain tile unless you set `poster`.
-- On **project pages** a click plays the video inline; in the **Gallery** it opens in the
-  lightbox. Both support `caption`. Reels play in a 9:16 (portrait) frame.
-- YouTube URLs and bare IDs both work: `https://youtu.be/ID`, `https://www.youtube.com/watch?v=ID`,
-  `https://www.youtube.com/shorts/ID`, or just `ID`.
-- Instagram reel URLs work too: `https://www.instagram.com/reel/ID/` (post and IGTV links
-  are accepted as well). Reels must be public for the embed to load.
+- Videos show a poster with a play button. The poster is the WebP thumbnail in
+  `data/media.json`; the player is created only when the visitor clicks.
+- Cloudflare Stream is used as soon as the entry has a `streamId` and
+  `STREAM_CUSTOMER_CODE` is set. Until then the `fallback` player is used, so the current
+  videos keep working during the migration.
+- Vertical videos use `"aspectRatio": "9:16"`; landscape videos use `"16:9"`.
+- Videos never autoplay on page load.
 
 **Embeds:** an `images` entry can also embed a whole page (for example an interactive map)
 with an `embed` value — it renders as a large inline frame (80vh tall) instead of an image:
@@ -184,12 +194,12 @@ On wide screens the write-up sits in a column with a **sticky sidebar** on the r
 - **Highlights** — a small thumbnail grid of your chosen media (hidden when empty).
 
 Fill the Highlights section with an optional `highlights` array (same shape as `images` —
-photos, YouTube videos, and Instagram reels):
+media IDs, photos, and videos):
 
 ```json
 "highlights": [
-  { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie" },
-  { "video": "https://youtu.be/…", "caption": "Test run" }
+  { "media": "calico-full-view", "caption": "Calico Biggie" },
+  { "media": "video-catamaran-lake" }
 ]
 ```
 
@@ -221,6 +231,9 @@ its images**, then the write-up and the link list.
   web, with a small “Live page” badge. The tile links to the live embed. See
   [Embeds](#project-images-gallery-with-captions) below for how the screenshot
   is supplied.
+- Each project ends with a note saying it was exported from the personal website,
+  with clickable links back to the site and to that project’s live page. The
+  address comes from `url` in `data/site.json`.
 - Links are clickable and underlined.
 
 The PDF engine (`assets/vendor/html2pdf.bundle.min.js`, which bundles html2canvas
@@ -230,38 +243,40 @@ are the `.pdf-*` rules in `assets/css/style.css`.
 
 ### Display vs. lightbox copies (fast pages, sharp zoom)
 
-Every image is stored in **two sizes**:
+The site now has three tiers:
 
-- `assets/img/...` — the **display** copy (max 1000px). Used by cards, the slider, and the
-  Gallery grid, so pages load quickly.
-- `assets/hi/...` — the **lightbox** copy (max 2560px) at the *same* sub-path. Loaded only
-  when an image is clicked.
+- `assets/thumbnails/...` — the **WebP thumbnails/posters committed to GitHub**. Cards,
+  sliders, gallery grids, highlights, and video posters use only these. They are lazy
+  loaded and carry dimensions/aspect ratios to avoid layout shifts.
+- `assets/img/...` — the older 1000px display copies. They remain as a source for the
+  thumbnails and as a fallback; they are no longer the primary gallery image.
+- `assets/hi/...` — the older 2560px local previews. They remain temporarily as a safety
+  net if R2 is unavailable. Once R2 is live, set `LOCAL_FULL_FALLBACK: false` in
+  `assets/js/media-config.js` if you want the browser to stop requesting them.
 
-The lightbox finds the high-res copy by swapping `assets/img/` for `assets/hi/`, shows the
-small one instantly, then swaps in the sharp one once it has downloaded. If no high-res file
-exists, it silently falls back to the display copy. To override the path for one image, add
-a `full` field:
+The lightbox now builds its high-resolution URL from `MEDIA_BASE_URL` + the `full` object
+key in `data/media.json`. It shows the thumbnail immediately, displays a loading indicator,
+swaps in the R2 preview when ready, and falls back to `assets/hi` (then the thumbnail) if
+the request fails. High-resolution images are never requested by gallery grids.
 
-```json
-{ "src": "assets/img/x.jpg", "full": "assets/hi/x.jpg", "caption": "…" }
-```
+Both legacy tiers are still generated from the full-resolution originals with orientation
+baked in and EXIF/GPS metadata stripped.
 
-Both tiers are generated from the full-resolution originals with orientation baked in and
-EXIF/GPS metadata stripped.
-
-### Regenerating the images
+### Regenerating the images and thumbnails
 
 The full-resolution originals live **outside this repository** so it stays small. To rebuild
-both tiers, run the script — it **deletes `assets/img/` and `assets/hi/` completely**, then
-regenerates them from the originals:
+the display/legacy tiers, run the script — it **deletes `assets/img/` and `assets/hi/`
+completely**, then regenerates them from the originals:
 
 ```bash
 python3 Scripts/regenerate-images.py
+python3 Scripts/build-thumbnails.py
 ```
 
-`Publish.command` runs this for you whenever it detects a change, and records the originals'
-checksums in `Scripts/images-manifest.json` so unchanged images are never rebuilt twice.
-The script is deterministic: unchanged originals always produce byte-identical output.
+`Publish.command` runs both for you when needed, and records the originals' checksums in
+`Scripts/images-manifest.json` so unchanged images are never rebuilt twice. The scripts are
+deterministic: unchanged originals always produce byte-identical output. The thumbnail
+script never deletes anything and rebuilds only when a source is newer (or with `--force`).
 
 Requirements: Python 3 and Pillow (`pip install pillow`).
 
@@ -285,17 +300,171 @@ from the source folder. Add or replace originals there, re-run the script, then 
 regenerated `assets/img/` and `assets/hi/`. If the source folder is missing or contains no
 images, the script stops without deleting anything.
 
-## Adding photos / artwork to the gallery
+## Media architecture (R2 + Cloudflare Stream)
 
-Open `data/gallery.json` and add entries to the `images` array (images, plus YouTube
-videos and Instagram reels in the same format as project images — see above):
+The repository holds the page markup, JavaScript/CSS, captions, WebP thumbnails, and the
+media manifest. Cloudflare R2 holds the high-resolution lightbox previews, and Cloudflare
+Stream plays the videos.
+
+### Files
+
+| File | Purpose |
+|---|---|
+| `data/media.json` | The single source of truth for media IDs, captions, dimensions, thumbnails, R2 object keys, and Stream UIDs |
+| `assets/js/media-config.js` | Public R2 base URL and Stream customer code (no secrets) |
+| `assets/js/media.js` | Reusable image/lightbox and lazy video components; manifest validation and URL construction |
+| `assets/thumbnails/{photography,engineering,projects}/` | GitHub-hosted WebP thumbnails and video posters |
+| `assets/img/`, `assets/hi/` | Existing legacy display/preview tiers, kept as sources and fallbacks |
+| `MEDIA-MIGRATION.md`, `Scripts/media-inventory.csv` | Generated list of objects still to upload |
+| `Scripts/build-thumbnails.py` | Builds WebP thumbnails from the existing display images |
+| `Scripts/prepare-r2-previews.py` | Stages 2560px WebP R2 previews outside the repo (no upload) |
+| `Scripts/validate-media.py` | Checks the manifest, thumbnails, and page references |
+| `Scripts/build-media-inventory.py` | Regenerates the migration inventory |
+
+### Manifest schema
+
+An image entry:
 
 ```json
-{ "src": "assets/img/my-photo.jpg", "alt": "Short description", "caption": "Shown under the enlarged image" }
+{
+  "id": "gallery-rainbow",
+  "title": "Hydrogen spectrum",
+  "thumbnail": "assets/thumbnails/photography/gallery-rainbow.webp",
+  "source": "assets/img/gallery/rainbow.jpeg",
+  "full": "photography/gallery-rainbow.webp",
+  "alt": "A rainbow-like hydrogen spectrum",
+  "caption": "Shown under the enlarged image",
+  "category": "Photography",
+  "width": 750,
+  "height": 1000
+}
 ```
 
-`src` can be a local path (put files in `assets/img/`) or a full URL. Clicking a
-thumbnail opens it in a lightbox; left/right arrows and Esc work too. The gallery is
+A video entry:
+
+```json
+{
+  "id": "video-catamaran-pov",
+  "title": "Catamaran on Liangma River",
+  "thumbnail": "assets/thumbnails/engineering/video-catamaran-pov.webp",
+  "posterSource": "assets/img/catamaran/card.png",
+  "streamId": "",
+  "category": "Engineering",
+  "aspectRatio": "16:9",
+  "caption": "Catamaran on Liangma River - POV",
+  "status": "pending-stream-migration",
+  "fallback": {
+    "provider": "youtube",
+    "id": "l4PK6CLHE0c",
+    "url": "https://youtu.be/l4PK6CLHE0c"
+  }
+}
+```
+
+Rules:
+
+- IDs are stable, lowercase, and unique. Reference them from page data as
+  `{ "media": "<id>" }`.
+- `full` is an **R2 object key**, never a full URL. The site constructs the URL from
+  `MEDIA_BASE_URL`, so changing the media domain is one edit.
+- `thumbnail` is a repository path and must exist. `source` is optional and only used for
+  the local fallback/regeneration.
+- `width`/`height` describe the preview ratio and are used to reserve space (less layout
+  shift). `caption` and `alt` are optional; `alt` falls back to the caption/title.
+- Videos use `streamId` when available. `fallback` keeps the current YouTube/Instagram
+  player working until the Stream migration is finished.
+
+### Cloudflare values to fill in
+
+| Value | Where | Notes |
+|---|---|---|
+| R2 media base URL | `assets/js/media-config.js` → `MEDIA_BASE_URL` | Already set to `https://media.derekhan.link/`; change it if your custom domain differs |
+| Stream customer code | `assets/js/media-config.js` → `STREAM_CUSTOMER_CODE` | The part after `customer-` in the player domain |
+| Stream video UIDs | `data/media.json` → each video's `streamId` | 32-character UID from the Stream dashboard |
+| R2 public access | Cloudflare dashboard | Make objects publicly readable through the custom domain; keep write credentials private |
+| R2 CORS | Cloudflare dashboard | Not required for normal `<img>` loading; add `GET` from `https://derekhan.link` only if you later read R2 images in canvas/PDF export |
+
+**Never put API tokens, R2 secret keys, or account IDs in the repository.** Upload tools can
+read credentials from environment variables or `~/.config`.
+
+### Adding media (images and videos)
+
+1. **Add the original** to the full-resolution folder outside the repository, mirroring the
+   `assets/img` layout, then run `python3 Scripts/regenerate-images.py`.
+2. **Add a manifest entry** in `data/media.json` with a new stable `id`, a `thumbnail` path
+   under `assets/thumbnails/<category>/<id>.webp`, an R2 `full` key under the same category,
+   and `width`/`height`/`alt`/`caption`.
+3. **Build the thumbnail** with `python3 Scripts/build-thumbnails.py`. It reads `source` (or
+   `posterSource` for videos) and writes the WebP without touching the original.
+4. **Stage and upload the preview** with `python3 Scripts/prepare-r2-previews.py`. It writes
+   2560px WebP files outside the repository using the exact `full` keys; upload that folder
+   to R2. Prefer this preview over the original camera file, and keep originals in R2 under a
+   private prefix if you want them for the future.
+5. **Reference the ID** from `data/projects.json` (`images`/`highlights`/`thumbnail`) or
+   `data/gallery.json` (`images`).
+6. **Validate and publish**: `python3 Scripts/validate-media.py`, then `./Publish.command`.
+
+For a video, upload it to Cloudflare Stream first, put its UID in `streamId`, set
+`STREAM_CUSTOMER_CODE`, and keep or remove the `fallback` block. The player is only created
+after a click; it is responsive, preserves the manifest `aspectRatio`, supports fullscreen,
+and does not autoplay.
+
+### Validation, fallbacks, and performance
+
+- `Scripts/validate-media.py` rejects duplicate/invalid IDs, unsafe R2 keys, missing
+  thumbnails, bad Stream UIDs, and page references to unknown IDs. `Publish.command` runs it.
+- A missing manifest/entry renders a placeholder tile with a short “Media unavailable”
+  caption instead of breaking the page.
+- If an R2 image fails or times out, the lightbox tries the legacy `assets/hi` copy, then
+  keeps the thumbnail and shows a non-blocking error message.
+- If Stream is not configured, the manifest `fallback` player is used. If neither is
+  available, the video card shows a clear unavailable state.
+- Gallery grids load only WebP thumbnails. Full images are requested only after a lightbox
+  opens. Video iframes are created only on click. Images are lazy loaded and have dimensions
+  or fixed aspect ratios.
+- Thumbnails live in GitHub Pages; R2/Stream responses are cached by Cloudflare's CDN. Use
+  long-lived `Cache-Control` headers on R2, and a new object key when replacing an image if
+  you need to guarantee an immediate refresh.
+
+### Migration status
+
+See [MEDIA-MIGRATION.md](MEDIA-MIGRATION.md) for the full per-object checklist. At the time
+of this restructuring:
+
+- **70 image entries** have R2 object keys; their high-resolution previews still need to be
+  uploaded. No upload has been performed. Run
+  `python3 Scripts/prepare-r2-previews.py` to stage them outside the repository.
+- **4 videos** still use their YouTube/Instagram fallback and need Stream UIDs.
+- No DNS, domain, or Cloudflare production settings were changed.
+- Existing page URLs, captions, page content, `assets/img`, `assets/hi`, and the original
+  media were preserved. Nothing was deleted.
+
+The full-resolution originals stay outside the repository and are never deleted by these scripts.
+After R2 is verified, the old `assets/hi` fallback tier can be removed manually to shrink the
+repository; this restructuring deliberately leaves it in place.
+
+Run `python3 Scripts/build-media-inventory.py` after changing the manifest to refresh both
+the Markdown inventory and the CSV.
+
+## Adding photos / artwork to the gallery
+
+Add the image to `data/media.json` (see above), build its thumbnail, then reference its ID in
+`data/gallery.json`:
+
+```json
+"images": [
+  { "media": "gallery-rainbow" },
+  { "media": "video-bluebell-train" }
+]
+```
+
+The old form still works for compatibility:
+
+```json
+{ "src": "assets/img/my-photo.jpg", "caption": "Optional override" }
+```
+
+Clicking a thumbnail opens the lightbox; left/right arrows and Esc work too. The gallery is
 linked discreetly in the footer of every page (and from the Home page).
 
 ## Awards, skills & experience
@@ -437,18 +606,27 @@ blog.html              Blog
 gallery.html           Photos & artwork (lightbox)
 contact.html           Contact links
 data/                  YOUR CONTENT (edit these)
+data/media.json        Central media manifest (IDs, thumbnails, R2 keys, Stream UIDs)
 assets/css/style.css   All styling + theme variables (light/dark)
-assets/js/main.js      Site behavior (theme, nav, scroll reveal)
+assets/js/media-config.js  Public R2 base URL + Stream customer code
+assets/js/media.js     Reusable image/lightbox + lazy video component
+assets/js/main.js      Site behavior (theme, nav, scroll reveal, lightbox)
 assets/js/render.js    Loads data/*.json and fills the HTML
 assets/js/export.js    Project page → PDF export (loaded by project.html)
 assets/vendor/         Third-party libraries loaded on demand (html2pdf)
-assets/img/            Display images (max 1000px) — generated
-assets/hi/             Lightbox images (max 2560px) — generated
+assets/thumbnails/     WebP gallery thumbnails + video posters (GitHub-hosted)
+assets/img/            Legacy display images (max 1000px) — generated
+assets/hi/             Legacy lightbox fallbacks (max 2560px) — generated
 assets/previews/       Screenshots of embedded pages, used in project PDFs
 assets/files/          Downloadable files (dev log PDF, resume PDF)
 Scripts/regenerate-images.py  Rebuilds assets/img + assets/hi from the full-res originals
+Scripts/build-thumbnails.py   Builds WebP thumbnails from data/media.json
+Scripts/prepare-r2-previews.py  Stages 2560px WebP previews for R2 (no upload)
+Scripts/validate-media.py     Validates the manifest and page references
+Scripts/build-media-inventory.py  Regenerates MEDIA-MIGRATION.md + Scripts/media-inventory.csv
 Scripts/build-embed-previews.py  Screenshots embedded pages into assets/previews
 Scripts/build-resume-pdf.py  Rebuilds assets/files/Derek_Han_Resume.pdf from resume.html
+MEDIA-MIGRATION.md     Generated Cloudflare upload checklist (nothing is uploaded automatically)
 favicon.svg            Site icon
 robots.txt, sitemap.xml  SEO
 ```

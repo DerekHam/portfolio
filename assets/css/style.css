@@ -738,6 +738,7 @@ section { padding-block: 64px; }
   border-color: transparent transparent transparent #fff;
 }
 .video-frame {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 1px solid var(--line);
@@ -754,6 +755,48 @@ section { padding-block: 64px; }
 }
 /* Vertical video (Instagram reels) keeps its 9:16 shape instead of 16:9. */
 .video-frame.is-portrait { aspect-ratio: 9 / 16; max-width: 420px; }
+
+/* ---------- Media loading / error overlays ---------- */
+.media-status {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(10, 12, 15, 0.58);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.media-status[hidden] { display: none; }
+.media-status.is-error { background: rgba(10, 12, 15, 0.8); }
+.media-spinner {
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: media-spin 0.8s linear infinite;
+}
+.media-status.is-error .media-spinner,
+.media-status[hidden] .media-spinner { display: none; }
+.media-status-link {
+  color: #fff;
+  font-size: 0.76rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.media-status-note { opacity: 0.75; font-size: 0.7rem; }
+@keyframes media-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .media-spinner { animation-duration: 2.4s; }
+}
 
 /* ---------- Embedded pages (e.g. an interactive map) ---------- */
 .project-figure--embed { flex: 1 1 100%; width: 100%; max-width: none; }
@@ -1244,6 +1287,24 @@ section { padding-block: 64px; }
   text-underline-offset: 2px;
 }
 
+/* Attribution line printed after each project, linking back to the live site. */
+.pdf-source {
+  margin: 20px 0 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.5;
+  color: var(--muted);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.pdf-source a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
 .pdf-foot {
   display: flex;
   flex-wrap: wrap;
@@ -1324,6 +1385,7 @@ body.lightbox-open { overflow: hidden; }
 .lightbox[hidden] { display: none; }
 
 .lightbox-fig {
+  position: relative;
   margin: 0;
   max-width: min(1100px, 92vw);
   max-height: 88vh;
@@ -1331,6 +1393,26 @@ body.lightbox-open { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+/* The lightbox status is a small pill rather than a full-cover overlay so the
+   already-visible thumbnail stays readable while the R2 preview downloads. */
+.lightbox-status {
+  inset: auto;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  flex-direction: row;
+  gap: 10px;
+  width: max-content;
+  max-width: min(460px, 80vw);
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(10, 12, 15, 0.76);
+}
+.lightbox-status.is-error {
+  border-radius: 10px;
+  padding: 12px 16px;
 }
 .lightbox-fig img {
   max-width: 100%;
@@ -1348,6 +1430,12 @@ body.lightbox-open { overflow: hidden; }
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 .lightbox-video[hidden] { display: none; }
+.lightbox-video .video-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+}
 /* Portrait player for vertical videos, so the reel is not letterboxed in 16:9. */
 .lightbox-video.is-portrait { width: auto; height: min(80vh, 800px); aspect-ratio: 9 / 16; }
 #lightbox-img[hidden] { display: none; }

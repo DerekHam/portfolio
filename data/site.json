@@ -1,7 +1,8 @@
 {
-  "_comment": "Global site info. Social links are applied anywhere a link has a data-social attribute.",
+  "_comment": "Global site info. Social links are applied anywhere a link has a data-social attribute. 'url' is the public site address used in exported PDFs.",
   "name": "Derek Han",
   "brandMark": "DH",
+  "url": "https://derekhan.link",
   "social": {
     "email": "mailto:Derekzhizhihan09@outlook.com",
     "linkedin": "https://www.linkedin.com/in/your-handle",

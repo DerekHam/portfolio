@@ -28,6 +28,47 @@
   }
 
   /* ---------- Media helpers (same rules as render.js) ---------- */
+  function siteMediaInfo(item) {
+    if (!window.SiteMedia) return null;
+    var m = window.SiteMedia.resolveEntry(item);
+    if (!m) return null;
+    if (m.type === "image") {
+      return {
+        type: "image", manifest: true,
+        src: m.source || m.thumbnail,
+        full: m.fullUrl || "",
+        caption: m.caption || "",
+        alt: m.alt || "",
+        width: m.width || 0,
+        height: m.height || 0
+      };
+    }
+    if (m.type === "video") {
+      return {
+        type: "video", manifest: true,
+        provider: m.provider,
+        video: m.provider === "stream" ? m.streamId : (m.youtubeId || m.instagramId || ""),
+        streamId: m.streamId || "",
+        kind: m.instagramKind || "",
+        poster: m.thumbnail || "",
+        caption: m.caption || "",
+        title: m.title || "",
+        aspectRatio: m.aspectRatio || "",
+        url: window.SiteMedia.watchUrl(m) || ""
+      };
+    }
+    if (m.type === "embed") {
+      return {
+        type: "embed", manifest: true,
+        src: m.src,
+        caption: m.caption || "",
+        title: m.title || "",
+        preview: m.preview || ""
+      };
+    }
+    return null;
+  }
+
   function youtubeId(value) {
     if (!value) return "";
     var v = String(value).trim();
@@ -47,6 +88,8 @@
   }
 
   function mediaInfo(item) {
+    var resolved = siteMediaInfo(item);
+    if (resolved) return resolved;
     if (typeof item === "string") return { type: "image", src: item };
     var o = item || {};
     var vid = youtubeId(o.video || o.youtube);
@@ -74,11 +117,15 @@
 
   function videoPoster(info) {
     if (info.poster) return info.poster;
-    if (info.provider === "instagram") return "";
+    if (info.provider === "instagram" || info.provider === "stream") return "";
     return "https://img.youtube.com/vi/" + info.video + "/hqdefault.jpg";
   }
 
   function videoUrl(info) {
+    if (info.url) return info.url;
+    if (info.provider === "stream" && info.streamId && window.SiteMedia) {
+      return window.SiteMedia.streamWatchUrl(info.streamId);
+    }
     if (info.provider === "instagram") {
       return "https://www.instagram.com/" + (info.kind || "reel") + "/" + info.video + "/";
     }
@@ -177,6 +224,30 @@
     var h = el("h2", "pdf-section-title");
     h.textContent = text;
     return h;
+  }
+
+  /* Public site address, used for the "read more" links in exported PDFs. */
+  function siteBase(site) {
+    var url = site && site.url ? String(site.url).trim() : "";
+    if (!url) {
+      try { url = window.location.origin; } catch (e) { url = ""; }
+    }
+    return url.replace(/\/+$/, "");
+  }
+
+  function siteHome(site) {
+    var base = siteBase(site);
+    return base ? base + "/" : "#";
+  }
+
+  function projectUrl(site, project) {
+    var base = siteBase(site);
+    if (!base) return "#";
+    return base + "/project.html?id=" + encodeURIComponent(project && project.id != null ? project.id : "");
+  }
+
+  function displayUrl(url) {
+    return String(url || "").replace(/^https?:\/\//i, "").replace(/\/$/, "");
   }
 
   function mediaFigure(m, project) {
@@ -409,6 +480,22 @@
       linksSection.appendChild(list);
       block.appendChild(linksSection);
     }
+
+    /* Note + links back to the live website, so PDF readers can read more. */
+    var liveUrl = projectUrl(site, project);
+    var source = el("p", "pdf-source");
+    source.appendChild(document.createTextNode("Exported from "));
+    var siteLink = el("a");
+    siteLink.href = siteHome(site);
+    siteLink.textContent = ((site && site.name) || "Derek Han") + "'s personal website";
+    source.appendChild(siteLink);
+    source.appendChild(document.createTextNode(". Read this project online at "));
+    var liveLink = el("a");
+    liveLink.href = liveUrl;
+    liveLink.textContent = displayUrl(liveUrl);
+    source.appendChild(liveLink);
+    source.appendChild(document.createTextNode("."));
+    block.appendChild(source);
 
     return block;
   }

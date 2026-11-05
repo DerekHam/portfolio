@@ -7,24 +7,24 @@
     "tags": ["CAD", "Fabrication", "Aerospace"],
     "featured": true,
     "summary": "Two open-sourced wind tunnels designed for middle- and high- school use.",
-    "thumbnail": "assets/img/calico/full-view.jpeg",
+    "thumbnail": "assets/thumbnails/engineering/calico-full-view.webp",
     "images": [
-      { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie — the full assembly" },
-      { "src": "assets/img/calico/intake-view.jpeg", "caption": "The incomplete air intake & flow conditioning section of my wind tunnel. " },
-      { "src": "assets/img/calico/diffuser-1.jpeg", "caption": "Constructing the diffuser…" },
-      { "src": "assets/img/calico/diffuser-2.jpeg", "caption": "Almost done!" },
-      { "src": "assets/img/calico/frame-1.jpeg", "caption": "Testing the frame structural integritiy before assembling with the trolley." },
-      { "src": "assets/img/calico/leak-test.jpeg", "caption": "Testing for leaks…" },
-      { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": "A test for the Calico Kitten. I have no cars besides me, so I got a train toy from my toddler years to work." },
-      { "src": "assets/img/calico/learning-rhino-cam.jpeg", "caption": "Mr. Chris Hansen teaching me Rhino CAM" },
-      { "src": "assets/img/calico/approval.jpeg", "caption": "Yes, this is his \"design approved\" face. " },
-      { "src": "assets/img/calico/calico-1.jpeg", "caption": "This is a calico cat. As you can see, it contains the three colors present in the wind tunnel: wood, white, and black." },
-      { "src": "assets/img/calico/calico-2.jpeg", "caption": "Aww, how cute (´･ω･`)" }
+      { "media": "calico-full-view" },
+      { "media": "calico-intake-view" },
+      { "media": "calico-diffuser-1" },
+      { "media": "calico-diffuser-2" },
+      { "media": "calico-frame-1" },
+      { "media": "calico-leak-test" },
+      { "media": "calico-calico-kitten-test" },
+      { "media": "calico-learning-rhino-cam" },
+      { "media": "calico-approval" },
+      { "media": "calico-calico-1" },
+      { "media": "calico-calico-2" }
     ],
     "highlights": [
-      { "src": "assets/img/calico/full-view.jpeg", "caption": "Calico Biggie — the full assembly" },
-      { "src": "assets/img/calico/diffuser-1.jpeg", "caption": "Diffuser and flow straightener" },
-      { "src": "assets/img/calico/calico-kitten-test.jpeg", "caption": "Calico Kitten smoke test" }
+      { "media": "calico-full-view" },
+      { "media": "calico-diffuser-1", "caption": "Diffuser and flow straightener" },
+      { "media": "calico-calico-kitten-test", "caption": "Calico Kitten smoke test" }
     ],
     "description": [
       "<p>The <b>Calico Wind Tunnels</b> are a series of open-sourced wind tunnels for middle- and high-schools. They are designed with easy manufacturing and cost saving in mind, and can be made by students skilled in fabrication, or most other students under teacher guidance. </p>",
@@ -32,11 +32,15 @@
       "<ul><li><b>Calico Biggie</b> is a roughly 3.5-meter long wind tunnel with a test section sized 400*400*800mm. It is capable of 15m/s of testing wind speeds. </li><li><b>Calico Kitten</b> is a toy-sized wind tunnel powered by a 120mm PC fan. It can be manufactured under 60 CNY (≈9 USD). </li></ul>",
       "<p><p>After I started the assembly of a functioning prototype, a nearby local school (ISB) had a student reached out for its files. The collaboration is still underway as of now (Oct 4th, 2026). </p>",
       "<p>The name Calico refers to the color of the larger wind tunnel. Calico Biggie is made mainly out of plywood, white 3D prints, and a black sheet of card for test section back ground, which compromises the tricolor of the calico cat. </p>",
-      "<h3>What Makes Calico Biggie Special</h3>",
+      "<h2>What Makes Calico Biggie Special</h2>",
       "<p>Calico Biggie is probably one of the first wind tunnels designed for high school students to develop useful skills and get actually useful data. </p>",
       "<p>The choice of plywood and PLA from FDM printing means that the wind tunnel could be easily made and modified. The total construction cost of the first prototype is approximately 3500-4000 CNY (≈500-580 USD). </p>",
       "<p>Since all CAD files are open-sourced, shared, and parameterized, students could easily adapt the design to their own needs: ",
-      "<ul><li>Want a smaller one? No problem, change a few numbers and a new scaled design appears. </li><li>Have a 12mm plywood instead of 8mm plywood? No problem, same thing! </li><li>Uses imperial units? Sucks to be you, but no problem! Change more numbers and the design still works!</li></ul></p>"
+      "<ul><li>Want a smaller one? No problem, change a few numbers and a new scaled design appears. </li><li>Have a 12mm plywood instead of 8mm plywood? No problem, same thing! </li><li>Uses imperial units? Sucks to be you, but no problem! Change more numbers and the design still works!</li></ul></p>", 
+      "<h2>Special Thanks</h2>",
+      "<p>My sincere gratitude goes to the two technicians/teachers, Mr. Guangyu (Peter) Chen and Mr. Chris Hansen who contributed greatly to the development process. Without their professional advices, I would run in to so many more problems along the way. They might not know much about aerodynamics, but they sure do know how to make things properly, and how to be a good teacher.<p>",
+      "<p>Much thanks to the students who helped me in the construction and development process: Mosheh Kouassy, Ted Zhang, Isabella Wang, Leo Li, Michael Shen, and Bruce Yu. Oh, also the ISB student who reached out to me.</p>", 
+      "<p>Moreover, I wouldn't get here without the help of my parents and my advisor. Though they always say I spent too much time on Calico, they still continued to support me through their actions, and are sincerely happy for me.</p>"
     ],
     "links": [
       {
@@ -57,15 +61,16 @@
     "tags": ["Fabrication", "CAD", "Remote Control"],
     "featured": true,
     "summary": "An efficient, fast, and easily carried catamaran stemmed from a bird monitoring boat.",
-    "thumbnail": "assets/img/catamaran/card.png",
+    "thumbnail": "assets/thumbnails/engineering/catamaran-card.webp",
     "images": [
-      { "video": "https://youtu.be/l4PK6CLHE0c?si=Q2vhXI0AUKTswtan", "caption": "Catamaran on Liangma River - POV" },
-      { "video": "https://youtube.com/shorts/jY1MIndGaHU?feature=share", "caption": "Catamaran on Chaoyang Lake" }
+      { "media": "video-catamaran-pov" },
+      { "media": "video-catamaran-lake" }
     ],
     "description": [
       "<p>The first version of this catamaran was designed as a mobile platform for a computer vision bird monitoring project. After the project was finished, I fell in love with the waters of Beijing, so I iterated the design two more times until one efficient catamaran boat is made.</p>",
       "<p>Now, this 1m long, 50 cm wide boat can be disassembled in 2 minutes, easily carried on the back of my bicycle, and then reassmebled on-site within 5 minutes. I had a blast with it in the moat, Liangma River, Tuanjie Lake, and Chaoyang Park Lake, through various, sometimes scary wind conditions. The wind was no match to its zipping speed, close to human sprinting.</p>", 
-      "<p>Apparently, with a 3S 2200mAh battery, it can sail for over an hour! I got physically exhausted after that long test.</p>"
+      "<p>Apparently, with a 3S 2200mAh battery, it can sail for over an hour! I got physically exhausted after that long test.</p>", 
+      "<p>One of my friend came visit, and he is now starting to replicate one in the US. Hope he will have a great time!</p>"
     ],
     "links": [
       {
@@ -85,11 +90,11 @@
     "tags": ["Aerospace", "Fabrication", "CAD", "Remote Control"],
     "featured": true,
     "summary": "A series of low or unpowered gliders, designed so they comply with strict Beijing drone regulations. Unfortunately forced to discontinue.",
-    "thumbnail": "assets/img/glider/card.png",
+    "thumbnail": "assets/thumbnails/engineering/glider-card.webp",
     "images": [
-      { "src": "assets/img/glider/horn.jpeg", "caption": " " },
-      { "src": "assets/img/glider/lightweight-airframe.jpeg", "caption": " " },
-      { "src": "assets/img/glider/v1-snapped.jpeg", "caption": " " }
+      { "media": "glider-horn" },
+      { "media": "glider-lightweight-airframe" },
+      { "media": "glider-v1-snapped" }
     ],
     "description": [
       "<p>I was into building drones, but Beijing Municipal Government said: \"No you will not build drones.\" so I built gliders, which are technically not drones, until they are, so then I had to stop, so my parents won't go to jail. </p>",
@@ -113,7 +118,7 @@
     "tags": ["Coding", "Arts", "Ongoing"],
     "featured": true,
     "summary": "Collaborative science-fiction novel, dedicated to explore the future under realistic technological and societal advancements.",
-    "thumbnail": "assets/img/parsecs/card.png",
+    "thumbnail": "assets/thumbnails/projects/parsecs-card.webp",
     "images": [
       { "embed": "https://parsecs-starmap.derekhan.link", "caption": "Interactive starmap" }
     ],
@@ -135,12 +140,12 @@
     "tags": ["CAD", "Fabrication", "Ongoing"],
     "featured": false,
     "summary": "Regular alarm clocks wasn't working for me, so I made one that automatically turns the light on for my dorm. My roommate loved it.",
-    "thumbnail": "assets/img/alarm/final.jpeg",
+    "thumbnail": "assets/thumbnails/engineering/alarm-final.webp",
     "images": [
-      { "src": "assets/img/alarm/final.jpeg", "caption": "Final product, works well!" },
-      { "src": "assets/img/alarm/interface.jpeg", "caption": "Testing the lid to see if it fit" },
-      { "src": "assets/img/alarm/print-quality-check.jpeg", "caption": "Comparing print quality of two directions" },
-      { "src": "assets/img/alarm/v2.jpeg", "caption": "Second iteration, this one barely works" }
+      { "media": "alarm-final" },
+      { "media": "alarm-interface" },
+      { "media": "alarm-print-quality-check" },
+      { "media": "alarm-v2" }
     ],
     "description": [
       "<p>Apparently, I can't wake up in the morning, and the school is not happy about that. Being me, I pursued the problem not as a habitual issue of me (though it really is), but as an engineering problem on how to wake me up most efficiently.</p>",
@@ -157,11 +162,11 @@
     "tags": ["Fabrication", "Arts"],
     "featured": true,
     "summary": "The director asked me to make a working mechanical pendulum for an immersive English Musical, I said \"Hell yeah\".",
-    "thumbnail": "assets/img/weimar-pendulum/curtain-call.jpeg",
+    "thumbnail": "assets/thumbnails/engineering/weimar-pendulum-curtain-call.webp",
     "images": [
-      { "src": "assets/img/weimar-pendulum/curtain-call.jpeg", "caption": " " },
-      { "src": "assets/img/weimar-pendulum/group-photo.JPG", "caption": " " },
-      { "src": "assets/img/weimar-pendulum/with-pendulum.JPG", "caption": " " }
+      { "media": "weimar-pendulum-curtain-call" },
+      { "media": "weimar-pendulum-group-photo" },
+      { "media": "weimar-pendulum-with-pendulum" }
     ],
     "description": [
       "<p><i>Weimar Pendulum</i> is a student-directed original immersive musical in our school. It is about the story of Heinz Winterfeld, a clockmaker from Munich trying to unite the people with a clock tower to prevent Hitler from taking power.</p>",
@@ -181,11 +186,11 @@
     "tags": ["Fabrication", "Arts"],
     "featured": false,
     "summary": "A 4.5m wide closet structure designed to be hoisted up during a Chinese musical Play.",
-    "thumbnail": "assets/img/nanqiang/closet.jpeg",
+    "thumbnail": "assets/thumbnails/engineering/nanqiang-closet.webp",
     "images": [
-      { "src": "assets/img/nanqiang/closet.jpeg", "caption": " " },
-      { "src": "assets/img/nanqiang/fixing-light.JPG", "caption": " " },
-      { "src": "assets/img/nanqiang/light-fixed.JPG", "caption": " " }
+      { "media": "nanqiang-closet" },
+      { "media": "nanqiang-fixing-light" },
+      { "media": "nanqiang-light-fixed" }
     ],
     "description": [
       "<p>This is placeholder content so you can see how a project page looks.</p>",
@@ -202,12 +207,12 @@
     "tags": ["Fabrication", "CAD"],
     "featured": false,
     "summary": "An integrated enclosure for my laser cutter and 3D printer. Used often until school got a shiny new workshop.",
-    "thumbnail": "assets/img/3d-printer-rack/full-rack.jpeg",
+    "thumbnail": "assets/thumbnails/engineering/3d-printer-rack-full-rack.webp",
     "images": [
-      { "src": "assets/img/3d-printer-rack/full-rack.jpeg", "caption": " " },
-      { "src": "assets/img/3d-printer-rack/filter.jpeg", "caption": " " },
-      { "src": "assets/img/3d-printer-rack/shelves.jpeg", "caption": " " },
-      { "src": "assets/img/3d-printer-rack/laser-cutter-at-home.jpeg", "caption": " " }
+      { "media": "3d-printer-rack-full-rack" },
+      { "media": "3d-printer-rack-filter" },
+      { "media": "3d-printer-rack-shelves" },
+      { "media": "3d-printer-rack-laser-cutter-at-home" }
     ],
     "description": [
       "<p>This is placeholder content so you can see how a project page looks.</p>",
@@ -228,19 +233,19 @@
     "tags": ["Coding", "Ongoing"],
     "featured": false,
     "summary": "A macOS menu-bar app that treats attention like computer memory. Built for my own busy schedule, and now used by friends with same time-management struggles.",
-    "thumbnail": "assets/img/human-ram/capture-light.png",
+    "thumbnail": "assets/thumbnails/projects/human-ram-capture-light.webp",
     "images": [
-      { "src": "assets/img/human-ram/menu-bar-light.png", "caption": " " },
-      { "src": "assets/img/human-ram/capture-light.png", "caption": " " },
-      { "src": "assets/img/human-ram/daily-scan-light.png", "caption": " " },
-      { "src": "assets/img/human-ram/notes-review-light.png", "caption": " " },
-      { "src": "assets/img/human-ram/diary-light.png", "caption": " " },
-      { "src": "assets/img/human-ram/settings-light.png", "caption": " " }
+      { "media": "human-ram-menu-bar-light" },
+      { "media": "human-ram-capture-light" },
+      { "media": "human-ram-daily-scan-light" },
+      { "media": "human-ram-notes-review-light" },
+      { "media": "human-ram-diary-light" },
+      { "media": "human-ram-settings-light" }
     ],
     "highlights": [
-      { "src": "assets/img/human-ram/menu-bar-light.png", "caption": "The menu bar" },
-      { "src": "assets/img/human-ram/capture-light.png", "caption": "Capture overlay" },
-      { "src": "assets/img/human-ram/daily-scan-light.png", "caption": "The daily scan" }
+      { "media": "human-ram-menu-bar-light", "caption": "The menu bar" },
+      { "media": "human-ram-capture-light", "caption": "Capture overlay" },
+      { "media": "human-ram-daily-scan-light", "caption": "The daily scan" }
     ],
     "description": [
       "<p>Human RAM is a macOS menu-bar app I built for myself. Most to-do apps ask you to organize; this one asks almost nothing. You press a global hotkey, type a thought on one line, and the app decides when it should come back to you. The whole design rests on a simple metaphor: your mind is RAM, and this is a small external module for it.</p>",
@@ -263,26 +268,45 @@
     "tags": ["Arts", "Ongoing"],
     "featured": true,
     "summary": "I am an avid player of Transport Fever 2, 3, and Cities: Skylines, with a combined playtime of 1200+ hours as of now.",
-    "thumbnail": "assets/img/games/20260913_012401_img-3.jpg",
+    "thumbnail": "assets/thumbnails/projects/games-masterton-river-annotated-1997.webp",
     "images": [
-      { "src": "assets/img/games/20260913_012401_img-3.jpg", "caption": " " },
-      { "src": "assets/img/games/20260913_012450_img-4.jpg", "caption": " " },
-      { "src": "assets/img/games/20260913_012531_img-5.jpg", "caption": " " },
-      { "src": "assets/img/games/20260913_012842_img-7.jpg", "caption": " " },
-      { "src": "assets/img/games/20260913_012952_img-8.jpg", "caption": " " },
-      { "src": "assets/img/games/20260913_013205_img-9.jpg", "caption": " " },
-      { "src": "assets/img/games/20260227_223642_img-0.jpg", "caption": " " },
-      { "src": "assets/img/games/20260227_224319_img-3.jpg", "caption": " " },
-      { "src": "assets/img/games/20260304_012355_img-4.jpeg", "caption": " " },
-      { "src": "assets/img/games/20260312_010723_img-0.jpg", "caption": " " },
-      { "src": "assets/img/games/20260320_235138_img-2.jpg", "caption": " " },
-      { "src": "assets/img/games/20260320_235215_img-4.jpg", "caption": " " },
-      { "src": "assets/img/games/20260320_235657_img-7.jpg", "caption": " " }
+      { "media": "games-masterton-river-annotated-1997" },
+      { "media": "games-20260913-012401-img-3" },
+      { "media": "games-20260913-012450-img-4" },
+      { "media": "games-20260913-012531-img-5" },
+      { "media": "games-20260913-012842-img-7" },
+      { "media": "games-20260913-012952-img-8" },
+      { "media": "games-20260913-013205-img-9" },
+      { "media": "games-20260227-223642-img-0" },
+      { "media": "games-20260227-224319-img-3" },
+      { "media": "games-20260304-012355-img-4" },
+      { "media": "games-20260312-010723-img-0" },
+      { "media": "games-20260320-235138-img-2" },
+      { "media": "games-20260320-235215-img-4" },
+      { "media": "games-20260320-235657-img-7" }
     ],
     "description": [
       "<p>I Like to play games, most are related to transportation. </p>",
       "<p>In these games, I take the chance to build cities and transport networks in the way I think they should be. Most turned out profitable, given that public transportation is not any less inconvenient than private transportation.</p>", 
       "<p>I challenge myself to create the most efficient and least environmentally impactful transport systems in challenging terrains. </p>"
+    ],
+    "links": [
+      { "label": "Placeholder", "url": "https://derekhan.link" }
+    ]
+  },
+  {
+    "id": "12",
+    "title": "Kerbal Space Program",
+    "date": "2025 and Ongoing",
+    "tags": ["Arts", "Ongoing"],
+    "featured": false,
+    "summary": "*Jebediah Kerman voice* \"Yeehee Yahaa Woohoo!\"",
+    "thumbnail": "assets/img/placeholder.svg",
+    "images": [
+      { "src": "assets/img/placeholder.svg", "caption": " " }
+    ],
+    "description": [
+      "<p>Placeholder </p>"
     ],
     "links": [
       { "label": "Placeholder", "url": "https://derekhan.link" }
@@ -295,15 +319,19 @@
     "tags": ["Software", "Coding", "Ongoing"],
     "featured": false,
     "summary": "The portfolio you are looking at, catalogued as one of its own projects. A small matryoshka doll of a website.",
-    "thumbnail": "assets/img/website/home-light.png",
-    "images": ["assets/img/website/home-light.png", "assets/img/website/projects-light.png"],
+    "thumbnail": "assets/thumbnails/projects/website-home-light.webp",
+    "images": [{ "media": "website-home-light" }, { "media": "website-projects-light" }],
     "description": [
       "<p>This is the site you are reading right now — a portfolio that has catalogued itself. It earned a card like everything else, so yes: this is a small matryoshka doll of a website.</p>",
       "<p>The goal was a portfolio that loads instantly, is easy to keep up to date, and gets out of the way of the work. It is a plain static site — hand-written HTML and CSS with a little vanilla JavaScript, no frameworks and no build step — hosted for free on GitHub Pages.</p>",
       "<h2>What is inside</h2>",
       "<ul><li><strong>Content in data files</strong> — every page reads its text from a small JSON file, so updating the site means editing data, not markup.</li><li><strong>A tiny renderer</strong> — one script binds that data into HTML templates and builds the project grid.</li><li><strong>Projects page</strong> — filter by tag and sort by importance, start date, or end date.</li><li><strong>Dark mode, a gallery lightbox, and a responsive layout</strong> — the small touches that make it feel finished.</li></ul>",
+      "<h2>Media architecture</h2>",
+      "<p>The site is still a static GitHub Pages deployment, but the heavy media lives elsewhere. Small WebP thumbnails, captions, and the media manifest stay in the repository; high-resolution lightbox previews come from Cloudflare R2; and videos play from Cloudflare Stream.</p>",
+      "<ul><li><strong>One manifest</strong> — <code>data/media.json</code> stores stable IDs, captions, dimensions, thumbnail paths, R2 object keys, and Stream UIDs. Pages reference an ID instead of repeating image metadata.</li><li><strong>Lazy by default</strong> — grids use thumbnails, lightbox previews load only on click, and video players are created only when requested. Nothing autoplays.</li><li><strong>Graceful fallbacks</strong> — if an R2 preview fails, the lightbox tries the older local preview and then the thumbnail; if Stream is not configured, the existing YouTube/Instagram videos keep working.</li></ul>",
+      "<p>The public configuration only needs the R2 base URL and the Stream customer code. No API tokens or secrets are in the frontend, and there is still no backend, database, or build step.</p>",
       "<h2>Built with</h2>",
-      "<p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No dependencies, no build tools, and no tracking — just static files.</p>",
+      "<p>HTML, CSS, and vanilla JavaScript, set in IBM Plex. No frameworks, no build tools, no dependencies for the site itself, and no tracking. GitHub Pages serves the pages, Cloudflare serves the media.</p>",
       "<h2>A note on AI</h2>",
       "<p>The code for this site was built with an AI assistant. The ideas and direction are mine, and I reviewed each change — but this page and the site's blog are the two places where the writing isn't entirely my own. Every project write-up and the rest of this portfolio are written by me.</p>"
     ],
@@ -312,7 +340,7 @@
     ]
   },
   {
-    "_comment": "PROJECT TEMPLATE — copy this block, give it a unique numeric id, delete the \"template\": true line, then fill in the fields. While \"template\" is true this entry is ignored everywhere: no card on Projects or Home, and no project.html?id=... page. Delete unused fields if you like.",
+    "_comment": "PROJECT TEMPLATE — copy this block, give it a unique numeric id, delete the \"template\": true line, then fill in the fields. While \"template\" is true this entry is ignored everywhere: no card on Projects or Home, and no project.html?id=... page. The images below use the legacy path form; for new work prefer { \"media\": \"<id>\" } referencing data/media.json. Delete unused fields if you like.",
     "template": true,
     "id": "90",
     "title": "Project title",
