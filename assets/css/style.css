@@ -310,19 +310,52 @@ section { padding-block: 64px; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
+/* Portrait with a pop-out: the square frame clips the photo, while a cut-out
+   PNG of the same photo lets the face and shoulder spill over the right edge.
+   The cut-out is pixel-aligned with the base image. */
 .portrait {
   position: relative;
+  width: 256px;
+  height: 210px;
+}
+
+.photo-frame {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
   width: 210px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  box-shadow: var(--shadow);
 }
 
 .avatar {
   width: 100%;
-  height: 210px;
-  border-radius: 8px;
+  height: 100%;
   object-fit: cover;
-  border: 1px solid var(--line);
-  background: var(--bg-elev);
-  box-shadow: var(--shadow);
+  object-position: left center;
+}
+
+.avatar-pop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 210px;
+  width: auto;
+  pointer-events: none;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.35));
+  animation: portrait-pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  animation-delay: 0.2s;
+}
+.avatar-pop:not([src]) { display: none; }
+
+@keyframes portrait-pop {
+  from { opacity: 0; transform: translateY(5px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Fun speech bubble beside the portrait. Text comes from data/home.json
@@ -673,14 +706,15 @@ section { padding-block: 64px; }
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .portrait { width: 150px; order: -1; }
-  .avatar { height: 150px; }
+  .portrait { width: 183px; height: 150px; order: -1; }
+  .photo-frame { width: 150px; }
+  .avatar-pop { height: 150px; }
   .photo-note {
     left: calc(100% + 16px);
     right: auto;
     top: 50%;
     bottom: auto;
-    width: min(46vw, calc(100vw - 202px));
+    width: min(46vw, calc(100vw - 235px));
     max-width: none;
     transform: translateY(-50%) rotate(1.5deg);
     transform-origin: 0 50%;
@@ -702,7 +736,7 @@ section { padding-block: 64px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-note { animation: none; }
+  .photo-note, .avatar-pop { animation: none; }
 }
 
 @media (max-width: 720px) {
