@@ -310,14 +310,63 @@ section { padding-block: 64px; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
-.avatar {
+.portrait {
+  position: relative;
   width: 210px;
+}
+
+.avatar {
+  width: 100%;
   height: 210px;
   border-radius: 8px;
   object-fit: cover;
   border: 1px solid var(--line);
   background: var(--bg-elev);
   box-shadow: var(--shadow);
+}
+
+/* Fun speech bubble beside the portrait. Text comes from data/home.json
+   ("photoNote"); set it to "" to hide the bubble entirely. */
+.photo-note {
+  position: absolute;
+  right: -10px;
+  bottom: calc(100% + 18px);
+  z-index: 3;
+  width: max-content;
+  max-width: 260px;
+  margin: 0;
+  padding: 11px 15px 12px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.45;
+  border-radius: 12px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  transform: rotate(-2deg);
+  transform-origin: 90% 100%;
+  animation: photo-note-pop 0.55s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+  animation-delay: 0.45s;
+}
+.photo-note:empty { display: none; }
+.photo-note::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  bottom: -7px;
+  z-index: -1;
+  width: 16px;
+  height: 16px;
+  background: inherit;
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+
+@keyframes photo-note-pop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.75) rotate(-7deg); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(-2deg); }
 }
 
 /* ---------- Buttons ---------- */
@@ -624,8 +673,36 @@ section { padding-block: 64px; }
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .avatar { width: 150px; height: 150px; order: -1; }
+  .portrait { width: 150px; order: -1; }
+  .avatar { height: 150px; }
+  .photo-note {
+    left: calc(100% + 16px);
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    width: min(46vw, calc(100vw - 202px));
+    max-width: none;
+    transform: translateY(-50%) rotate(1.5deg);
+    transform-origin: 0 50%;
+    animation-name: photo-note-pop-side;
+  }
+  .photo-note::after {
+    left: -6px;
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@keyframes photo-note-pop-side {
+  0% { opacity: 0; transform: translateY(-50%) translateX(-10px) scale(0.85) rotate(-4deg); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(-50%) translateX(0) scale(1) rotate(1.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-note { animation: none; }
 }
 
 @media (max-width: 720px) {

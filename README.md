@@ -46,7 +46,7 @@ Everything you normally change is in the `data/` folder. Edit the JSON, refresh 
 | File | Controls |
 |---|---|
 | `data/site.json` | Your name, brand initials, public site URL (used in PDF exports), email/LinkedIn/GitHub links |
-| `data/home.json` | Home hero text, hero banner image, and the About paragraphs |
+| `data/home.json` | Home hero text, hero banner image, portrait photo, the portrait's speech-bubble note, and the About paragraphs |
 | `data/projects.json` | All projects (cards, filters, and project pages) |
 | `data/experience.json` | Internships/work and extracurriculars/leadership |
 | `data/resume.json` | Resume page content and PDF path; rebuild the PDF with `Scripts/build-resume-pdf.py` (page is hidden/unlisted) |
@@ -68,6 +68,10 @@ Notes:
   (one per line, which is much easier to read and edit). The blocks are joined together
   when rendered, so both forms work.
 - Prefer plain quotes and commas. Every file must stay valid JSON (no trailing commas).
+- `photoNote` in `home.json` is the fun speech bubble next to the portrait. Change the text
+  whenever you like; set it to `""` to hide the bubble. `photo` can point at any square-ish
+  portrait image (the current `headshot-wide.jpeg` was widened on the right so the face has
+  breathing room inside the frame).
 
 ## How the HTML and data connect
 

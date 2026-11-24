@@ -4,7 +4,9 @@
   "name": "Derek Han",
   "lead": "High school senior having fun with his engineering skills. Creatively solved some problems along the way.",
   "banner": "assets/img/banner.jpg",
-  "photo": "assets/img/headshot.jpeg",
+  "photo": "assets/img/headshot-wide.jpeg",
+  "_photoNote": "Fun speech-bubble text beside the portrait. Leave empty (\"\") to hide the bubble.",
+  "photoNote": "Yes, that's me in a wind tunnel. No, I wasn't stuck. Probably.",
   "aboutHeading": "About Me",
   "about": [
     "<p>A quote, though modified, that I like is</p>",
