@@ -68,11 +68,8 @@ Notes:
   (one per line, which is much easier to read and edit). The blocks are joined together
   when rendered, so both forms work.
 - Prefer plain quotes and commas. Every file must stay valid JSON (no trailing commas).
-- The portrait uses two images. `photo` is the photo shown inside the small rounded frame;
-  `photoPop` is a transparent PNG cut-out of the same photo (in `assets/portrait/`) laid on
-  top so your head spills over the frame edge. Keep the two aligned; if you replace the
-  portrait, regenerate the cut-out (or set `photoPop` to `""` to turn the effect off).
-- `photoNote` in `home.json` is the fun speech bubble next to the portrait. Change the text
+- The portrait (`photo`) is pinned flush to the right edge of the window. `photoNote` in
+  `home.json` is the speech bubble that pops out over the photo's top edge. Change the text
   whenever you like; set it to `""` to hide the bubble.
 
 ## How the HTML and data connect

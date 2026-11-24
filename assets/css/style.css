@@ -310,60 +310,40 @@ section { padding-block: 64px; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
-/* Portrait with a pop-out: the square frame clips the photo, while a cut-out
-   PNG of the same photo lets the face and shoulder spill over the right edge.
-   The cut-out is pixel-aligned with the base image. */
+/* Portrait pinned to the right edge of the window. The photo keeps square
+   corners on the right so it sits flush against the viewport; the speech
+   bubble overlaps its top edge for the pop-out. */
 .portrait {
   position: relative;
-  width: 256px;
-  height: 210px;
+  justify-self: end;
+  width: 240px;
+  height: 240px;
+  transform: translateX(24px);
 }
 
-.photo-frame {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 210px;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  background: var(--bg-elev);
-  box-shadow: var(--shadow);
+@media (min-width: 1100px) {
+  .portrait {
+    transform: translateX(calc(50vw - var(--wrap) / 2 + 24px));
+  }
 }
 
 .avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid var(--line);
+  border-right: 0;
+  background: var(--bg-elev);
+  box-shadow: var(--shadow);
 }
 
-.avatar-pop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  height: 210px;
-  width: auto;
-  pointer-events: none;
-  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.35));
-  animation: portrait-pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
-  animation-delay: 0.2s;
-}
-.avatar-pop:not([src]) { display: none; }
-
-@keyframes portrait-pop {
-  from { opacity: 0; transform: translateY(5px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Fun speech bubble beside the portrait. Text comes from data/home.json
-   ("photoNote"); set it to "" to hide the bubble entirely. */
+/* Fun speech bubble that pops out over the photo's top edge. Text comes from
+   data/home.json ("photoNote"); set it to "" to hide the bubble. */
 .photo-note {
   position: absolute;
-  right: -10px;
-  bottom: calc(100% + 18px);
+  right: 20px;
+  bottom: calc(100% - 30px);
   z-index: 3;
   width: max-content;
   max-width: 260px;
@@ -706,37 +686,18 @@ section { padding-block: 64px; }
 
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .portrait { width: 183px; height: 150px; order: -1; }
-  .photo-frame { width: 150px; }
-  .avatar-pop { height: 150px; }
+  .portrait { width: 170px; height: 170px; order: -1; transform: translateX(24px); }
   .photo-note {
-    left: calc(100% + 16px);
-    right: auto;
-    top: 50%;
-    bottom: auto;
-    width: min(46vw, calc(100vw - 235px));
+    right: 8px;
+    bottom: calc(100% - 22px);
+    width: min(240px, 62vw);
     max-width: none;
-    transform: translateY(-50%) rotate(1.5deg);
-    transform-origin: 0 50%;
-    animation-name: photo-note-pop-side;
-  }
-  .photo-note::after {
-    left: -6px;
-    right: auto;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
   }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@keyframes photo-note-pop-side {
-  0% { opacity: 0; transform: translateY(-50%) translateX(-10px) scale(0.85) rotate(-4deg); }
-  60% { opacity: 1; }
-  100% { opacity: 1; transform: translateY(-50%) translateX(0) scale(1) rotate(1.5deg); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .photo-note, .avatar-pop { animation: none; }
+  .photo-note { animation: none; }
 }
 
 @media (max-width: 720px) {
