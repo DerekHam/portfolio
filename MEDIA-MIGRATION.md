@@ -6,9 +6,9 @@ Generated from `data/media.json` by `python3 Scripts/build-media-inventory.py`.
 
 | Count | Kind | Status |
 |---:|---|---|
-| 70 | Images with an R2 object key | pending R2 upload |
+| 73 | Images with an R2 object key | pending R2 upload |
 | 4 | Videos | pending Stream migration |
-| 74 | WebP thumbnails/posters | already committed to GitHub |
+| 77 | WebP thumbnails/posters | already committed to GitHub |
 
 ## Configuration values to fill in
 
@@ -27,6 +27,8 @@ The manifest key is what the website uses; the local preview is the source file.
 | ID | Category | R2 object key | Local preview | GitHub thumbnail |
 |---|---|---|---|---|
 | `calico-full-view` | Engineering | `engineering/calico-full-view.webp` | `assets/hi/calico/full-view.jpeg` | `assets/thumbnails/engineering/calico-full-view.webp` |
+| `calico-v2-fullview` | Engineering | `engineering/calico-v2-fullview.webp` | `assets/hi/calico/v2-fullview.jpeg` | `assets/thumbnails/engineering/calico-v2-fullview.webp` |
+| `calico-v2-test-1` | Engineering | `engineering/calico-v2-test-1.webp` | `assets/hi/calico/v2-test-1.jpeg` | `assets/thumbnails/engineering/calico-v2-test-1.webp` |
 | `calico-intake-view` | Engineering | `engineering/calico-intake-view.webp` | `assets/hi/calico/intake-view.jpeg` | `assets/thumbnails/engineering/calico-intake-view.webp` |
 | `calico-diffuser-1` | Engineering | `engineering/calico-diffuser-1.webp` | `assets/hi/calico/diffuser-1.jpeg` | `assets/thumbnails/engineering/calico-diffuser-1.webp` |
 | `calico-diffuser-2` | Engineering | `engineering/calico-diffuser-2.webp` | `assets/hi/calico/diffuser-2.jpeg` | `assets/thumbnails/engineering/calico-diffuser-2.webp` |
@@ -84,6 +86,7 @@ The manifest key is what the website uses; the local preview is the source file.
 | `gallery-i-love-archery` | Photography | `photography/gallery-i-love-archery.webp` | `assets/hi/gallery/i-love-archery.jpeg` | `assets/thumbnails/photography/gallery-i-love-archery.webp` |
 | `gallery-i-love-travelling` | Photography | `photography/gallery-i-love-travelling.webp` | `assets/hi/gallery/i-love-travelling.jpeg` | `assets/thumbnails/photography/gallery-i-love-travelling.webp` |
 | `gallery-rainbow` | Photography | `photography/gallery-rainbow.webp` | `assets/hi/gallery/rainbow.jpeg` | `assets/thumbnails/photography/gallery-rainbow.webp` |
+| `gallery-voyager` | Photography | `photography/gallery-voyager.webp` | `assets/hi/gallery/voyager.jpeg` | `assets/thumbnails/photography/gallery-voyager.webp` |
 | `gallery-sunset-building-1` | Photography | `photography/gallery-sunset-building-1.webp` | `assets/hi/gallery/sunset-building-1.jpeg` | `assets/thumbnails/photography/gallery-sunset-building-1.webp` |
 | `gallery-sunset-building-2` | Photography | `photography/gallery-sunset-building-2.webp` | `assets/hi/gallery/sunset-building-2.jpeg` | `assets/thumbnails/photography/gallery-sunset-building-2.webp` |
 | `gallery-clouds-1` | Photography | `photography/gallery-clouds-1.webp` | `assets/hi/gallery/clouds-1.jpeg` | `assets/thumbnails/photography/gallery-clouds-1.webp` |

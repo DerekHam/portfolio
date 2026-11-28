@@ -7,8 +7,10 @@
     "tags": ["CAD", "Fabrication", "Aerospace"],
     "featured": true,
     "summary": "Two open-sourced wind tunnels designed for middle- and high- school use.",
-    "thumbnail": "assets/thumbnails/engineering/calico-full-view.webp",
+    "thumbnail": "assets/thumbnails/engineering/calico-v2-fullview.webp",
     "images": [
+      { "media": "calico-v2-fullview" },
+      { "media": "calico-v2-test-1" },
       { "media": "calico-full-view" },
       { "media": "calico-intake-view" },
       { "media": "calico-diffuser-1" },
@@ -22,7 +24,7 @@
       { "media": "calico-calico-2" }
     ],
     "highlights": [
-      { "media": "calico-full-view" },
+      { "media": "calico-v2-fullview" },
       { "media": "calico-diffuser-1", "caption": "Diffuser and flow straightener" },
       { "media": "calico-calico-kitten-test", "caption": "Calico Kitten smoke test" }
     ],

@@ -15,6 +15,30 @@
       "caption": "Calico Biggie — the full assembly"
     },
     {
+      "id": "calico-v2-fullview",
+      "title": "Calico Biggie V2 — the full assembly",
+      "thumbnail": "assets/thumbnails/engineering/calico-v2-fullview.webp",
+      "source": "assets/img/calico/v2-fullview.jpeg",
+      "full": "engineering/calico-v2-fullview.webp",
+      "alt": "Calico Biggie V2 — the full assembly",
+      "category": "Engineering",
+      "width": 1000,
+      "height": 750,
+      "caption": "Calico Biggie V2 — the full assembly"
+    },
+    {
+      "id": "calico-v2-test-1",
+      "title": "A 3D-printed aerofoil mounted for flow visualisation in the Calico Biggie V2 test section.",
+      "thumbnail": "assets/thumbnails/engineering/calico-v2-test-1.webp",
+      "source": "assets/img/calico/v2-test-1.jpeg",
+      "full": "engineering/calico-v2-test-1.webp",
+      "alt": "A 3D-printed aerofoil mounted for flow visualisation in the Calico Biggie V2 test section.",
+      "category": "Engineering",
+      "width": 1000,
+      "height": 750,
+      "caption": "A 3D-printed aerofoil mounted for flow visualisation in the Calico Biggie V2 test section."
+    },
+    {
       "id": "calico-intake-view",
       "title": "The incomplete air intake & flow conditioning section of my wind tunnel.",
       "thumbnail": "assets/thumbnails/engineering/calico-intake-view.webp",
@@ -692,6 +716,18 @@
       "width": 750,
       "height": 1000,
       "caption": "This is the background for the home page. It is taken during the UPenn Experimental Physics Summer school, a spectrum of Hydrogen (I think, can't remember exactly)."
+    },
+    {
+      "id": "gallery-voyager",
+      "title": "A metal model of NASA's Voyager probe, the most distant human-made object, mounted on my wall.",
+      "thumbnail": "assets/thumbnails/photography/gallery-voyager.webp",
+      "source": "assets/img/gallery/voyager.jpeg",
+      "full": "photography/gallery-voyager.webp",
+      "alt": "A metal model of NASA's Voyager probe, the most distant human-made object, mounted on my wall.",
+      "category": "Photography",
+      "width": 750,
+      "height": 1000,
+      "caption": "A metal model of NASA's Voyager probe, the most distant human-made object, mounted on my wall."
     },
     {
       "id": "gallery-sunset-building-1",
