@@ -736,8 +736,9 @@ section { padding-block: 64px; }
 }
 .project-figure > img {
   width: 100%;
+  height: auto;
   margin: 0;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -757,6 +758,7 @@ section { padding-block: 64px; }
 .project-gallery--single { display: block; overflow: visible; }
 .project-gallery--single .project-figure { width: 100%; }
 .project-gallery--single .project-figure > img {
+  height: auto;
   aspect-ratio: auto;
   max-height: 520px;
   object-fit: contain;
@@ -916,6 +918,7 @@ section { padding-block: 64px; }
 .sidebar-thumb {
   display: block;
   width: 100%;
+  height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   margin-bottom: 14px;
