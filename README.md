@@ -59,11 +59,11 @@ Everything you normally change is in the `data/` folder. Edit the JSON, refresh 
 
 Notes:
 - Files may contain `_comment` keys for guidance — they are ignored.
-- A few fields allow simple HTML: `about` in `home.json`, `skills` in `resume.json`, and
-  `title` and `description` in `projects.json`. For example, a project title can be
-  `"Stagecraft: <i>Smash The Wall</i>"` and the italics will show. HTML is only allowed
-  in those fields; everywhere else is shown as plain text (and stripped from page titles
-  and image alt text automatically).
+- A few fields allow simple HTML: `about` and `photoNote` in `home.json`, `skills` in
+  `resume.json`, and `title` and `description` in `projects.json`. For example, a project
+  title can be `"Stagecraft: <i>Smash The Wall</i>"` and the italics will show. HTML is only
+  allowed in those fields; everywhere else is shown as plain text (and stripped from page
+  titles and image alt text automatically).
 - A project `description` can be a single HTML string **or an array of HTML blocks**
   (one per line, which is much easier to read and edit). The blocks are joined together
   when rendered, so both forms work.

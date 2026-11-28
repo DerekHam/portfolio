@@ -363,6 +363,18 @@ section { padding-block: 64px; }
   animation-delay: 0.45s;
 }
 .photo-note:empty { display: none; }
+.photo-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.photo-note a:hover { text-decoration-thickness: 2px; }
+.photo-note a:focus-visible {
+  outline: 2px solid var(--bg);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 .photo-note::after {
   content: "";
   position: absolute;

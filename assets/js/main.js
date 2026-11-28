@@ -376,6 +376,42 @@
     mo.observe(document.body, { childList: true, subtree: true });
   }
 
+  /* ---------- Portrait speech-bubble wiggle ---------- */
+  // A tiny pop each time the pointer moves over the portrait or its bubble.
+  function initPortraitWiggle() {
+    var portrait = $(".portrait");
+    if (!portrait || !portrait.animate) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var note = $(".photo-note", portrait);
+    if (!note) return;
+    var last = 0;
+    var busy = false;
+
+    portrait.addEventListener("mousemove", function (e) {
+      if (!e.target.closest || !e.target.closest(".avatar, .photo-note")) return;
+      if (!note.textContent.trim()) return;
+      var now = Date.now();
+      if (busy || now - last < 2000) return;
+      last = now;
+      busy = true;
+      var wiggle;
+      try {
+        wiggle = note.animate([
+          { rotate: "0deg", scale: "1", translate: "0px 0px" },
+          { rotate: "1.4deg", scale: "1.025", translate: "0px -2px", offset: 0.28 },
+          { rotate: "0.8deg", scale: "1.01", translate: "0px -1px", offset: 0.82 },
+          { rotate: "0deg", scale: "1", translate: "0px 0px" }
+        ], { duration: 300, easing: "ease-in-out" });
+      } catch (err) {
+        busy = false;
+        return;
+      }
+      wiggle.onfinish = function () { busy = false; };
+      wiggle.oncancel = function () { busy = false; };
+    });
+  }
+
   /* ---------- Resume downloads ---------- */
   // The PDF is rebuilt by Publish.command, but browsers may cache the old file.
   // Add a unique query string on click so the download is always the newest copy.
@@ -402,6 +438,7 @@
     initVideoEmbeds();
     initParallax();
     initReveal();
+    initPortraitWiggle();
     initResumeDownloads();
   });
 })();
